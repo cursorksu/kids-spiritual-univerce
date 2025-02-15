@@ -1,0 +1,328 @@
+{
+  "modal": {
+    "collectionDelete": "If you delete this collection all it lessons, images and other staff in it will be reachable out of it",
+    "churchDelete": "If you delete this church all it lessons, images and other staff in it will be reachable out of it",
+    "teacherDelete": "Do you want to remove this teacher?",
+    "studentDelete": "Do you want to remove this student?",
+    "groupDelete": "Do you want to remove this group?",
+    "lessonDelete": "Do you want to remove this lesson?",
+    "deleteImage": "You can not rollback deleting of this image. You are trying to delete from storage image with name:",
+    "title": {
+      "churchDelete": "Delete Church:",
+      "deleteStudent": "Remove student",
+      "deleteTeacher": "Remove teacher",
+      "deleteGroup": "Remove group",
+      "lessonDelete": "Remove lesson",
+      "deleteImage": "Delete image from storage"
+    }
+  },
+  "collections": {
+    "collections": "Collections of Lessons",
+    "createCollection": "Create Collection",
+    "deleteCollection": "Delete Collection",
+    "editCollection": "Edit Collection",
+    "topic": "Topic",
+    "subject": "Subject example",
+    "game": "Games",
+    "creativity": "Creativity",
+    "memory": "Memoization",
+    "food": "Food",
+    "labels": {
+      "title": "Collection title",
+      "description": "Collection Description",
+      "tags": "Tags",
+      "imageUrl": "Collection image"
+    },
+    "placeholders": {
+      "title": "Enter Title",
+      "description": "Enter Description",
+      "tags": "Tags",
+      "imageUrl": "Add image url"
+    }
+  },
+  "students": {
+    "myStudents": "My students",
+    "showResult": "Show result",
+    "addStudent": "Add student",
+    "deleteStudent": "Delete student",
+    "editStudent": "Edit student data",
+    "labels": {
+      "avatar": "Student Avatar",
+      "photo": "Photo",
+      "address": "Student`s address",
+      "about": "About me",
+      "birthday": "Day of Birth",
+      "years": "How old is student",
+      "firstName": "First Name",
+      "secondName": "Last Name",
+      "phone": "Phone number",
+      "estimation": "Money",
+      "action": "Action"
+    },
+    "placeholders": {
+      "avatar": "Choice Emoji for Avatar",
+      "address": "Enter student`s address",
+      "about": "Fill your hobby, pets, habits... Something interesting about you",
+      "birthday": "Enter the day of Birth",
+      "years": "Enter the amount of years",
+      "firstName": "Student First Name",
+      "secondName": "Student Last Name",
+      "phone": "Set Phone number"
+    }
+  },
+  "entities": {
+    "food": "Snacks",
+    "creative": "Creative Arts",
+    "game": "Interactive Games",
+    "activeGame": "Active Games",
+    "subject": "Subject examples",
+    "memory": "Interactive games"
+  },
+  "lessons": {
+    "labels": {
+      "title": "Title",
+      "description": "Description",
+      "goal": "Goal",
+      "tags": "Tags",
+      "bibleQuote": "Bible place",
+      "bibleText": "Bible text",
+      "imageUrl": "Link to Image"
+    },
+    "placeholders": {
+      "title": "Add title",
+      "description": "Add description",
+      "goal": "Describe the goal",
+      "tags": "Type teg and press ENTER",
+      "bibleQuote": "Bible Quote",
+      "bibleText": "Bible Text",
+      "imageUrl": "Link to Image from Internet"
+    }
+  },
+  "lessonTabs": {
+    "topic": "Topic",
+    "subject": "Example",
+    "creative": "Creativity",
+    "game": "Games",
+    "memory": "Memory",
+    "food": "Snack",
+    "presentation": "Presentation",
+    "video": "Video",
+    "print": "Print"
+  },
+  "entity": {
+    "goal": "Lesson goal",
+    "text": "Bible text",
+    "description": "Description",
+    "staff": "Staff",
+    "quote": "Place in Bible",
+    "title": "The Title of the lesson",
+    "tags": "Add tags",
+    "createdDate": "Created at: ",
+    "author": "Created by: "
+  },
+  "scenario": {
+    "addScenario": "Add Scenario",
+    "deleteScenario": "Delete scenario",
+    "labels": {
+      "avatar": "Scenario main image",
+      "title": "Scenario title",
+      "createdDate": "Created date",
+      "author": "Author name",
+      "church": "Church",
+      "content": "Content",
+      "isPublic": "is Public",
+      "isModeratorApproved": "is Approved",
+      "tags": "Provide some tags for show",
+      "videos": "Videos",
+      "soundtracks": "Sounds"
+    },
+    "placeholders": {
+      "avatar": "Scenario main image",
+      "title": "Scenario title",
+      "createdDate": "Created date",
+      "author": "Author name",
+      "church": "Select church",
+      "content": "Create Scenario content",
+      "isPublic": "Scenario will published",
+      "isModeratorApproved": "Moderator is approved",
+      "tags": "Type something and press enter",
+      "videos": "Provide link for video",
+      "soundtracks": "Upload sounds for show"
+    }
+  },
+  "church": {
+    "invite": "If you want to invite other ministers to collaborate on the church content, choose a convenient way to send the invitation.",
+    "deleteChurch": "Delete Church",
+    "addChurch": "Add Church",
+    "editPictures": "Edit Pictures",
+    "editChurch": "Edit Church Information",
+    "selectImagesForGallery": "Chose images for Gallery",
+    "labels": {
+      "avatar": "Church front page",
+      "pastorAvatar": "Pastor photo",
+      "logo": "Church logo",
+      "title": "Title of church",
+      "address": "Address",
+      "createdDate": "Creation date",
+      "about": "About us",
+      "subtitle": "Subtitle",
+      "city": "City",
+      "phone": "Phone",
+      "email": "Email",
+      "web": "Website",
+      "pastor": "Pastor",
+      "pictures": "Album",
+      "lessons": "Lessons",
+      "scenarios": "Scenarios",
+      "groups": "Children groups",
+      "teachers": "Teachers",
+      "to-lessons": "Go to lessons list",
+      "to-scenarios": "Go to scenarios list",
+      "content": "Content list",
+      "no-scenarios": "We don't have any scenarios created yet",
+      "no-lessons": "We don't have any lessons created yet"
+    },
+    "placeholders": {
+      "avatar": "Upload Church front page",
+      "logo": "Upload Church logo",
+      "title": "Enter title",
+      "subtitle": "Enter subtitle",
+      "address": "Enter address",
+      "createdDate": "Select date",
+      "about": "Put few words about the church strategy and vision",
+      "phone": "Enter contact number",
+      "email": "Enter church`s email",
+      "web": "Provide the link to your website",
+      "pastor": "Enter the Pastor Name",
+      "pictures": "Upload few pictures",
+      "groups": "Create Sunday school groups",
+      "teachers": "Add the teachers"
+    }
+  },
+  "group": {
+    "no-group": "We don't have any created groups yet",
+    "title": "Our Groups",
+    "editGroup": "Edit Group",
+    "addGroup": "Create Group",
+    "addToGroup": "Add to group",
+    "addToGroupPlaceholder": "Select group",
+    "label": {
+      "addTeacher": "Assign teacher",
+      "studentsAmount": "Students in group",
+      "no-teachers": "Any teacher wasn't added yet",
+      "teachers": "Teachers",
+      "lessons": "Lessons",
+      "description": "Description",
+      "title": "Title"
+    },
+    "placeholder": {
+      "teachers": "Select teachers",
+      "description": "Enter details",
+      "title": "Add title"
+    }
+  },
+  "planer": {
+    "editEvent": "Edit Event",
+    "addEvent": "Add Event",
+    "types": {
+      "event": "Important Event",
+      "manage": "Management meeting",
+      "test": "Report lesson",
+      "lesson": "Ordinary lesson"
+    },
+    "labels": {
+      "title": "Enter event title",
+      "lesson": "Chose lesson",
+      "time": "Chose time (by default: the time of your church ministry)",
+      "teachers": "Chose teachers",
+      "responsible": "Enter names of responsible persons",
+      "type": "Chose type"
+    }
+  },
+  "mainMenu": {
+    "lang": "Select Language",
+    "en": "English",
+    "ua": "Ukrainian",
+    "ru": "Russian",
+    "settings": "Settings",
+    "community": "Churches",
+    "cabinet": "User Profile",
+    "collapse": "Collapse",
+    "goBack": "Go back",
+    "sharedBoard": "Shared Panel",
+    "show": "Scenarios",
+    "home": "Home page",
+    "game": "Games"
+  },
+  "button": {
+    "createProject": "Create Project",
+    "delete": "Delete",
+    "stopProject": "Stop project",
+    "startProject": "Start project",
+    "cancel": "Cancel",
+    "savePhoto": "Save photo",
+    "upload": "Upload",
+    "resize": "Resize image",
+    "uploadPhoto": "Upload Photo",
+    "cabinet": "To the personal office",
+    "addProduct": "Add a product",
+    "add": "Add",
+    "edit": "Edit",
+    "remove": "Remove",
+    "createLesson": "Create lesson",
+    "editLesson": "Edit lesson",
+    "accept": "Accept",
+    "confirm": "Confirm",
+    "reject": "Reject"
+  },
+  "errors": {
+    "passwordsMatch": "Passwords must match",
+    "limitProjectName": "Limit Project name 60 symbols",
+    "userAlreadyExist": "User with this email already exist in database",
+    "common": "Something went wrong, try again",
+    "required": "This field is required",
+    "joinAgreement": "You agree to receive notifications",
+    "conditionsAgreement": "You should fill Condition agreement",
+    "emailFormat": "Please check Email format",
+    "passwordMin": "Minimum number of characters 6",
+    "passwordMax": "Minimum number of characters 20",
+    "emptyField": "It is important that this field is filled",
+    "agreementUnsigned": "It is important that you agree to data processing",
+    "notNumber": "Not a number",
+    "decreaseSymbols": "It is necessary to reduce the description to 500 characters",
+    "bindingError": {
+      "title": "Error binding lesson to collection",
+      "description": "An error occurred while binding the lesson to the collection."
+    },
+    "unbindingError": {
+      "title": "Error unbinding lesson from collection",
+      "description": "An error occurred while unbinding the lesson from the collection."
+    },
+    "fetchingError": {
+      "title": "Error fetching lessons",
+      "description": "An error occurred while fetching lessons."
+    }
+  },
+  "status": {
+    "labels": {
+      "published": "Published",
+      "waiting": "Waiting for Approve",
+      "active": "Active",
+      "draft": "Draft"
+    },
+    "published": "This content is visible for all users",
+    "waiting": "This content is waiting for Moderator confirmation",
+    "active": "This content is visible for your church",
+    "draft": "This content is visible for you only"
+  },
+  "fullScreenOn": "Full screen on",
+  "fullScreenOff": "Full screen off",
+  "editPhotos": "Edit photos in Gallery",
+  "uploaded": "Uploaded:",
+  "uploading": "Uploading...",
+  "readyToUpload": "Ready to upload",
+  "dropZone": "Drag images here or click for select",
+  "fileInfo": "File information",
+  "fileName": "File name",
+  "fileSize": "File size"
+}

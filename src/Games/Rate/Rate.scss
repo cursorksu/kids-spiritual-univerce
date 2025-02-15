@@ -1,0 +1,63 @@
+.rate-wrapper {
+  width: 100%;
+  height: 100vh;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2Fbg-air-balon-1.jpg?alt=media&token=61814156-779a-477a-a8a5-304c946fb363");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.balloon {
+  position: absolute;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2Fair_balloon.png?alt=media&token=b4baa25d-56d1-43aa-a2df-ad82ecdf9465");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  width: 100px;
+  height: 200px;
+
+  img {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+  }
+
+  .name {
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 0 20px 30px rgba(255, 255, 255, 0.4);
+    background: rgba(163, 147,103, 0.3) linear-gradient(transparent,rgba(255,255,255,.5));
+    padding: 20px;
+    border-radius: 50%;
+    opacity: 0;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    min-width: 130px;
+    min-height: 130px;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
+    text-align: center;
+  }
+
+  &:hover .name {
+    opacity: 1;
+  }
+}
+
+.feather {
+  animation: flutter 1s infinite alternate ease-in-out;
+}
+
+@keyframes flutter {
+  0% {
+    transform: translateY(0) rotateZ(-5deg);
+  }
+  50% {
+    transform: translateY(-5px) rotateZ(0deg);
+  }
+  100% {
+    transform: translateY(0) rotateZ(5deg);
+  }
+}

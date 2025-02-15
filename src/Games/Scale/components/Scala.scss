@@ -1,0 +1,67 @@
+.coin-card {
+  width: 120px;
+  height: 120px;
+  background-image: url("../assets/images/coin.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  h3 {
+    font-family: 'Yeseva One', sans-serif;
+    font-size: 3rem;
+    font-weight: 500;
+    margin: 0 !important;
+    display: none;
+    text-align: center;
+  }
+
+  button {
+    display: none;
+  }
+
+  &.is-used {
+    display: none;
+  }
+
+  &.is-active {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-animation: flip-diagonal-1-bl 1s linear both;
+    animation: flip-diagonal-1-bl 1s linear both;
+    z-index: 20;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+      font-family: 'Yeseva One', sans-serif;
+      font-size: 5px;
+      font-weight: 400;
+      text-align: center;
+      display: block;
+    }
+
+    button {
+      border: none;
+      background: navajowhite;
+      display: inline;
+      margin: 1px;
+      font-size: 5px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+
+@keyframes flip-diagonal-1-bl {
+  0% {
+    -webkit-transform: rotate3d(1, 1, 0, 0deg)  scale(8);
+    transform: rotate3d(1, 1, 0, 0deg) scale(8);
+  }
+  100% {
+    -webkit-transform: rotate3d(1, 1, 0, -1800deg)  scale(8);
+    transform: rotate3d(1, 1, 0, -1800deg)  scale(8);
+  }
+}

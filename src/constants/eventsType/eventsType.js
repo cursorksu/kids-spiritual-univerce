@@ -1,0 +1,20 @@
+export const EVENTS_TYPE_LABEL = {
+    NORMAL_LESSON: 'planer.types.lesson',
+    REPORT_LESSON: 'planer.types.test',
+    MANAGE_MEETING: 'planer.types.manage',
+    IMPORTANT_EVENT: 'planer.types.event',
+};
+export const EVENTS_CLASSES = ['lesson', 'report',  'manage', 'event'];
+export const EVENTS_TYPE = {
+    NORMAL_LESSON: 0,
+    REPORT_LESSON: 1,
+    MANAGE_MEETING: 2,
+    IMPORTANT_EVENT: 3,
+};
+
+export const EVENTS_OPTIONS = [
+    { key: EVENTS_TYPE.NORMAL_LESSON, value: EVENTS_TYPE.NORMAL_LESSON, text: EVENTS_TYPE_LABEL.NORMAL_LESSON },
+    { key: EVENTS_TYPE.REPORT_LESSON, value: EVENTS_TYPE.REPORT_LESSON, text: EVENTS_TYPE_LABEL.REPORT_LESSON },
+    { key: EVENTS_TYPE.MANAGE_MEETING, value: EVENTS_TYPE.MANAGE_MEETING, text: EVENTS_TYPE_LABEL.MANAGE_MEETING },
+    { key: EVENTS_TYPE.IMPORTANT_EVENT, value: EVENTS_TYPE.IMPORTANT_EVENT, text: EVENTS_TYPE_LABEL.IMPORTANT_EVENT },
+];

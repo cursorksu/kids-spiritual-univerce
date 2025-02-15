@@ -1,0 +1,17 @@
+export const routes = {
+  home: '/',
+  lessons: '/lessons',
+  games: '/games',
+  cabinet: '/cabinet',
+  church: '/church',
+  group: '/group',
+  collections: '/collections',
+  scenario: '/scenario',
+  food: '/food',
+  topic: '/topic',
+  subject: '/subject',
+  game: '/game',
+  creativity: '/creativity',
+  memory: '/memory',
+  blog: '/blog',
+};

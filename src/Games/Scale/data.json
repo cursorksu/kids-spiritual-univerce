@@ -1,0 +1,170 @@
+[
+  {
+    "id": 0,
+    "text": "Бог створив людину досконалою і безгрішною",
+    "isActive": false,
+    "isUsed": false,
+    "status": 1
+  },
+  {
+    "id": 1,
+    "text": "Ти маєш свободу вибору і можеш вирішувати кому служити,",
+    "isActive": false,
+    "isUsed": false,
+    "status": 2
+  },
+  {
+    "id": 2,
+    "text": "Ісус прожив досконале життя щоб заплатити ціну справедливості",
+    "isActive": false,
+    "isUsed": false,
+    "status": 1
+  },
+  {
+    "id": 3,
+    "text": "Диявол спокушав Ісуса все життя, щоб зробити його грішником як всі",
+    "isActive": false,
+    "isUsed": false,
+    "status": 1
+  },
+  {
+    "id": 4,
+    "text": "Без пролиття крові не буває прощення",
+    "isActive": false,
+    "isUsed": false,
+    "status": 2
+  },
+  {
+    "id": 5,
+    "text": "Людина має свободу волі",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 6,
+    "text": "Ніхто не може спастися чинячи добрі справи",
+    "isActive": false,
+    "isUsed": false,
+    "status": 1
+  },
+  {
+    "id": 7,
+    "text": "Життя не легке і закінчується смертю",
+    "isActive": false,
+    "isUsed": false,
+    "status": 2
+  },
+  {
+    "id": 8,
+    "text": "Люди створені жити вічно і щасливо",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 9,
+    "text": "Непослух це такий самий гріх як і магія",
+    "isActive": false,
+    "isUsed": false,
+    "status": 1
+  },
+  {
+    "id": 10,
+    "text": "Той хто чистий серцем може почути і побачити Бога",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 11,
+    "text": "Бог посилає янголів своїх на захист тим хто вірить і захищає їх від зла",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 12,
+    "text": "Диявол хотів знищити Ісуса ще малятком і наказав Іроду вбити всіх діток в Іудеї",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 13,
+    "text": "Якби не любов цей світ вже був би знищений",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 14,
+    "text": "Бог посилає янголів своїх на захист тим хто вірить і захищає їх від зла",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 15,
+    "text": "Ісус взяв на себе гріхи всього святу",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 16,
+    "text": "Диявол ненавидить все що створив Бог і намагається знищити або зіпсувати всяке Його творіння",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 17,
+    "text": "Бог любить людей і не хоче щоб хтось загинув",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 18,
+    "text": "Коли в світі стає більше зла одночасно примножується і добро",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 19,
+    "text": "Гріх передається через народження і тому всі без винятку - грішники",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 20,
+    "text": " Ісус, син Божий, народився як людина щоб прожити безгрішне життя",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 21,
+    "text": "Диявол спокусив людину і гріх прийшов у світ",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 22,
+    "text": "Досконала любов перемагаэ страх",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  },
+  {
+    "id": 22,
+    "text": "Дуже важко встояти проти спокус диявола",
+    "isActive": false,
+    "isUsed": false,
+    "status": 3
+  }
+]

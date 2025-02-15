@@ -1,0 +1,63 @@
+.situations {
+  overflow: hidden;
+  position: relative;
+  padding: 40px;
+  background-color: #282c34;
+  min-height: 100vh;
+}
+
+.situations .column,
+.situations .row,
+.situations .grid {
+  position: static !important;
+}
+
+.hammer {
+  width: 0;
+  height: 0;
+}
+.hammer-holder {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(0, 0);
+}
+
+.hammer-holder.active {
+  transition: top 2s ease, left 2s ease;
+  z-index: 100;
+}
+
+.hammer.active {
+  width: 100px;
+  height: 100px;
+  background-image: url("assets/images/hammer.com.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  -webkit-animation: rotate-center 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse;
+  animation: rotate-center 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse;
+
+}
+
+
+
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0) scale(1);
+    transform: rotate(0) scale(1);
+  }
+  100% {
+    -webkit-transform: rotate(520deg) scale(0);
+    transform: rotate(520deg) scale(0);
+  }
+}
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0) scale(1);
+    transform: rotate(0) scale(1);
+  }
+  100% {
+    -webkit-transform: rotate(520deg) scale(0);
+    transform: rotate(520deg) scale(0);
+  }
+}

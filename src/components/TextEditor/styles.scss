@@ -1,0 +1,27 @@
+body {
+  font-family: Comfortaa, sans-serif;
+}
+
+#root .ql-container {
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  background: #fefcfc;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+/* Snow Theme */
+#root .ql-snow.ql-toolbar {
+  display: block;
+  background: rgba(163, 147,103, 0.3);
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+}
+
+#root .ql-editor {
+  min-height: 18em;
+
+  p {
+    line-height: 1.5;
+  }
+}

@@ -1,0 +1,869 @@
+@import "react-image-gallery/styles/css/image-gallery.css";
+@import "quill/dist/quill.snow.css";
+
+* {
+  box-sizing: border-box;
+}
+
+.ui.dimmer {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.main-content {
+	min-height: 100vh;
+  background-color: #fbfaf1;
+}
+
+.popup-menu {
+  padding: 0 !important;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-family: 'Yeseva One', sans-serif;
+}
+h1 {
+  margin: 24px 0 !important;
+}
+
+h3 {
+  margin: 0 0 15px !important;
+}
+
+.divider {
+  margin: 0 !important;
+  border-top-color: #a39367 !important;
+}
+
+.react-datepicker__header__dropdown {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 10px;
+  margin: 0 10px;
+}
+
+.react-datepicker__navigation--years {
+  background-image: url('./assets/chevron-up.svg');
+  background-size: 34px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.react-datepicker__navigation--years-previous {
+  transform: rotate(180deg);
+}
+
+.react-datepicker__month-dropdown-container,
+.react-datepicker__year-dropdown-container {
+  margin: 0;
+  background: #faebd7ff;
+  border-radius: 4px;
+  text-align: left;
+  padding: 0 10px;
+}
+
+.react-datepicker__year-select,
+.react-datepicker__month-select {
+  border-color: #a39367;
+  width: 100%;
+  outline: none !important;
+  background: #faebd7ff;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 16px;
+  font-family: 'Comfortaa', sans-serif;
+  line-height: 30px;
+
+  &:active {
+    outline: none;
+    background: #faebd7ff;
+  }
+}
+
+.react-datepicker__month-container {
+  box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.3)
+}
+
+.react-datepicker__year-dropdown,
+.react-datepicker__month-dropdown {
+  background: #a39367;
+  box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.react-datepicker__month-read-view--down-arrow,
+.react-datepicker__year-read-view--down-arrow {
+  right: 10px;
+  top: 10px;
+}
+
+.react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow,
+.react-datepicker__month-year-read-view--down-arrow,
+.react-datepicker__navigation-icon::before {
+  border-color: #a39367;
+}
+
+.react-datepicker__year-option,
+.react-datepicker__month-option,
+.react-datepicker__year-dropdown,
+.react-datepicker__month-dropdown,
+.react-datepicker__current-month,
+.react-datepicker__header {
+  font-size: 16px;
+  font-family: 'Comfortaa', sans-serif;
+  line-height: 30px;
+}
+
+.react-datepicker__header {
+  background-color: rgba(163, 147, 103, 0.3);
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #282c34;
+  font-family: 'Comfortaa', sans-serif;
+  width: 2.5rem;
+  height: 2.5rem;
+
+  &:hover {
+    background-color: rgba(163, 147, 103, 0.3);
+  }
+}
+
+.react-datepicker__day--selected {
+  background-color: #a39367;
+  color: #fff;
+  font-weight: bold;
+}
+
+
+.lessons {
+  position: relative;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: #282c34;
+  height: 100vh;
+  display: block;
+  overflow: auto;
+  color: white;
+  background-image: none;
+  padding: 40px;
+}
+
+h1.title,
+.title,
+.subtitle {
+  max-width: 100%;
+  font-family: 'Yeseva One', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+h1.title {
+  overflow: visible;
+  font-size: 3rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+p, label, a, span {
+  text-align: left;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  max-height: 14.6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+
+.flex-between {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.flex-align-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  position: relative;
+}
+
+.preview {
+  border-radius: 4px;
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.lesson-title {
+  min-height: 40px;
+  font-family: coco, sans-serif;
+}
+
+.ksu .ui.modal > .content {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  background-image:
+          url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2FTexture.png?alt=media&token=f9a48c42-a930-4e19-9a8b-f9eb2193171a"),
+          url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2FShapoe.png?alt=media&token=52063a67-b545-40dc-ba3c-cdc2a479b8e9");
+  background-position: right center,
+  left 60px top 40px;
+  background-size: auto 300px,
+  240px auto;
+  background-repeat: repeat-y, no-repeat;
+  background-color: #fbfaf1;
+}
+
+.ksu .ui.modal > .header {
+  display: flex;
+	font-family: 'Comfortaa', sans-serif;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: rgba(163, 147,103, 0.3);
+}
+.ksu .ui.modal > .actions {
+  background-color: rgba(163, 147,103, 0.3);
+}
+
+.ksu .ui.modal h2 {
+  flex-basis: calc(100% - 36px);
+  white-space: nowrap;
+  font-family: 'Yeseva One', sans-serif;
+  line-height: 1.3;
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+input:-webkit-autofill {
+  background: #fff !important;
+  box-shadow: 0 0 0 1000px white inset !important;
+}
+
+.ksu .ui.modal .header button {
+  flex-basis: 36px;
+}
+
+@page {
+  size: auto;
+  margin: 15mm 10mm 15mm 20mm;
+}
+
+@media print {
+  * {
+    color: #282c34 !important;
+    text-align: left;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+	img {
+		width: auto !important;
+		height: 200px !important;
+		//object-fit: contain !important;
+	}
+
+  span,
+  div,
+  label,
+  a,
+  p,
+  li {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  .print-hide {
+    display: none !important;
+  }
+
+  .print-fluid {
+    width: 100% !important;
+    flex-basis: 100% !important;
+    min-width: initial !important;
+    max-width: initial !important;
+  }
+
+	.aside-wrapper {
+		display: flex !important;
+		flex-direction: row !important;
+		justify-content: stretch !important;
+		align-items: stretch !important;
+		flex-wrap: wrap !important;
+		gap: 20px !important;
+		width: 100% !important;
+		min-width: initial !important;
+	}
+	.aside-wrapper > div {
+		box-shadow: none !important;
+		border: 1px solid #282c34 !important;
+		width: 30% !important;
+	}
+
+	.image-wrapper {
+		border-radius: 20px !important;
+		overflow: hidden !important;
+	}
+
+	.image-wrapper img {
+		border-radius: 20px !important;
+		width: 100% !important;
+		height: auto !important;
+		object-fit: cover !important;
+	}
+
+	.bible {
+		background-image: none !important;
+		background-color: transparent !important;
+		font-size: 24px !important;
+	}
+
+  .print-block {
+    display: block !important;
+  }
+}
+
+.ui.attached.tabular.menu {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.dnd-list {
+  margin: 0;
+  padding: 0;
+  flex-basis: 100%;
+}
+
+img.epr-emoji-img {
+  border: none !important;
+  min-height: initial !important;
+  min-width: initial !important;
+}
+
+.EmojiPickerReact .epr-emoji-category-content {
+  grid-template-columns: repeat(auto-fill, 40px) !important;
+  min-height: initial !important;
+  min-width: initial !important;
+}
+
+.EmojiPickerReact .epr-emoji-category-content button {
+  justify-content: start;
+  width: 52px;
+  margin: 0;
+}
+
+.mic {
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  animation-delay: 0s;
+
+  &:nth-of-type(1) .mic-shadow {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-of-type(2) .mic-shadow {
+    animation-delay: 0.3s;
+  }
+
+  &:nth-of-type(3) .mic-shadow {
+    animation-delay: 0.4s;
+  }
+
+  &:nth-of-type(4) .mic-shadow {
+    animation-delay: 0.5s;
+  }
+
+  &:hover {
+    &::after {
+      transition: background-color 0.3s ease-in-out,
+      box-shadow 0.3s ease-in-out;
+      background: rgba(0, 255, 255, 0.5);
+      box-shadow: inset 5px -5px 10px rgba(26, 8, 78, 0.5),
+      inset -5px 5px 10px rgba(130, 60, 166, 0.5),
+      inset 5px -5px 10px rgba(26, 8, 78, 0.5),
+      inset -5px 5px 10px rgba(130, 66, 166, 0.5);
+    }
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90px;
+    height: 90px;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    z-index: 2;
+  }
+
+  &::before {
+    background-color: #1a084e;
+    box-shadow: 0 0 18px 18px #1c084f;
+  }
+
+  &::after {
+    background-color: #310a46;
+    box-shadow: inset 5px -5px 10px rgba(0, 255, 255, 0.5),
+    inset -5px 5px 10px rgba(130, 60, 166, 0.5),
+    inset 5px -5px 10px rgba(0, 255, 255, 0.5),
+    inset -5px 5px 10px rgba(130, 66, 166, 0.5);
+    animation: circle-size 1s linear infinite alternate;
+  }
+
+  &-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: content-size 1s linear infinite alternate;
+    font-family: 'Yeseva One', sans-serif;
+    font-size: 3.5rem;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  &-icon {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    border-top: 0;
+    z-index: 3;
+
+
+    &::before {
+      content: "";
+      display: block;
+      box-sizing: border-box;
+      position: absolute;
+    }
+
+    &::before {
+      width: 1px;
+      height: 2px;
+      top: calc(100% + 1px);
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+
+    &::after {
+      border: 1px solid;
+      width: 2px;
+      height: 18px;
+      left: 50%;
+      top: -10px;
+      border-radius: 4px;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  &-shadow {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 100%;
+    z-index: 1;
+    background-color: #1a084e;
+    box-shadow: 3px -5px 30px 15px #823ca6,
+    7px -3px 47px 10px #aab3d2,
+    -6px -7px 97px 10px #5acee3,
+    5px 1px 66px 10px #1b7d8f,
+    4px 3px 77px 10px #f30bf5;
+    animation: shadow-rotate 1.5s linear infinite;
+    transform-origin: center;
+  }
+}
+
+.ui.bottom.attached.segment.active.tab {
+  .ksu-content {
+    padding: 10px;
+  }
+}
+
+.content-wrapper {
+  position: relative;
+
+  &.game-settings-wrapper {
+    flex-basis: 90% !important;
+  }
+
+  .sticky-action {
+    padding: 5px;
+    background: #fff;
+    border-radius: 4px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+
+    &.success {
+      background: #9ACD32 linear-gradient(transparent, rgba(255, 255, 255, .5)) !important;
+    }
+
+    &.error {
+      background: rgba(255, 99, 71, 1) linear-gradient(transparent, rgba(255, 255, 255, .5)) !important;
+    }
+  }
+
+  &.game {
+    flex-basis: calc(100% - 130px);
+  }
+
+  span, label, li, a, p {
+    font-size: 18px !important;
+    line-height: 1.5 !important;
+    font-weight: 400 !important;
+    font-family: "Comfortaa", sans-serif;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  blockquote {
+    position: relative;
+    display: block;
+
+    &:before {
+      content: '';
+      height: 100%;
+      width: 10px;
+      background: rgba(163, 147, 103, 0.3);
+      border-radius: 5px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -36px;
+    }
+  }
+
+  .ql-font-monospace {
+    font-family: "Monospaced", sans-serif;
+  }
+
+  .ql-font-serif {
+    font-family: "Alice", serif;
+  }
+
+  .ql-picker-label,
+  .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label {
+    margin-right: 20px;
+    min-width: 115px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+}
+
+.content-wrapper .ql-size-small {
+  font-size: 14px !important;
+}
+
+.content-wrapper .ql-size-lage {
+  font-size: 24px !important;
+}
+
+.content-wrapper .ql-size-huge {
+  font-size: 22px !important;
+}
+
+.shadow-point {
+  width: 200px;
+  height: 200px;
+  background-color: #fae349;
+  border-radius: 50%;
+  animation: shadow 1s infinite alternate;
+  color: #282c34;
+  font-family: Comfortaa, sans-serif;
+  text-align: center;
+  font-size: 14px;
+  line-height: 30px;
+  font-weight: 700;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 4px dotted white;
+    border-radius: 50%;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    border: 4px dotted rgba(163, 147, 103, 0.3);
+    border-radius: 50%;
+  }
+
+  &:not(.show) {
+    display: none;
+  }
+
+  &:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(2);
+  }
+
+}
+
+@keyframes shadow {
+  from {
+    box-shadow: 0 0 55px 10px #fae349;
+  }
+  to {
+    box-shadow: 0 0 90px 20px #fff;
+  }
+}
+
+@keyframes content-size {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1.6);
+  }
+}
+
+@keyframes icon-size {
+  from {
+    width: 8px;
+    height: 8px;
+  }
+  to {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@keyframes circle-size {
+  from {
+    width: 80px;
+    height: 80px;
+  }
+  to {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+
+@keyframes shadow-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.balls-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+.ball {
+  position: absolute;
+  background-color: #af931b;
+  border-radius: 50%;
+  animation: changeSize 4s ease-in-out infinite;
+}
+
+/* Анимация изменения размера шариков */
+@keyframes changeSize {
+  0%, 100% {
+    width: 8px;
+    height: 8px;
+  }
+  50% {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@keyframes changeSizeLarge {
+  0%, 100% {
+    width: 8px;
+    height: 8px;
+  }
+  50% {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Позиционирование шариков на случайных местах с учётом их увеличения */
+#ball1 {
+  top: 10px;
+  left: 30px;
+  animation-delay: 0s;
+  animation-duration: 4s;
+}
+
+#ball2 {
+  top: 50px;
+  left: 180px;
+  animation-delay: 0.3s;
+  animation-duration: 4.5s;
+}
+
+#ball3 {
+  top: 80px;
+  left: 120px;
+  animation-delay: 0.6s;
+  animation-duration: 3.8s;
+}
+
+#ball4 {
+  top: 150px;
+  left: 50px;
+  animation-delay: 0.9s;
+  animation-duration: 5s;
+}
+
+#ball5 {
+  top: 200px;
+  left: 180px;
+  animation-delay: 1.2s;
+  animation-duration: 4.2s;
+}
+
+#ball6 {
+  top: 20px;
+  left: 200px;
+  animation-delay: 1.5s;
+  animation-duration: 3.5s;
+}
+
+#ball7 {
+  top: 170px;
+  left: 80px;
+  animation-delay: 1.8s;
+  animation-duration: 4.3s;
+}
+
+#ball8 {
+  top: 120px;
+  left: 40px;
+  animation-delay: 2.1s;
+  animation-duration: 4.1s;
+}
+
+#ball9 {
+  top: 30px;
+  left: 100px;
+  animation-delay: 2.4s;
+  animation-duration: 4.6s;
+}
+
+#ball10 {
+  top: 60px;
+  left: 160px;
+  animation-delay: 2.7s;
+  animation-duration: 3.9s;
+}
+
+#ball11 {
+  top: 140px;
+  left: 20px;
+  animation-delay: 3s;
+  animation-duration: 4.7s;
+}
+
+#ball12 {
+  top: 190px;
+  left: 70px;
+  animation-delay: 3.3s;
+  animation-duration: 4.4s;
+}
+
+#ball1, #ball2 {
+  animation-name: changeSizeLarge;
+}
+
+.d-flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.d-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-datepicker-popper {
+  z-index: 10 !important;
+}
+
+.event-image-holder img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+
+.testEnvMessage .ant-modal-body {
+	font-family: 'Comfortaa', sans-serif;
+	background: rgba(255, 99, 71, 0.3);
+	padding: 20px;
+}
+.testEnvMessage .ant-modal-content {
+	padding: 0;
+}
