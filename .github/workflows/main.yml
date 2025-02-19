@@ -26,16 +26,14 @@ jobs:
 
       # Step 4: Build the project
       - name: Build
-        env:
-          CI: false
         run: npm run build
 
-      # Step 5: Upload build artifact
+      # Step 5: Upload Production Artifact
       - name: Upload Production Artifact
-        uses: actions/upload-artifact@v4  # Обновлено!
+        uses: actions/upload-artifact@v4
         with:
-          name: build
-          path: build
+          name: dist  # Имя артефакта, соответствующее папке
+          path: dist  # Путь до папки с билдами
 
   deploy:
     name: Deploy
@@ -48,15 +46,12 @@ jobs:
 
       # Step 2: Download build artifact
       - name: Download Artifact
-        uses: actions/download-artifact@v4  # Обновлено!
+        uses: actions/download-artifact@v4
         with:
-          name: build
-          path: build
+          name: dist  # Убедитесь, что имя совпадает с именем при upload
 
       # Step 3: Deploy to Firebase
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting
+      - name: Deploy to Firebase Hosting
+        run: firebase deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
