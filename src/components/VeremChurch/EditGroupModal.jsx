@@ -215,7 +215,6 @@ export const EditGroupModal = ({ churchId, onEdit, group, churchTeachersList, fo
                                                     search
                                                     selection
                                                     optionsIds={churchTeachersList}
-                                                    pointing={'top right'}
                                                     onChange={field.onChange}
                                             />
                                         </InputFieldStyled>
