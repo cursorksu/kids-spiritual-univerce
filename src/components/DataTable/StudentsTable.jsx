@@ -1,113 +1,120 @@
+import { useCallback, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router';
+import { useGetStudentsInGroup } from '../../api/student/useGetStudentsInGroup';
+import { Table, Switch, Typography, Image } from 'antd';
+import { Emoji } from 'emoji-picker-react';
 
-import  {useCallback, useEffect, useState} from 'react';
-import {TableStyled} from './TableStyled';
-import {Emoji} from 'emoji-picker-react';
-import {useTranslation} from 'react-i18next';
-import {useParams} from 'react-router';
-import {useGetStudentsInGroup} from '../../api/student/useGetStudentsInGroup';
-import clsx from 'clsx';
-// import {getAge} from '../../utils/getAge';
+const { Text } = Typography;
 
 export const StudentsTable = ({
-                                  selectedRow,
-                                  shouldUpdate,
-                                  columns,
-                                  onSwitch,
-                              }) => {
-    const {groupId} = useParams();
-    const {t} = useTranslation('tr');
-    const {getGetStudentsInGroup, studentList} = useGetStudentsInGroup();
-    const [preparedStudents, setPreparedStudents] = useState(studentList);
+    selectedRow,
+    shouldUpdate,
+    columns,
+    onSwitch,
+}) => {
+    const { groupId } = useParams();
+    const { t } = useTranslation('tr');
+    const { getGetStudentsInGroup, studentList } = useGetStudentsInGroup();
+    const [preparedStudents, setPreparedStudents] = useState([]);
 
     useEffect(() => {
-        studentList && setPreparedStudents(studentList.map(el => ({
-            ...el,
-            // years: getAge(el.birthday)
-        })));
+        if (studentList) {
+            setPreparedStudents(
+                    studentList.map((el) => ({
+                        ...el,
+                    }))
+            );
+        }
     }, [studentList]);
 
     const getTotalScore = useCallback(
-            () => preparedStudents?.reduce((acc, el) => acc + el.estimation, 0),
+            () =>
+                    preparedStudents?.reduce((acc, el) => acc + (el.estimation || 0), 0),
             [preparedStudents]
     );
 
     useEffect(() => {
         getGetStudentsInGroup(groupId);
     }, [shouldUpdate, groupId]);
-    return (
-            <TableStyled>
-                {/*<Table compact celled definition>*/}
-                {/*    <TableHeader>*/}
-                {/*        <TableRow>*/}
-                {/*            <TableHeaderCell>Активний</TableHeaderCell>*/}
-                {/*            {columns.map((el) => el.displayInTable ? (*/}
-                {/*                    <TableHeaderCell*/}
-                {/*                            key={el.name}*/}
-                {/*                            className={el.name}*/}
-                {/*                    >*/}
-                {/*                        {t(`students.labels.${el.name}`)}*/}
-                {/*                    </TableHeaderCell>*/}
-                {/*            ) : <></>)}*/}
-                {/*        </TableRow>*/}
-                {/*    </TableHeader>*/}
-                {/*    <TableBody>*/}
-                {/*        {(preparedStudents &&*/}
-                {/*                preparedStudents?.length &&*/}
-                {/*                preparedStudents?.map((el, idx) => (*/}
-                {/*                        <TableRow*/}
-                {/*                                selected={selectedRow === el.id}*/}
-                {/*                                key={idx}*/}
-                {/*                                className={clsx({*/}
-                {/*                                    active: selectedRow === el.id,*/}
-                {/*                                    'is-active': el.isActive,*/}
-                {/*                                })}>*/}
-                {/*                            <TableCell collapsing>*/}
-                {/*                                <Checkbox*/}
-                {/*                                        slider*/}
-                {/*                                        checked={el.isActive}*/}
-                {/*                                        onChange={() => onSwitch(el)}*/}
-                {/*                                />*/}
-                {/*                            </TableCell>*/}
-                {/*                            {columns.map((item) => {*/}
-                {/*                                let content;*/}
-                {/*                                switch (item.name) {*/}
-                {/*                                    case 'avatar':*/}
-                {/*                                        content = <Emoji size={60} unified={el['avatar']} />;*/}
-                {/*                                        break;*/}
-                {/*                                    case 'photo':*/}
-                {/*                                        content = <img src={el[item.name]} alt="student photo" />;*/}
-                {/*                                        break;*/}
-                {/*                                    case 'firstName':*/}
-                {/*                                        content = <span>{el.secondName} {el[item.name]}</span>;*/}
-                {/*                                        break;*/}
-                {/*                                    case 'action':*/}
-                {/*                                    case 'estimation':*/}
-                {/*                                    case 'years':*/}
-                {/*                                        content = item.render(el) ;*/}
-                {/*                                        break;*/}
-                {/*                                    default:*/}
-                {/*                                        content = el[item.name];*/}
-                {/*                                }*/}
 
-                {/*                                return item.displayInTable || item.name === 'avatar' ? (*/}
-                {/*                                        <TableCell key={item.name} className={item.name}>*/}
-                {/*                                            {content}*/}
-                {/*                                        </TableCell>*/}
-                {/*                                ) : null;*/}
-                {/*                            })}*/}
-                {/*                        </TableRow>*/}
-                {/*                ))) || <></>}*/}
-                {/*    </TableBody>*/}
-                {/*    <TableFooter>*/}
-                {/*        <TableRow>*/}
-                {/*            <TableCell>Разом дітей:</TableCell>*/}
-                {/*            <TableCell>{preparedStudents?.length}</TableCell>*/}
-                {/*            <TableCell></TableCell>*/}
-                {/*            <TableCell>Разом балів:</TableCell>*/}
-                {/*            <TableCell>{getTotalScore()}</TableCell>*/}
-                {/*        </TableRow>*/}
-                {/*    </TableFooter>*/}
-                {/*</Table>*/}
-            </TableStyled>
+    const tableColumns = [
+        {
+            title: t('students.labels.active'),
+            dataIndex: 'isActive',
+            key: 'isActive',
+            render: (isActive, record) => (
+                    <Switch
+                            checked={isActive}
+                            onChange={() => onSwitch(record)}
+                    />
+            ),
+        },
+        ...columns.map((item) => ({
+            title: t(`students.labels.${item.name}`),
+            dataIndex: item.name,
+            key: item.name,
+            render: (value, record) => {
+                switch (item.name) {
+                    case 'avatar':
+                        return <Emoji size={28} unified={record['avatar']} />;
+                    case 'photo':
+                        return <Image width={50} src={value} alt="student photo" />;
+                    case 'firstName':
+                        return (
+                                <Text>
+                                    {record.secondName} {value}
+                                </Text>
+                        );
+                    case 'action':
+                    case 'estimation':
+                    case 'years':
+                        return item.render ? item.render(record) : value;
+                    default:
+                        return value;
+                }
+            },
+
+            shouldDisplay: item.displayInTable || item.name === 'avatar',
+        })),
+    ].filter((col) => col.shouldDisplay);
+
+    return (
+            <div>
+                <Table
+                        rowKey="id"
+                        columns={tableColumns}
+                        dataSource={preparedStudents}
+                        rowClassName={(record) =>
+                                selectedRow === record.id ? 'selected-row' : ''
+                        }
+                        pagination={false}
+                        footer={() => (
+                                <div>
+                                    <Text>
+                                        {t('students.footer.totalStudents')}: {preparedStudents?.length}
+                                    </Text>
+                                    <br />
+                                    <Text>
+                                        {t('students.footer.totalScores')}: {getTotalScore()}
+                                    </Text>
+                                </div>
+                        )}
+                />
+            </div>
     );
+};
+
+StudentsTable.propTypes = {
+    selectedRow: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    shouldUpdate: PropTypes.bool,
+    columns: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            render: PropTypes.func,
+            displayInTable: PropTypes.bool,
+        })
+    ).isRequired,
+    onSwitch: PropTypes.func.isRequired,
 };

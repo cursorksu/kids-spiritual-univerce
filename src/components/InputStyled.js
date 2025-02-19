@@ -4,6 +4,9 @@ import { CHOCO, ERROR_MAIN, PRIMARY_MAIN, VEREM_GOLD } from '../constants/colors
 export const FormStyled = styled.div`
   margin: 10px 0;
 `;
+export const FormFieldStyled = styled.div`
+  margin: 14px 0;
+`;
 export const LabelStyled = styled.label`
     color: ${VEREM_GOLD};
     margin-bottom: 8px;
@@ -61,7 +64,7 @@ export const InputStyled = styled.input`
   line-height: 40px;
   font-family: Comfortaa, sans-serif;
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 18px;
   color: ${CHOCO};
 
   &:focus {

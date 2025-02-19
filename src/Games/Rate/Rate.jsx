@@ -33,7 +33,7 @@ export const Rate = () => {
         students?.map((el, idx) =>
           el.isActive
 ? (
-            <div key={el.id} className={clsx({
+            <div key={idx} className={clsx({
                 balloon: true,
                 feather: true,
               })}>

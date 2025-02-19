@@ -1,6 +1,9 @@
 import {ButtonIconMiniStyled} from '../../ButtonStyled';
 import {Controller} from 'react-hook-form';
-import {InputStyled} from '../../InputStyled';
+import {
+    FormFieldStyled,
+    InputStyled,
+} from '../../InputStyled';
 import {HTMLRenderer} from '../../HTMLRender/HTMLRender';
 import {KsuCard} from '../../KsuCard';
 import {useState} from 'react';
@@ -25,14 +28,14 @@ export const LessonGoal = ({onEdit, lesson}) => {
                         </ButtonIconMiniStyled>)}
                     </>)}>
                 <div>
-                    {isGoalEdit ? (<Controller
+                    {isGoalEdit ? (
+                            <FormFieldStyled
                             name="goal"
-                            control={control}
                             render={({field}) => (<div>
                                 <InputStyled
                                         name="goal"
                                         placeholder={'Почніть вводити щось...'}
-                                        onChange={(data) => setValue('goal', data)}
+                                        onChange={(data) => console.log('goal', data)}
                                         {...field}
                                 />
                             </div>)}

@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "lessons-ksu"
-  }
+    "default": "lessons-ksu",
+    "staging": "lessons-ksu"
+  },
+  "targets": {},
+  "etags": {}
 }

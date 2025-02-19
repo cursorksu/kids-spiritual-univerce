@@ -220,51 +220,39 @@ p, label, a, span {
   font-family: coco, sans-serif;
 }
 
-.ksu .ui.modal > .content {
+.ksu .ant-modal-body {
   font-family: 'Comfortaa', sans-serif;
-  font-size: 1.5rem;
+  font-size: 18px;
   font-weight: 300;
   background-image:
           url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2FTexture.png?alt=media&token=f9a48c42-a930-4e19-9a8b-f9eb2193171a"),
           url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2FShapoe.png?alt=media&token=52063a67-b545-40dc-ba3c-cdc2a479b8e9");
-  background-position: right center,
-  left 60px top 40px;
-  background-size: auto 300px,
-  240px auto;
+  background-position: right center, left 60px top 40px;
+  background-size: auto 300px, 180px auto;
   background-repeat: repeat-y, no-repeat;
   background-color: #fbfaf1;
 }
 
-.ksu .ui.modal > .header {
+.ksu .ant-modal-title {
   display: flex;
-	font-family: 'Comfortaa', sans-serif;
+	font-family: 'Yeseva One', sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+  color: #282c34;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
   text-overflow: ellipsis;
-  background-color: rgba(163, 147,103, 0.3);
 }
-.ksu .ui.modal > .actions {
+.ksu .ant-modal-footer,
+.ksu .ant-modal-header {
   background-color: rgba(163, 147,103, 0.3);
-}
-
-.ksu .ui.modal h2 {
-  flex-basis: calc(100% - 36px);
-  white-space: nowrap;
-  font-family: 'Yeseva One', sans-serif;
-  line-height: 1.3;
-  font-size: 2rem;
-  font-weight: 400;
-  margin: 0;
+	margin: 0;
 }
 
 input:-webkit-autofill {
   background: #fff !important;
   box-shadow: 0 0 0 1000px white inset !important;
-}
-
-.ksu .ui.modal .header button {
-  flex-basis: 36px;
 }
 
 @page {
@@ -862,8 +850,95 @@ img.epr-emoji-img {
 .testEnvMessage .ant-modal-body {
 	font-family: 'Comfortaa', sans-serif;
 	background: rgba(255, 99, 71, 0.3);
-	padding: 20px;
+	padding: 40px;
 }
 .testEnvMessage .ant-modal-content {
 	padding: 0;
+}
+
+.ant-tooltip-arrow:before {
+	top: 8px;
+	background: transparent;
+	border-top: 8px solid rgb(96, 81, 71);
+}
+.ant-tooltip-inner {
+	background: rgb(96, 81, 71);
+	font-family: 'Comfortaa', sans-serif;
+	font-weight: 600;
+	text-align: center !important;
+}
+
+.ant-modal-content {
+	padding: 0 !important;
+}
+
+.ant-modal-body,
+.ant-modal-title,
+.ant-modal-footer {
+	padding: 20px !important;
+}
+
+.ant-modal-close {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	cursor: pointer;
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+	width: 20px !important;
+	height: 20px !important;
+	transition: translate  2s ease, box-shadow  2s ease;
+	background: transparent !important;
+	color: #af931b !important;
+	border-radius: 50% !important;
+
+	&:hover {
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+		color: rgb(96,81,71) !important;
+	}
+
+	&:focus {
+		outline: 2px solid  #af931b;
+		outline-offset: 4px;
+		box-shadow: none;
+	}
+
+	&:active {
+		outline: 2px solid #af931b;
+	}
+}
+
+.ant-select-dropdown {
+	padding: 0;
+	border-radius: 30px;
+}
+
+.ant-select-item {
+	border-radius: 0 !important;
+	min-height: 38px !important;
+	line-height: 38px !important;
+	font-size: 16px !important;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+
+	&:hover {
+		background: rgba(163, 147,103, 0.3) !important;
+	}
+
+	.anticon.anticon-check {
+		margin-left: 20px !important;
+		svg {
+			fill: rgb(96,81,71) !important;
+			stroke: rgb(96,81,71) !important;
+		}
+	}
+}
+
+
+.ant-select-item-option-content {
+	font-family: 'Comfortaa', sans-serif;
+}
+
+.ant-select-selection-wrap:after  {
+	color: #af931b !important;
 }

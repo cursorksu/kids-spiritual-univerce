@@ -10,7 +10,6 @@ import {
     Modal,
     Tooltip,
 } from 'antd';
-import { CloseIcon } from '../../assets/CloseIcon.jsx';
 import { DeleteIcon } from '../../assets/DeleteIcon.jsx';
 import { useTranslation } from 'react-i18next';
 
@@ -44,26 +43,23 @@ export const DeleteConfirmationModal = ({
                 </Tooltip>
                 <Modal
                         size={size}
-                        title={
-                            <>
-                                <h2 className="title">{modalTitle}</h2>
-                                <ButtonIconMiniStyled onClick={handleClose}>
-                                    <CloseIcon/>
-                                </ButtonIconMiniStyled>
-                            </>
-                        }
+                        title={modalTitle}
                         open={open}
-                        onCancel={onCancel}
+                        destroyOnClose={true}
+                        onOk={handleConfirm}
+                        onCancel={handleClose}
+                        footer={
+                            <div className={'modal-content'}>
+                                <ButtonStyled onClick={handleClose} className="secondary">
+                                    {t('button.cancel')}
+                                </ButtonStyled>
+                                <ButtonStyled onClick={handleConfirm}>
+                                    {t('button.delete')}
+                                </ButtonStyled>
+                            </div>
+                        }
                 >
                     <div className={'modal-content'}>{modalContent}</div>
-                    <div className={'modal-content'}>
-                        <ButtonStyled onClick={handleClose} className="secondary">
-                            {t('button.cancel')}
-                        </ButtonStyled>
-                        <ButtonStyled onClick={handleConfirm}>
-                            {t('button.delete')}
-                        </ButtonStyled>
-                    </div>
                 </Modal>
             </>
     );
@@ -74,6 +70,8 @@ DeleteConfirmationModal.propTypes = {
     modalContent: PropTypes.node.isRequired,
     onConfirm: PropTypes.func.isRequired,
     onCancel: PropTypes.func,
-    size: PropTypes.oneOf(['small', 'medium', 'large']),
+    size: PropTypes.oneOf([
+        'small',
+        'medium', 'large']),
 };
 

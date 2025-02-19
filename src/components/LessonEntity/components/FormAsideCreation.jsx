@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Select, Row } from 'antd';
 import { SinglePhotoInStorage } from '../../Dropzone/SinglePhotoInStorage';
-import Editor from '../../TextEditor';
+import KsuEditor from '../../KsuEditor';
 import { useEditEntity } from '../../../api/entity/useEditEntity';
 import { useCreateEntity } from '../../../api/entity/useCreateEntity';
 import { CreateEntityFormStyled } from '../../CreateEntityForm/CreateEntityFormStyled';
@@ -121,7 +121,7 @@ export const FormAsideCreation = ({
           render={({ field }) => (
             <div name="text">
               <LabelStyled>{t(`${entityName}.labels.text`)}</LabelStyled>
-              <Editor
+              <KsuEditor
                 placeholder={'Почніть вводити текст...'}
                 onChange={field.onChange}
                 value={field.value}

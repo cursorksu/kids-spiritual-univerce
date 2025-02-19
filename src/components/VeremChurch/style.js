@@ -27,6 +27,15 @@ export const GroupItemStyled = styled('div')`
      margin: 40px 0;
      background: #fff;
      border-radius: 30px;
+	
+	a {
+		text-decoration: none;
+		transition: color 0.3s ease;
+		
+		&:hover {
+			color: ${CHOCO};
+		}
+	}
      
      .teacher-item {
         line-height: 40px;

@@ -1,12 +1,24 @@
 import { AddIcon } from '../../assets/AddIcon.jsx';
 import { MinusIcon as RemoveIcon } from '../../assets/MinusIcon.jsx';
-import {EditIcon} from '../../assets/EditIcon.jsx';
-import { FormStyled, InputFieldStyled, InputStyled, LabelStyled } from '../InputStyled';
-import { Controller, useForm } from 'react-hook-form';
+import { EditIcon } from '../../assets/EditIcon.jsx';
+import {
+    FormStyled,
+    InputFieldStyled,
+    InputStyled,
+    LabelStyled,
+} from '../InputStyled';
+import {
+    Controller,
+    useForm,
+} from 'react-hook-form';
 import { KsuTeachersDropdown } from '../KsuDropdown/KsuTeachersDropdown';
 import { ButtonStyled } from '../ButtonStyled';
 import { BigModal } from '../Modal/BigModal';
-import { useCallback, useEffect, useState } from 'react';
+import {
+    useCallback,
+    useEffect,
+    useState,
+} from 'react';
 import { setMessage } from '../../store/notificationReducer';
 import { useDispatch } from 'react-redux';
 import { useAssignGroupToChurch } from '../../api/refs/useAssignGroupToChurch';
@@ -14,6 +26,7 @@ import { useAssignGroupTeacher } from '../../api/refs/useAssignGroupTeacherю';
 import { useCreateEntity } from '../../api/entity/useCreateEntity';
 import { useTranslation } from 'react-i18next';
 import { useEditEntity } from '../../api/entity/useEditEntity';
+import PropTypes from 'prop-types';
 
 const initialValues = {
     title: '',
@@ -25,7 +38,7 @@ const initialValues = {
 
 export const EditGroupModal = ({ churchId, onEdit, group, churchTeachersList, forceUpdate }) => {
     const { t } = useTranslation('tr');
-    const [ isFormShown, setIsFormShown ] = useState(false);
+    const [isFormShown, setIsFormShown] = useState(false);
     const dispatch = useDispatch();
 
     const { addGroupToChurch } = useAssignGroupToChurch();
@@ -52,13 +65,18 @@ export const EditGroupModal = ({ churchId, onEdit, group, churchTeachersList, fo
                 ...group,
             });
         }
-    }, [group, reset, churchId]);
+    }, [
+        group,
+        reset,
+        churchId,
+    ]);
 
     const handleChangeTeachersList = useCallback(
-        async (data) => {
-            setValue('teachers', data.value);
-        },
-        [ setValue ]
+            async (data) => {
+                console.log({ data });
+                setValue('teachers', data.value);
+            },
+            [setValue],
     );
 
     async function createNewGroup (data) {
@@ -71,6 +89,7 @@ export const EditGroupModal = ({ churchId, onEdit, group, churchTeachersList, fo
 
         await Promise.all(teacherPromises);
     }
+
     async function editCurrentGroup (data) {
         await editEntity(data);
 
@@ -90,8 +109,8 @@ export const EditGroupModal = ({ churchId, onEdit, group, churchTeachersList, fo
             }
 
             group
-                ? await editCurrentGroup(data)
-                : await createNewGroup(data)
+                    ? await editCurrentGroup(data)
+                    : await createNewGroup(data);
 
             reset();
             onEdit();
@@ -99,26 +118,45 @@ export const EditGroupModal = ({ churchId, onEdit, group, churchTeachersList, fo
             forceUpdate(prev => !prev);
         } catch (error) {
             dispatch(
-                setMessage({
-                    type: 'error',
-                    message: {
-                        title: `Error in creation group ${error.message}:`,
-                        description: error.message,
-                    },
-                })
+                    setMessage({
+                        type: 'error',
+                        message: {
+                            title: `Error in creation group ${error.message}:`,
+                            description: error.message,
+                        },
+                    }),
             );
         }
-    }, [ createEntity, getValues, onEdit, reset ]);
+    }, [
+        createEntity,
+        getValues,
+        onEdit,
+        reset,
+    ]);
 
     return (
             <BigModal
-                    size={'small'}
+                    size={'medium'}
                     isOpen={isFormShown}
                     setIsOpen={setIsFormShown}
-                    modalTitle={!!group
+                    modalTitle={group
                             ? t('group.editGroup')
                             : t('group.addGroup')}
                     onCancel={reset}
+                    footer={
+                        <>
+                            <ButtonStyled
+                                    className="secondary"
+                                    onClick={() => setIsFormShown(false)}>
+                                {t('button.cancel')}
+                            </ButtonStyled>
+                            <ButtonStyled onClick={handleAddGroup}>
+                                {group
+                                        ? t('button.edit')
+                                        : t('button.add')}
+                            </ButtonStyled>
+                        </>
+                    }
                     icon={group
                             ? <EditIcon/>
                             : (
@@ -178,25 +216,28 @@ export const EditGroupModal = ({ churchId, onEdit, group, churchTeachersList, fo
                                                     selection
                                                     optionsIds={churchTeachersList}
                                                     pointing={'top right'}
-                                                    onChange={handleChangeTeachersList}
+                                                    onChange={field.onChange}
                                             />
                                         </InputFieldStyled>
                                 )}
                         />
                     </FormStyled>
                 </div>
-                <div className={'modal-actions'}>
-                    <ButtonStyled
-                            className="secondary"
-                            onClick={() => setIsFormShown(false)}>
-                        {t('button.cancel')}
-                    </ButtonStyled>
-                    <ButtonStyled onClick={handleAddGroup}>
-                        {!!group
-                                ? t('button.edit')
-                                : t('button.add')}
-                    </ButtonStyled>
-                </div>
             </BigModal>
     );
+};
+
+EditGroupModal.propTypes = {
+    churchId: PropTypes.string.isRequired,
+    onEdit: PropTypes.func.isRequired,
+    group: PropTypes.shape({
+        id: PropTypes.string,
+        title: PropTypes.string,
+        description: PropTypes.string,
+        church: PropTypes.string,
+        teachers: PropTypes.arrayOf(PropTypes.string),
+        students: PropTypes.arrayOf(PropTypes.string),
+    }),
+    churchTeachersList: PropTypes.arrayOf(PropTypes.string),
+    forceUpdate: PropTypes.func.isRequired,
 };

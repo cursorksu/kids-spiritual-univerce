@@ -16,7 +16,7 @@ import {
     Controller,
     useForm,
 } from 'react-hook-form';
-import Editor from '../TextEditor';
+import KsuEditor from '../KsuEditor';
 import { useEditEntity } from '../../api/entity/useEditEntity';
 import { HTMLRenderer } from '../HTMLRender/HTMLRender';
 import { InfoBlockStyled } from '../InfoBlockStyled';
@@ -162,11 +162,11 @@ export const TopicToPrint = ({
                                                              control={control}
                                                              render={({ field }) => (
                                                                      <div>
-                                                                         <Editor
+                                                                         <KsuEditor
                                                                                  placeholder={'Почніть вводити текст...'}
                                                                                  onChange={(data) => setValue('topic',
                                                                                          data)}
-                                                                                 value={field.value}
+                                                                                 value={getValues('topic')}
                                                                          />
                                                                      </div>
                                                              )}

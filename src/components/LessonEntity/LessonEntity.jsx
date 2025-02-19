@@ -7,7 +7,7 @@ import {useGetEntityListByIds} from '../../api/entity/useGetEntityListByIds';
 import {useParams} from 'react-router';
 import {useCreateEntity} from '../../api/entity/useCreateEntity';
 import {Controller, useForm} from 'react-hook-form';
-import Editor from '../TextEditor';
+import KsuEditor from '../KsuEditor';
 import {HTMLRenderer} from '../HTMLRender/HTMLRender';
 import {useAssignEntityToLesson} from '../../api/refs/useAssignEntityToLesson';
 import {InputFieldStyled, InputStyled, LabelStyled} from '../InputStyled';
@@ -140,7 +140,7 @@ export const LessonEntity = ({entityName, lesson}) => {
                                                         render={({field}) => (
                                                                 <InputFieldStyled>
                                                                     <LabelStyled>Контент</LabelStyled>
-                                                                    <Editor
+                                                                    <KsuEditor
                                                                             {...field}
                                                                             placeholder={'Почніть вводити текст...'}
                                                                             onChange={(data) => setValue('text', data)}

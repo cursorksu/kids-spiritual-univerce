@@ -5,6 +5,7 @@ import { ArrowRightIcon as ArrowIcon } from '../../assets/ArrowRightIcon.jsx';
 import { useGetLessonsInCollection } from '../../api/lesson/useGetLessonsInCollection';
 import { useSelector } from 'react-redux';
 import { VeremContentChurchItem } from './style';
+import PropTypes from 'prop-types';
 
 export const ContentList = ({ contentType, contentList }) => {
     const { t } = useTranslation('tr');
@@ -51,4 +52,9 @@ export const ContentList = ({ contentType, contentList }) => {
             }
         </div>
     );
+};
+
+ContentList.propTypes = {
+    contentType: PropTypes.string.isRequired,
+    contentList: PropTypes.array,
 };

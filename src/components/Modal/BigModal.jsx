@@ -4,9 +4,7 @@ import {
 } from 'antd';
 import {
     ButtonIconMiniStyled,
-    ButtonIconStyled,
 } from '../ButtonStyled';
-import { CloseIcon } from '../../assets/CloseIcon.jsx';
 import { useCallback } from 'react';
 
 import PropTypes from 'prop-types';
@@ -19,12 +17,14 @@ export const BigModal = ({
     icon,
     size = 'big',
     children,
+    footer = null,
 }) => {
 
     const handleOpen = useCallback((e) => {
         e.stopPropagation();
         setIsOpen(true);
     }, []);
+
     const handleClose = useCallback(() => {
         onCancel && onCancel();
         setIsOpen(false);
@@ -43,15 +43,11 @@ export const BigModal = ({
                 <Modal
                         size={size}
                         open={isOpen}
-                        onCancel={onCancel}
+                        onCancel={handleClose}
                         onOk={onCancel}
+                        title={modalTitle}
+                        footer={footer}
                 >
-                    <div className="title modal-header">
-                        <h2>{modalTitle}</h2>
-                        <ButtonIconStyled onClick={handleClose}>
-                            <CloseIcon/>
-                        </ButtonIconStyled>
-                    </div>
                     {children}
                 </Modal>
             </>
@@ -65,5 +61,6 @@ BigModal.propTypes = {
     onCancel: PropTypes.func,
     icon: PropTypes.node,
     size: PropTypes.string,
+    footer: PropTypes.node,
     children: PropTypes.node,
 };

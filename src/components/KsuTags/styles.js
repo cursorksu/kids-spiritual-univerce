@@ -1,7 +1,33 @@
 import styled from '@emotion/styled';
-import { BG_GOLD, CHOCO, CREAM, HOVER_GOLD, PRIMARY_MAIN, VEREM_GOLD } from '../../constants/colors';
+import { Tag } from 'antd'
+import { BG_GOLD, CHOCO, CREAM, PRIMARY_MAIN, VEREM_GOLD } from '../../constants/colors';
 
-export const KsuTagsStyled = styled.div`
+export const KsuTagStyled = styled(Tag)`
+		background-color: ${BG_GOLD};
+		line-height: 24px;
+		display: inline-flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 10px;
+		border-radius: 16px;
+		font-size: 16px;
+		color: ${CHOCO};
+	
+	.close {
+		flex-basis: 20px;
+		height: 20px;
+		width: 20px;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		background-color: ${CHOCO};
+		color: ${CREAM};
+		border-radius: 50%;
+		margin-left: 5px;
+		cursor: pointer;
+	}
+`;
+export const KsuTagsStyled = styled('div')`
   .tags-input-container {
     padding: 5px 12px;
     border-radius: 30px;
