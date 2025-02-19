@@ -1,0 +1,30 @@
+name: Deploy to Firebase
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  firebase-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Установка правильной версии Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20 # Используйте LTS-версию или подходящую для вашего проекта
+
+      # Установка Firebase CLI
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      # Аутентификация Firebase
+      - name: Authenticate with Firebase
+        uses: firebase/actions/authenticate@v1
+        with:
+          firebase_service_account: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          project_id: ${{ secrets.FIREBASE_PROJECT_ID }}
+
+      # Деплой в Firebase
+      - name: Deploy to Firebase
+        run: firebase deploy --only hosting
