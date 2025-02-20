@@ -21,7 +21,6 @@ import { useEditEntity } from '../../api/entity/useEditEntity';
 import { HTMLRenderer } from '../HTMLRender/HTMLRender';
 import { InfoBlockStyled } from '../InfoBlockStyled';
 import { useReactToPrint } from 'react-to-print';
-import clsx from 'clsx';
 import { TitleLarge } from '../TitleStyled';
 import { AdminPanel } from './AsideCards/AdminPanel';
 import { BibleText } from './AsideCards/BibleText';
@@ -30,8 +29,10 @@ import { LessonGoal } from './AsideCards/LessonGoal';
 import { MediaCard } from './AsideCards/MediaCard';
 import { LessonEntity } from '../LessonEntity/LessonEntity';
 import { LessonVideo } from '../LessonEntity/LessonVideo';
-import PropTypes from 'prop-types';
 import { CloseIcon } from '../../assets/CloseIcon.jsx';
+
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
 
 export const TopicToPrint = ({
     lesson, onChangeConfirm,
@@ -171,7 +172,7 @@ export const TopicToPrint = ({
                                                             <Controller
                                                                     name="topic"
                                                                     control={control}
-                                                                    render={({ field }) => (
+                                                                    render={() => (
                                                                             <div>
                                                                                 <KsuEditor
                                                                                         placeholder={'Почніть вводити текст...'}

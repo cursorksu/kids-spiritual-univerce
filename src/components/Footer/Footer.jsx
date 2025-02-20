@@ -26,7 +26,6 @@ export const Footer = () => {
 
     return (
             <FooterStyles className="print-hide">
-                +++++
                 <div />
                 <div />
                 {/*<DonationStyled>*/}
