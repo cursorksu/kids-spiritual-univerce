@@ -26,17 +26,20 @@ jobs:
 
       # Step 4: Build the project
       - name: Build
+        env:
+          CI: false
         run: npm run build
 
-      # Step 5: Upload Production Artifact
+      # Step 5: Upload build artifact
       - name: Upload Production Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4  # Обновлено!
         with:
-          name: dist  # Имя артефакта, соответствующее папке
-          path: dist  # Путь до папки с билдами
+          name: dist
+          path: dist
 
   deploy:
-    name: Deploy to Firebase Hosting
+    name: Deploy
+    needs: build
     runs-on: ubuntu-latest
     steps:
       # Step 1: Checkout code
