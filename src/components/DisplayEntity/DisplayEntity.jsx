@@ -1,6 +1,8 @@
 import { TopicStyled } from './style';
 import { clsx } from 'clsx';
 
+import PropTypes from 'prop-types';
+
 export const DisplayEntity = ({ entity }) => {
   const mappedData = Array.isArray(entity) ? entity : (entity?.list ?? []);
 
@@ -106,4 +108,22 @@ export const DisplayEntity = ({ entity }) => {
       })}
     </TopicStyled>
   );
+};
+
+DisplayEntity.propTypes = {
+  entity: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+        type: PropTypes.string,
+        text: PropTypes.string,
+        description: PropTypes.string,
+        hideElement: PropTypes.bool,
+      })
+    ),
+    PropTypes.shape({
+      list: PropTypes.array,
+    }),
+  ]),
 };
