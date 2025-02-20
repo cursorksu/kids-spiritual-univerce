@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { BG_GOLD, CARD_SHADOW, CHOCO, VEREM_GOLD } from '../constants/colors'
+import { BG_GOLD, CARD_SHADOW, CHOCO, DARK_GRAY, VEREM_CREAM_BG, VEREM_GOLD } from '../constants/colors'
 
 export const InfoBlockStyled = styled.div`
 	font-family: Comfortaa, sans-serif;
@@ -8,6 +8,7 @@ export const InfoBlockStyled = styled.div`
 	line-height: 1.5;
 	width: 100%;
 	padding-bottom: 20px;
+	background: ${VEREM_CREAM_BG};
 	
 	.btn-block {
 		display: flex;
@@ -54,6 +55,27 @@ export const InfoBlockStyled = styled.div`
 		position: relative;
 		overflow: hidden;
 		margin-bottom: 20px;
+		height: 280px;
+		
+		&.full-screen {
+			width: 100vw;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 1001;
+			background: ${DARK_GRAY};
+			border-radius: 0;
+			
+			
+			img	{
+				width: 100vw;
+				height: 100vh;
+				object-fit: contain;
+			}
+		}
 		
 		button {
 			position: absolute;
@@ -85,12 +107,9 @@ export const InfoBlockStyled = styled.div`
 	}
 
 	.lesson-content-wrapper {
-		background: #fff;
-		padding: 20px;
+		padding: 0 12px 20px 0;
 		font-size: 16px;
-		box-shadow: ${ CARD_SHADOW };
-		border-radius: 20px;
-		height: calc(100vh - 280px);
+		height: calc(100vh - 110px);
 		overflow: auto;
 		
 		a {

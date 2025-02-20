@@ -87,6 +87,7 @@ export const VeremChurch = () => {
                         {church?.createdBy?.uid === user?.uid && (
                             <BigModal
                                 icon={<EditIcon/>}
+                                size={'medium'}
                                 isOpen={isFormShown}
                                 onCancel={() => {}}
                                 setIsOpen={setIsFormShown}

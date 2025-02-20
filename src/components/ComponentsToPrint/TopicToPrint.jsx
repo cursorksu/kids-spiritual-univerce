@@ -31,38 +31,40 @@ import { MediaCard } from './AsideCards/MediaCard';
 import { LessonEntity } from '../LessonEntity/LessonEntity';
 import { LessonVideo } from '../LessonEntity/LessonVideo';
 import PropTypes from 'prop-types';
+import { CloseIcon } from '../../assets/CloseIcon.jsx';
 
 export const TopicToPrint = ({
-    lesson,
-    onChangeConfirm,
+    lesson, onChangeConfirm,
 }, ref) => {
     const { editEntity } = useEditEntity('lessons');
     const [activeTab, setActiveTab] = useState(0);
     const [isTopicEdit, setIsTopicEdit] = useState(false);
     const [isFullScreen, setIsFullScreen] = useState(false);
 
+    const {
+              control, getValues, setValue, reset,
+          } = useForm({
+        defaultValues: null, caches: false,
+    });
+
     useEffect(() => {
         if (lesson?.memory?.length) {
             const data = lesson?.memory?.find((el) => el.id === 'test');
             data && localStorage.setItem('test', JSON.stringify(data.settings));
         }
+
+        if (lesson && !getValues('topic')) {
+            setValue('topic', lesson?.topic);
+            setValue('goal', lesson?.goal);
+            setValue('bibleText', lesson?.bibleText);
+            setValue('material', lesson?.material);
+            setValue('topic', lesson?.topic);
+        }
+
+        console.log(getValues());
     }, [lesson]);
 
-    const {
-              control,
-              getValues,
-              setValue,
-              reset,
-          } = useForm({
-        defaultValues: {
-            goal: lesson?.goal,
-            bibleText: lesson?.bibleText,
-            bibleQuote: lesson?.bibleQuote,
-            material: lesson?.material,
-            topic: lesson?.topic,
-        },
-        caches: false,
-    });
+
 
     const { user } = useSelector((state) => state.auth);
 
@@ -128,96 +130,87 @@ export const TopicToPrint = ({
                                 setActiveTab={setActiveTab}
                                 activeTab={activeTab}
                         />
+                        <LessonGoal
+                                lesson={lesson}
+                                onEdit={editLessonHandler}
+                        />
                     </aside>
                     <div>
-                        <TitleLarge>{lesson?.title}
+                        <TitleLarge>
+                            {lesson?.title}
                             <span className="action print-hide">
-						{user?.uid && lesson?.createdBy?.uid === user?.uid && (
-                                !isTopicEdit
-                                        ? (
-                                                <ButtonIconMiniStyled onClick={() => setIsTopicEdit(true)}>
-                                                    <EditIcon/>
-                                                </ButtonIconMiniStyled>
-                                        )
-                                        : (
-                                                <ButtonIconMiniStyled onClick={() => editLessonHandler('topic')}>
-                                                    <SaveIcon/>
-                                                </ButtonIconMiniStyled>
-                                        )
-                        )}
-					</span>
+                                {user?.uid && lesson?.createdBy?.uid === user?.uid && (
+                                        !isTopicEdit
+                                                ? (
+                                                        <ButtonIconMiniStyled
+                                                                onClick={() => setIsTopicEdit(true)}>
+                                                            <EditIcon/>
+                                                        </ButtonIconMiniStyled>
+                                                )
+                                                : (
+                                                        <>
+                                                            <ButtonIconMiniStyled
+                                                                    onClick={() => editLessonHandler('topic')}>
+                                                                <SaveIcon/>
+                                                            </ButtonIconMiniStyled>
+                                                            <ButtonIconMiniStyled
+                                                                    onClick={() => setIsTopicEdit(false)}>
+                                                                <CloseIcon/>
+                                                            </ButtonIconMiniStyled>
+                                                        </>
+                                                )
+                                )}
+                            </span>
                         </TitleLarge>
-                        {activeTab === 0 &&
-                         <>
-                             <LessonGoal
-                                     lesson={lesson}
-                                     onEdit={editLessonHandler}
-                             />
-                             <section className="lesson-content-wrapper">
-                                 <div className="action-top">
-                                     {isTopicEdit
-                                             ? (
-                                                     <Controller
-                                                             name="topic"
-                                                             control={control}
-                                                             render={({ field }) => (
-                                                                     <div>
-                                                                         <KsuEditor
-                                                                                 placeholder={'Почніть вводити текст...'}
-                                                                                 onChange={(data) => setValue('topic',
-                                                                                         data)}
-                                                                                 value={getValues('topic')}
-                                                                         />
-                                                                     </div>
-                                                             )}
-                                                     />
-                                             )
-                                             : (
-                                                     <HTMLRenderer htmlContent={lesson?.topic}/>
-                                             )}
-                                 </div>
-                             </section>
-                         </>
-                        }
+                        {activeTab === 0 && (
+                                <>
+                                    <section className="lesson-content-wrapper">
+                                        <div className="action-top">
+                                            {isTopicEdit
+                                                    ? (
+                                                            <Controller
+                                                                    name="topic"
+                                                                    control={control}
+                                                                    render={({ field }) => (
+                                                                            <div>
+                                                                                <KsuEditor
+                                                                                        placeholder={'Почніть вводити текст...'}
+                                                                                        onChange={(data) => setValue(
+                                                                                                'topic', data)}
+                                                                                        value={getValues('topic')}
+                                                                                />
+                                                                            </div>
+                                                                    )}
+                                                            />
+                                                    )
+                                                    : (
+                                                            <HTMLRenderer htmlContent={lesson?.topic}/>
+                                                    )}
+                                        </div>
+                                    </section>
+                                </>
+                        )}
 
-                        {activeTab === 1 &&
-                         <LessonEntity entityName={'presentation'} lesson={lesson}/>
-                        }
-                        {activeTab === 2 &&
-                         <LessonVideo entityName={'video'} lesson={lesson}/>
-                        }
-                        {activeTab === 3 &&
-                         <LessonEntity entityName={'subject'} lesson={lesson}/>
-                        }
-                        {activeTab === 4 &&
-                         <LessonEntity entityName={'creative'} lesson={lesson}/>
-                        }
-                        {activeTab === 5 &&
-                         <LessonEntity entityName={'game'} lesson={lesson}/>
-                        }
-                        {activeTab === 6 &&
-                         <div>
-                             {lesson?.memory?.length > 0 && lesson.memory.map((el) => (
-                                     <div key={el.id}>{
-                                         el.settings.map((el2) => (
-                                                 <div key={el2.question}>
-                                                     <h3>{el2.question}</h3>
-                                                     {el2.answer.map((ans, idx) => (
-                                                             <p key={ans.id}><b>{idx}. {' '}</b>{ans.text}</p>
-                                                     ))}
-                                                     <br/>
-                                                 </div>
-                                         ))
-                                     }</div>
-                             ))}
-                         </div>
-                        }
-                        {activeTab === 7 &&
-                         <LessonEntity entityName={'food'} lesson={lesson}/>
-                        }
-                        {activeTab === 8 &&
-                         <LessonEntity entityName={'print'} lesson={lesson}/>
-                        }
+                        {activeTab === 1 && <LessonEntity entityName={'presentation'} lesson={lesson}/>}
+                        {activeTab === 2 && <LessonVideo entityName={'video'} lesson={lesson}/>}
+                        {activeTab === 3 && <LessonEntity entityName={'subject'} lesson={lesson}/>}
+                        {activeTab === 4 && <LessonEntity entityName={'creative'} lesson={lesson}/>}
+                        {activeTab === 5 && <LessonEntity entityName={'game'} lesson={lesson}/>}
+                        {activeTab === 6 && <div>
+                            {lesson?.memory?.length > 0 && lesson.memory.map((el) => (
+                                    <div key={el.id}>{el.settings.map((el2) => (
+                                            <div key={el2.question}>
+                                                <h3>{el2.question}</h3>
+                                                {el2.answer.map((ans, idx) => (
+                                                        <p key={ans.id}><b>{idx}. {' '}</b>{ans.text}</p>
+                                                ))}
+                                                <br/>
+                                            </div>
+                                    ))}</div>
+                            ))}
+                        </div>}
+                        {activeTab === 7 && <LessonEntity entityName={'food'} lesson={lesson}/>}
+                        {activeTab === 8 && <LessonEntity entityName={'print'} lesson={lesson}/>}
                     </div>
                     <aside className="aside-wrapper print-fluid">
                         <AdminPanel
@@ -246,12 +239,9 @@ TopicToPrint.propTypes = {
             PropTypes.number,
         ]),
         memory: PropTypes.arrayOf(PropTypes.shape({
-            id: PropTypes.string,
-            settings: PropTypes.arrayOf(PropTypes.shape({
-                question: PropTypes.string,
-                answer: PropTypes.arrayOf(PropTypes.shape({
-                    text: PropTypes.string,
-                    isTrue: PropTypes.bool,
+            id: PropTypes.string, settings: PropTypes.arrayOf(PropTypes.shape({
+                question: PropTypes.string, answer: PropTypes.arrayOf(PropTypes.shape({
+                    text: PropTypes.string, isTrue: PropTypes.bool,
                 })),
             })),
         })),
@@ -265,6 +255,5 @@ TopicToPrint.propTypes = {
         createdBy: PropTypes.shape({
             uid: PropTypes.string,
         }),
-    }),
-    onChangeConfirm: PropTypes.func,
+    }), onChangeConfirm: PropTypes.func,
 };

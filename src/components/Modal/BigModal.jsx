@@ -8,6 +8,7 @@ import {
 import { useCallback } from 'react';
 
 import PropTypes from 'prop-types';
+import { MODAL_WIDTH } from '../../constants/main.js';
 
 export const BigModal = ({
     isOpen,
@@ -41,6 +42,7 @@ export const BigModal = ({
                 </Tooltip>
 
                 <Modal
+                        width={MODAL_WIDTH[size]}
                         size={size}
                         open={isOpen}
                         onCancel={handleClose}
