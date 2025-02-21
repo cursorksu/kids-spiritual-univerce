@@ -6,6 +6,7 @@ import {
 import { TitleSmall } from '../TitleStyled';
 
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 export const KsuCard = ({
     title,
@@ -16,8 +17,20 @@ export const KsuCard = ({
     className,
     hideAction,
 }) => {
+    const { user } = useSelector((state) => state.auth);
+
     return (
-            <KsuCardStyled className={className}>
+            <KsuCardStyled
+                    className={className}
+                    style={{
+                        paddingBottom: !user?.uid
+                                ? 20
+                                : 60,
+                        backgroundPosition: !user?.uid
+                                ? 'center bottom 0'
+                                : 'center bottom 40px',
+                    }}
+            >
                 {image && <Image src={image} wrapped ui={false}/>}
                 <TitleSmall>{title}</TitleSmall>
                 <div>{children}</div>
@@ -26,7 +39,7 @@ export const KsuCard = ({
                             <span className="date">{extra}</span>
                         </Card.Meta>
                 )}
-                {!hideAction &&  action && <div className="card-actions print-hide">{action}</div>}
+                {!hideAction && action && <div className="card-actions print-hide">{action}</div>}
             </KsuCardStyled>
     );
 };

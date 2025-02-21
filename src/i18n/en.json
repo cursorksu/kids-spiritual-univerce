@@ -324,5 +324,6 @@
   "dropZone": "Drag images here or click for select",
   "fileInfo": "File information",
   "fileName": "File name",
-  "fileSize": "File size"
+  "fileSize": "File size",
+  "empty": "No data!"
 }

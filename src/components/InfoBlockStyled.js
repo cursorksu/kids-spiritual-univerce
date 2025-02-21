@@ -37,7 +37,7 @@ export const InfoBlockStyled = styled.div`
 
 	
 	.title-wrapper {
-		border-radius: 30px;
+		border-radius: 20px;
 		box-shadow: ${ CARD_SHADOW };
 		position: relative;
 		overflow: hidden;
@@ -50,7 +50,7 @@ export const InfoBlockStyled = styled.div`
 	}
 	
 	.image-wrapper {
-		border-radius: 30px;
+		border-radius: 20px;
 		box-shadow: ${ CARD_SHADOW };
 		position: relative;
 		overflow: hidden;
@@ -84,22 +84,7 @@ export const InfoBlockStyled = styled.div`
 			z-index: 1;
 		}
 	}
-	.ui.checkbox input:checked:focus~label:before,
-	.ui.checkbox input ~ label:before {
-		border-radius: 6px;
-		width: 20px;
-		height: 20px;
-		border: 1px solid ${ VEREM_GOLD };
-		box-shadow: ${ CARD_SHADOW };
-		background: #fff;
-	}
-	
-	.ui.checkbox input:checked ~ label:after {
-		color: ${ VEREM_GOLD };
-		width: 20px;
-		height: 20px;
-	}
-	
+
 	img {
 		width: 280px;
 		height: 280px;
@@ -145,6 +130,14 @@ export const InfoBlockStyled = styled.div`
 			padding: 0;
 			font-family: Comfortaa, sans-serif;
 			font-weight: 700;
+		}
+	}
+	
+	.material-list {
+		li {
+			display: flex;
+			align-items: center;
+			gap: 10px;
 		}
 	}
 `;

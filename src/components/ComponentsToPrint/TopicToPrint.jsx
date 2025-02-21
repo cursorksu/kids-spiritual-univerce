@@ -61,8 +61,6 @@ export const TopicToPrint = ({
             setValue('material', lesson?.material);
             setValue('topic', lesson?.topic);
         }
-
-        console.log(getValues());
     }, [lesson]);
 
 
@@ -222,10 +220,14 @@ export const TopicToPrint = ({
                         <BibleText
                                 lesson={lesson}
                                 onEdit={editLessonHandler}
+                                control={control}
+                                setValue={setValue}
                         />
                         <StaffList
                                 lesson={lesson}
                                 onEdit={editLessonHandler}
+                                control={control}
+                                setValue={setValue}
                         />
                     </aside>
                 </section>

@@ -14,6 +14,7 @@ import { EntityStatusMenu } from '../components/KsuStatus/EntityStatusMenu';
 import { BigModal } from '../components/Modal/BigModal';
 import { AddIcon } from '../assets/AddIcon.jsx';
 import { VeremLayout } from './VeremLayout.jsx';
+import { TitleLarge } from '../components/TitleStyled.jsx';
 
 export const LessonsPage = () => {
     const { user } = useSelector((state) => state.auth);
@@ -57,8 +58,16 @@ export const LessonsPage = () => {
     return (
         <VeremLayout>
             <div className="hero collection-hero">
+                {user?.uid && currentCollection?.createdBy?.uid === user?.uid && (
+                        <div className="control-panel">
+                            <EntityStatusMenu
+                                    onChangeFilter={onChangeFilter}
+                                    entityName={'lessons'}
+                            />
+                        </div>
+                )}
                 <div className="title-wrapper top-container">
-                    <h1 className="title">
+                    <TitleLarge>
                         {currentCollection.title}
 
                         {user?.uid && currentCollection?.createdBy?.uid === user?.uid && (
@@ -83,17 +92,9 @@ export const LessonsPage = () => {
                                 </BigModal>
                             </div>
                         )}
-                    </h1>
+                    </TitleLarge>
                 </div>
             </div>
-            {user?.uid && currentCollection?.createdBy?.uid === user?.uid && (
-                <div className="control-panel">
-                    <EntityStatusMenu
-                        onChangeFilter={onChangeFilter}
-                        entityName={'lessons'}
-                    />
-                </div>
-            )}
             <LessonList
                 collection={currentCollection}
                 selectedStatus={selectedStatus}

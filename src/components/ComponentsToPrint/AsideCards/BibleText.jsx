@@ -8,10 +8,10 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 
-export const BibleText = ({lesson, onEdit}) => {
+export const BibleText = ({lesson, onEdit, control, setValue}) => {
     const [isEdit, setIsEdit] = React.useState(false);
     const {user} = useSelector((state) => state.auth);
-    return (
+    return lesson?.bibleText ? (
             <KsuCard
                     className={'bible'}
                     title={lesson?.bibleQuote}
@@ -53,7 +53,7 @@ export const BibleText = ({lesson, onEdit}) => {
                     </div>) : <p>{lesson?.bibleText}</p>}
                 </div>
             </KsuCard>
-    );
+    ) : null;
 };
 
 BibleText.propTypes = {
@@ -65,4 +65,6 @@ BibleText.propTypes = {
         }),
     }).isRequired,
     onEdit: PropTypes.func.isRequired,
+    control: PropTypes.object.isRequired,
+    setValue: PropTypes.func.isRequired,
 };

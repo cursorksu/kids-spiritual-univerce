@@ -1,5 +1,4 @@
 import {ButtonIconMiniStyled} from '../../ButtonStyled';
-import {Controller} from 'react-hook-form';
 import {
     FormFieldStyled,
     InputStyled,
@@ -12,13 +11,17 @@ import {SaveIcon} from '../../../assets/SaveIcon.jsx';
 import {useSelector} from 'react-redux';
 
 import PropTypes from 'prop-types';
+import { Empty } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 export const LessonGoal = ({onEdit, lesson}) => {
+    const {t} = useTranslation('tr');
+    const {t: tLesson} = useTranslation('lessons');
     const [isGoalEdit, setIsGoalEdit] = useState(false);
     const {user} = useSelector((state) => state.auth);
     return (
             <KsuCard
-                    title={'Мета уроку'}
+                    title={tLesson('lessonGoal')}
                     action={user?.uid && lesson?.createdBy?.uid === user?.uid && (<>
                         {!isGoalEdit ? (<ButtonIconMiniStyled onClick={() => setIsGoalEdit(true)}>
                             <EditIcon/>
@@ -28,6 +31,7 @@ export const LessonGoal = ({onEdit, lesson}) => {
                         </ButtonIconMiniStyled>)}
                     </>)}>
                 <div>
+                    {!lesson?.goal && <Empty description={t('empty')}/>}
                     {isGoalEdit ? (
                             <FormFieldStyled
                             name="goal"

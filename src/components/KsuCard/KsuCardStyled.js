@@ -27,22 +27,26 @@ export const KsuCardStyled = styled('div')`
 	}
 	&.admin-panel {
 		background: ${CHOCO};
-		padding: 10px 20px 10px;
+		padding: 10px 20px 10px !important;
 		color: white;
 		text-align: center;
 		overflow: visible;
 		
 		.content > * {
 			display: flex;
-			justify-content: center;
-			align-items: center;
+			justify-content: space-between;
 			font-weight: 700 !important;
 			margin-bottom: 20px;
+			gap: 10px;
 		}
 		
-		button {
-			font-weight: 700;
-			margin: 0 20px;
+		.action-buttons {
+			align-items: flex-end;
+			display: flex;
+			justify-content: space-between;
+			font-weight: 700 !important;
+			margin-bottom: 20px;
+			gap: 10px;
 		}
 		.ui.dropdown {
 			min-height: 40px;
@@ -58,9 +62,6 @@ export const KsuCardStyled = styled('div')`
 			.icon {
 				top: 8px;
 			}
-		}
-		.ui.dropdown>.dropdown.icon {
-			top: 10px;
 		}
 		.item {
 			max-width: 240px;
@@ -85,7 +86,6 @@ export const KsuCardStyled = styled('div')`
 		color: white;
 		text-align: center;
 		background-size: auto 400px;
-		background-position: center bottom 40px;
 		background-repeat: no-repeat;
 		backdrop-filter: opacity(0.5);
 		background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),

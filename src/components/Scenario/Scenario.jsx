@@ -14,6 +14,7 @@ import { clsx } from 'clsx';
 import { useDeleteEntity } from '../../api/entity/useDeleteEntity';
 import { PAGE_SIZE } from '../../constants/main';
 import { VeremLayout } from '../../pages/VeremLayout.jsx';
+import { TitleLarge } from '../TitleStyled.jsx';
 
 const initialValues = {
   avatar: [],
@@ -72,7 +73,7 @@ export const Scenario = () => {
     <VeremLayout>
       <div className="hero scenario-hero">
         <div className="title-wrapper top-container">
-          <h1 className="title">{t('mainMenu.show')}</h1>
+            <TitleLarge>{t('mainMenu.show')}</TitleLarge>
           {user?.uid && (
             <div>
               <ButtonStyled

@@ -10,6 +10,7 @@ import { publicStatuses } from '../../constants/statuses/publicStatuses';
 import { getOption } from '../../utils/getOption';
 import { FormAsideCreation } from './components/FormAsideCreation';
 import { VeremLayout } from '../../pages/VeremLayout.jsx';
+import { TitleLarge } from '../TitleStyled.jsx';
 
 export const LessonEntityList = ({ entityName }) => {
   const initialValue = {
@@ -50,7 +51,7 @@ export const LessonEntityList = ({ entityName }) => {
     <VeremLayout>
       <div className="hero scenario-hero">
         <div className="title-wrapper top-container">
-          <h1 className="title">{t(`entities.${entityName}`)}</h1>
+            <TitleLarge>{t(`entities.${entityName}`)}</TitleLarge>
         </div>
       </div>
       <EntityListStyled>

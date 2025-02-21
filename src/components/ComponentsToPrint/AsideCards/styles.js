@@ -5,6 +5,15 @@ import {
 	STATUS_PUBLIC,
 	VEREM_GOLD
 } from '../../../constants/colors'
+import { Progress } from 'antd'
+
+export const ProgressStyled = styled(Progress)`
+	.ant-progress-text {
+		color: ${ CREAM } !important;
+		font-weight: 700;
+		font-family: 'Comfortaa', sans-serif;
+	}
+	`;
 
 export const MediaButtonWrapperStyled = styled.div`
 	display: grid !important;
