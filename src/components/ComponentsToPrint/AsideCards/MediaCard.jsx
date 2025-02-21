@@ -15,17 +15,23 @@ import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+import { KsuProgress } from '../../KsuProgress/KsuProgress.jsx';
 
 export const MediaCard = ({ setActiveTab, activeTab, lesson }) => {
     const { user } = useSelector((state) => state.auth);
+    const {t} = useTranslation('lessons');
 
     const btnShouldDisplay = (condition) => {
-        if (user?.uid && lesson?.dcreatedBy?.uid) return true;
+        if (user?.uid && lesson?.createdBy?.uid) return true;
         if (condition) return !!condition;
     };
     return (
             <KsuCard className={'admin-panel print-hide'}>
-                <TitleSmall>План урока:</TitleSmall>
+                <div>
+                    <TitleSmall>{t('lessonPlan')}:</TitleSmall>
+                </div>
+
                 <MediaButtonWrapperStyled>
                     {btnShouldDisplay(lesson?.topic) && (
                             <MediaButton

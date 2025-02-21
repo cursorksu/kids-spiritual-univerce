@@ -3,5 +3,8 @@
   "copyLesson" : "Сокпируйте урок чтобы редактировать",
   "printLesson" : "Напечатать урок",
   "assignToGroup" : "Выберите группу чтобы назначить ей урок",
-  "changeLesson" : "Изменить данные урока"
+  "changeLesson" : "Изменить данные урока",
+  "lessonPlan" : "План урока",
+  "lessonGoal" : "Цель урока",
+  "lessonMaterials" : "Что нужно взять?"
 }

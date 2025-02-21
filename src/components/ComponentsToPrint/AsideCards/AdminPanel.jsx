@@ -19,6 +19,7 @@ import {DeleteConfirmationModal} from '../../Modal/DeleteConfirmationModal';
 import {TitleSmall} from '../../TitleStyled';
 import {LabelStyled} from '../../InputStyled';
 import {KsuDropdownUserGroups} from '../../KsuDropdown/KsuDropdownUserGroups';
+import { KsuProgress } from '../../KsuProgress/KsuProgress.jsx';
 
 export const AdminPanel = ({onEdit, lesson, onPrint}) => {
 AdminPanel.propTypes = {
@@ -76,6 +77,7 @@ AdminPanel.propTypes = {
                         </>
                 )}
                 <div className={'action-buttons'}>
+                    <KsuProgress/>
                     <Tooltip  content={lessonsT('printLesson')}>
                         <ButtonIconMiniStyled onClick={onPrint}>
                             <PrintIcon/>

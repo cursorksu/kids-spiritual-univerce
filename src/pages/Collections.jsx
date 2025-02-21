@@ -18,6 +18,7 @@ import {
 } from '../constants/entities/collectionsConfig';
 import { VeremLayout } from './VeremLayout.jsx';
 import { ButtonStyled } from '../components/ButtonStyled.js';
+import { TitleLarge } from '../components/TitleStyled.jsx';
 
 export const Collections = () => {
     const { user } = useSelector((state) => state.auth);
@@ -62,7 +63,7 @@ export const Collections = () => {
             <VeremLayout>
                 <div className="hero collection-hero">
                     <div className="title-wrapper top-container">
-                        <h1 className="title">{t('collections.collections')}</h1>
+                        <TitleLarge>{t('collections.collections')}</TitleLarge>
                         {user?.uid && (
                                 <div>
                                     <Tooltip content="Створити колекцію">

@@ -1,7 +1,7 @@
 import { KsuCard } from '../../KsuCard';
 import { ButtonIconMiniStyled } from '../../ButtonStyled';
 import { Controller } from 'react-hook-form';
-import { Checkbox } from 'antd';
+import { Empty } from 'antd';
 import { DynamicList } from '../../DynamicList/DynamicList';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -9,16 +9,22 @@ import { SaveIcon } from '../../../assets/SaveIcon.jsx';
 
 import PropTypes from 'prop-types';
 import { EditIcon } from '../../../assets/EditIcon.jsx';
+import { useTranslation } from 'react-i18next';
+import { CheckboxStyled } from '../../CheckboxStyled.js';
 
 export const StaffList = ({
     lesson,
     onEdit,
+    control,
+    setValue,
 }) => {
+    const { t } = useTranslation('tr');
+    const { t: tLesson } = useTranslation('lessons');
     const [isMaterialEdit, setIsMaterialEdit] = useState(false);
     const { user } = useSelector((state) => state.auth);
     return (
             <KsuCard
-                    title={'Що треба взяти'}
+                    title={tLesson('lessonMaterials')}
                     action={user?.uid && lesson?.createdBy?.uid === user?.uid && (
                             !isMaterialEdit
                                     ? (
@@ -33,6 +39,7 @@ export const StaffList = ({
                                     )
                     )}>
                 <div>
+                    {lesson?.material?.length <= 0 && <Empty description={t('empty')}/>}
                     {isMaterialEdit
                             ? (
                                     <Controller
@@ -54,7 +61,8 @@ export const StaffList = ({
                                     <ul className="material-list">
                                         {lesson?.material?.map((el) => (
                                                 <li key={el.key}>
-                                                    <Checkbox label={{ children: el.value }}/>
+                                                    <CheckboxStyled />
+                                                    <p>{el.value}</p>
                                                 </li>
                                         ))}
                                     </ul>
@@ -77,4 +85,6 @@ StaffList.propTypes = {
         }),
     }),
     onEdit: PropTypes.func.isRequired,
+    control: PropTypes.object.isRequired,
+    setValue: PropTypes.func.isRequired,
 };
