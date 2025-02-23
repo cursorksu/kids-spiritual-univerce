@@ -35,17 +35,20 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 
 export const TopicToPrint = ({
-    lesson, onChangeConfirm,
+    onChangeConfirm,
 }, ref) => {
     const { editEntity } = useEditEntity('lessons');
     const [activeTab, setActiveTab] = useState(0);
     const [isTopicEdit, setIsTopicEdit] = useState(false);
     const [isFullScreen, setIsFullScreen] = useState(false);
+    const {
+              lessonData: { lesson },
+          } = useSelector((state) => state);
 
     const {
               control, getValues, setValue, reset,
           } = useForm({
-        defaultValues: null, caches: false,
+        defaultValues: null,
     });
 
     useEffect(() => {
@@ -53,8 +56,9 @@ export const TopicToPrint = ({
             const data = lesson?.memory?.find((el) => el.id === 'test');
             data && localStorage.setItem('test', JSON.stringify(data.settings));
         }
-
-        if (lesson && !getValues('topic')) {
+        console.log({lesson})
+        console.log({topicINForm: getValues('topic')})
+        if (lesson?.id) {
             setValue('topic', lesson?.topic);
             setValue('goal', lesson?.goal);
             setValue('bibleText', lesson?.bibleText);

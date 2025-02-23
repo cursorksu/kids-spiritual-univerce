@@ -43,12 +43,9 @@ export const StaffList = ({
             const parsedLesson = JSON.parse(savedLesson);
             setChecked(parsedLesson[lesson?.id]?.materials || []);
         }
-
-        console.log({ savedLesson, checked });
     }, [lesson?.id]);
 
     const saveMaterialsInLocalStorage = ({ target }) => {
-        console.log({ checked: target.checked, id: target.id });
         setChecked(prev => target.checked
                 ? [
                     ...prev,
