@@ -1,5 +1,8 @@
 import styled from '@emotion/styled';
-import {VEREM_GOLD} from '../constants/colors';
+import {
+    CHOCO,
+    VEREM_GOLD,
+} from '../constants/colors';
 
 export const TitleSmall = styled.h2`
     margin: 0;
@@ -21,4 +24,15 @@ export const TitleLarge = styled(TitleSmall)`
     align-items: center;
     color: ${VEREM_GOLD};
     margin: 0 12px;
+
+    .description {
+        font-size: 14px;
+        font-weight: 600;
+        color: ${CHOCO};
+        display: block;
+        white-space: pre-wrap;
+        max-width: 80%;
+        line-height: 1.5;
+        text-align: left;
+    }
 `;

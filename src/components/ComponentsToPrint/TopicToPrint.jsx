@@ -136,7 +136,10 @@ export const TopicToPrint = ({
                     </aside>
                     <div>
                         <TitleLarge>
-                            {lesson?.title}
+                            <div>
+                                {lesson?.title}
+                                <span className="description">{lesson?.description}</span>
+                            </div>
                             <span className="action print-hide">
                                 {user?.uid && lesson?.createdBy?.uid === user?.uid && (
                                         !isTopicEdit
@@ -219,15 +222,11 @@ export const TopicToPrint = ({
                         />
                         <BibleText
                                 lesson={lesson}
-                                onEdit={editLessonHandler}
-                                control={control}
-                                setValue={setValue}
+                                onConfirm={onChangeConfirm}
                         />
                         <StaffList
                                 lesson={lesson}
-                                onEdit={editLessonHandler}
-                                control={control}
-                                setValue={setValue}
+                                onConfirm={onChangeConfirm}
                         />
                     </aside>
                 </section>
@@ -250,6 +249,7 @@ TopicToPrint.propTypes = {
         })),
         imageUrl: PropTypes.string,
         title: PropTypes.string,
+        description: PropTypes.string,
         goal: PropTypes.string,
         bibleText: PropTypes.string,
         bibleQuote: PropTypes.string,

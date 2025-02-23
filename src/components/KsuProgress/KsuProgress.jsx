@@ -43,5 +43,11 @@ export const KsuProgress = () => {
         '100%': SUCCESS,
     };
 
-    return <ProgressStyled type="dashboard" percent={percent} strokeColor={conicColors} size="small" />
+    return <ProgressStyled
+            type="dashboard"
+            percent={percent}
+            strokeColor={conicColors}
+            strokeWidth={10}
+            size="small"
+    />
 };
