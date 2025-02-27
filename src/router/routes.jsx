@@ -1,5 +1,6 @@
 import { routes } from './constants';
 import { LessonsPage } from '../pages/Lessons';
+import { LessonEntityList } from '../components/LessonEntity/LessonEntityList.jsx';
 import { Lesson } from '../pages/Lesson';
 import { Cabinet } from '../pages/Cabinet';
 import { Collections } from '../pages/Collections';
@@ -13,7 +14,6 @@ import { TestGameView } from '../Games/Test/TestGameView.jsx';
 import { GroupItem } from '../components/GroupItem/index.js';
 import { Invite } from '../pages/Invite.jsx';
 import { VeremChurch } from '../components/VeremChurch/VeremChurch.jsx';
-import { LessonEntityList } from '../components/LessonEntity/LessonEntityList.jsx';
 
 export const publicRoutes = [
   {
