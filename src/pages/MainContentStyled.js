@@ -11,6 +11,52 @@ import {
 	VEREM_GOLD,
 } from '../constants/colors'
 
+export const PresentationsStyled = styled('section')`
+	background: ${CHOCO};
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 20px;
+	min-height: 100vh;
+	
+	.list-wrapper {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-gap: 20px;
+	}
+	`;
+
+export const PresentationPageStyled = styled('section')`
+	background: ${CHOCO};
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	flex-wrap: wrap;
+	
+	.presentation-title {
+		flex-basis: 100%;
+		border-bottom: 4px double ${CREAM};
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	.slide-list {
+		flex-basis: 280px;
+		border-left: 4px double ${CREAM};
+		height: calc(100vh - 100px);
+		overflow-y: auto;
+		padding: 20px;
+	}
+	.slide-wrapper {
+		flex-basis: calc(100% - 280px);
+		min-height: calc(100vh - 100px);
+		padding: 20px;
+	
+	}
+	`;
 export const ShadowCardStyled = styled('li')`
   position: relative;
   background: ${ITEM_BG};

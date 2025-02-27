@@ -1,70 +1,111 @@
-import {KsuCard} from '../../KsuCard';
-import {ButtonIconMiniStyled} from '../../ButtonStyled';
-import {Controller} from 'react-hook-form';
-import {InputStyled} from '../../InputStyled';
-import {EditIcon} from '../../../assets/EditIcon.jsx';
-import {SaveIcon} from '../../../assets/SaveIcon.jsx';
-import React from 'react';
-import {useSelector} from 'react-redux';
+import { KsuCard } from '../../KsuCard';
+import { ButtonIconMiniStyled } from '../../ButtonStyled';
+import {
+    FormFieldStyled,
+    InputStyled,
+} from '../../InputStyled';
+import { EditIcon } from '../../../assets/EditIcon.jsx';
+import { SaveIcon } from '../../../assets/SaveIcon.jsx';
+import React, {
+    useEffect,
+    useState,
+} from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useEditEntity } from '../../../api/entity/useEditEntity.js';
+import { CloseIcon } from '../../../assets/CloseIcon.jsx';
 
-export const BibleText = ({lesson, onEdit, control, setValue}) => {
+export const BibleText = ({ lesson, onConfirm }) => {
+    const { editEntity } = useEditEntity('lessons');
     const [isEdit, setIsEdit] = React.useState(false);
-    const {user} = useSelector((state) => state.auth);
-    return lesson?.bibleText ? (
-            <KsuCard
-                    className={'bible'}
-                    title={lesson?.bibleQuote}
-                    action={user?.uid && lesson?.createdBy?.uid === user?.uid && (<>
-                        {!isEdit ? (
-                                <ButtonIconMiniStyled onClick={() => setIsEdit(true)}>
-                                    <EditIcon/>
-                                </ButtonIconMiniStyled>
-                        ) : (
-                                <ButtonIconMiniStyled onClick={() => onEdit('bible')}>
-                                    <SaveIcon/>
-                                </ButtonIconMiniStyled>
-                        )}
-                    </>)}>
-                <div>
-                    {isEdit ? (<div className="print-hide">
-                        <Controller
-                                name="bibleText"
-                                control={control}
-                                render={({field}) => (<div>
-                                    <InputStyled
-                                            placeholder={'Біблійний текст'}
-                                            onChange={({target}) => setValue('bibleText', target.value)}
-                                            {...field}
-                                    />
-                                </div>)}
-                        />
-                        <Controller
-                                name="bibleQuote"
-                                control={control}
-                                render={({field}) => (<div>
-                                    <InputStyled
-                                            placeholder={'Де написаний'}
-                                            onChange={({target}) => setValue('bibleQuote', target.value)}
-                                            {...field}
-                                    />
-                                </div>)}
-                        />
-                    </div>) : <p>{lesson?.bibleText}</p>}
-                </div>
-            </KsuCard>
-    ) : null;
+    const { user } = useSelector((state) => state.auth);
+    const [text, setText] = useState({});
+
+    useEffect(() => {
+        if (lesson?.id) {
+            setText({
+                bibleText: lesson.bibleText,
+                bibleQuote: lesson.bibleQuote,
+            });
+        }
+    }, [lesson]);
+
+    const handleChange = ({ target }) => {
+        setText(prev => (
+                { ...prev, [target.name]: target.value }
+        ));
+    };
+
+    const onSave = async () => {
+        await editEntity({ ...lesson, ...text });
+        setIsEdit(false);
+        onConfirm();
+    }
+    return lesson?.bibleText
+            ? (
+                    <KsuCard
+                            className={'bible'}
+                            title={lesson?.bibleQuote}
+                            action={user?.uid && lesson?.createdBy?.uid === user?.uid && (
+                                    <>
+                                        {!isEdit
+                                                ? (
+                                                        <ButtonIconMiniStyled onClick={() => setIsEdit(true)}>
+                                                            <EditIcon/>
+                                                        </ButtonIconMiniStyled>
+                                                )
+                                                : (
+                                                        <>
+                                                            <ButtonIconMiniStyled
+                                                                    onClick={onSave}>
+                                                                <SaveIcon/>
+                                                            </ButtonIconMiniStyled>
+                                                            <ButtonIconMiniStyled
+                                                                    onClick={() => setIsEdit(false)}>
+                                                                <CloseIcon/>
+                                                            </ButtonIconMiniStyled>
+                                                        </>
+
+                                                )}
+                                    </>
+                            )}>
+                        <div>
+                            {isEdit
+                                    ? (
+                                            <div className="print-hide">
+                                                <FormFieldStyled>
+                                                    <InputStyled
+                                                            name="bibleText"
+                                                            value={text.bibleText}
+                                                            placeholder={'Біблійний текст'}
+                                                            onChange={handleChange}
+                                                    />
+                                                </FormFieldStyled>
+                                                <FormFieldStyled>
+                                                    <InputStyled
+                                                            name="bibleQuote"
+                                                            value={text.bibleQuote}
+                                                            placeholder={'Де написаний'}
+                                                            onChange={handleChange}
+                                                    />
+                                                </FormFieldStyled>
+                                            </div>
+                                    )
+                                    : <p>{lesson?.bibleText}</p>}
+                        </div>
+                    </KsuCard>
+            )
+            : null;
 };
 
 BibleText.propTypes = {
     lesson: PropTypes.shape({
+        id: PropTypes.string,
         bibleQuote: PropTypes.string,
         bibleText: PropTypes.string,
         createdBy: PropTypes.shape({
             uid: PropTypes.string,
         }),
     }).isRequired,
-    onEdit: PropTypes.func.isRequired,
-    control: PropTypes.object.isRequired,
-    setValue: PropTypes.func.isRequired,
+    onConfirm: PropTypes.func.isRequired,
 };

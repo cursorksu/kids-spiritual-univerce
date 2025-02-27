@@ -9,7 +9,6 @@ import { Editor } from '@tinymce/tinymce-react';
 export const KsuEditor = ({ placeholder, value, onChange }) => {
     const [editorContent, setEditorContent] = useState(
             value || '');
-console.log(editorContent, value);
     useEffect(() => {
         if (value !== editorContent) {
             setEditorContent(value || '');

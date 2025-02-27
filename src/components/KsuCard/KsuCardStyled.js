@@ -12,7 +12,6 @@ export const KsuCardStyled = styled('div')`
 	box-shadow: ${CARD_SHADOW};
 	overflow: hidden;
 	padding: 20px 20px 60px;
-	margin-bottom: 20px;
 	
 	ul {
 		list-style-type: none;

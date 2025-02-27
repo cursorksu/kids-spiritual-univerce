@@ -7,6 +7,7 @@ export const routes = {
   group: '/group',
   collections: '/collections',
   scenario: '/scenario',
+	presentations: '/presentations',
   food: '/food',
   topic: '/topic',
   subject: '/subject',

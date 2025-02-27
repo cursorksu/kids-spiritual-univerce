@@ -35,17 +35,23 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 
 export const TopicToPrint = ({
-    lesson, onChangeConfirm,
+    onChangeConfirm,
 }, ref) => {
     const { editEntity } = useEditEntity('lessons');
     const [activeTab, setActiveTab] = useState(0);
     const [isTopicEdit, setIsTopicEdit] = useState(false);
     const [isFullScreen, setIsFullScreen] = useState(false);
+    const {
+              lessonData: { lesson },
+          } = useSelector((state) => state);
 
     const {
-              control, getValues, setValue, reset,
+              control,
+              getValues,
+              setValue,
+              reset,
           } = useForm({
-        defaultValues: null, caches: false,
+        defaultValues: null,
     });
 
     useEffect(() => {
@@ -53,8 +59,7 @@ export const TopicToPrint = ({
             const data = lesson?.memory?.find((el) => el.id === 'test');
             data && localStorage.setItem('test', JSON.stringify(data.settings));
         }
-
-        if (lesson && !getValues('topic')) {
+        if (lesson?.id) {
             setValue('topic', lesson?.topic);
             setValue('goal', lesson?.goal);
             setValue('bibleText', lesson?.bibleText);
@@ -62,8 +67,6 @@ export const TopicToPrint = ({
             setValue('topic', lesson?.topic);
         }
     }, [lesson]);
-
-
 
     const { user } = useSelector((state) => state.auth);
 
@@ -136,7 +139,10 @@ export const TopicToPrint = ({
                     </aside>
                     <div>
                         <TitleLarge>
-                            {lesson?.title}
+                            <div>
+                                {lesson?.title}
+                                <span className="description">{lesson?.description}</span>
+                            </div>
                             <span className="action print-hide">
                                 {user?.uid && lesson?.createdBy?.uid === user?.uid && (
                                         !isTopicEdit
@@ -219,15 +225,11 @@ export const TopicToPrint = ({
                         />
                         <BibleText
                                 lesson={lesson}
-                                onEdit={editLessonHandler}
-                                control={control}
-                                setValue={setValue}
+                                onConfirm={onChangeConfirm}
                         />
                         <StaffList
                                 lesson={lesson}
-                                onEdit={editLessonHandler}
-                                control={control}
-                                setValue={setValue}
+                                onConfirm={onChangeConfirm}
                         />
                     </aside>
                 </section>
@@ -250,6 +252,7 @@ TopicToPrint.propTypes = {
         })),
         imageUrl: PropTypes.string,
         title: PropTypes.string,
+        description: PropTypes.string,
         goal: PropTypes.string,
         bibleText: PropTypes.string,
         bibleQuote: PropTypes.string,
