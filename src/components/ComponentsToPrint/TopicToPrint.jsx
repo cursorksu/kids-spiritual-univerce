@@ -46,7 +46,10 @@ export const TopicToPrint = ({
           } = useSelector((state) => state);
 
     const {
-              control, getValues, setValue, reset,
+              control,
+              getValues,
+              setValue,
+              reset,
           } = useForm({
         defaultValues: null,
     });
@@ -56,8 +59,6 @@ export const TopicToPrint = ({
             const data = lesson?.memory?.find((el) => el.id === 'test');
             data && localStorage.setItem('test', JSON.stringify(data.settings));
         }
-        console.log({lesson})
-        console.log({topicINForm: getValues('topic')})
         if (lesson?.id) {
             setValue('topic', lesson?.topic);
             setValue('goal', lesson?.goal);
@@ -66,8 +67,6 @@ export const TopicToPrint = ({
             setValue('topic', lesson?.topic);
         }
     }, [lesson]);
-
-
 
     const { user } = useSelector((state) => state.auth);
 

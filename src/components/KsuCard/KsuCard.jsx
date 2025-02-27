@@ -16,11 +16,13 @@ export const KsuCard = ({
     children,
     className,
     hideAction,
+    onClick,
 }) => {
     const { user } = useSelector((state) => state.auth);
 
     return (
             <KsuCardStyled
+                    onClick={onClick}
                     className={className}
                     style={{
                         paddingBottom: !user?.uid
@@ -52,4 +54,5 @@ KsuCard.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
     hideAction: PropTypes.bool,
+    onClick: PropTypes.func,
 };

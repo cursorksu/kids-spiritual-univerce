@@ -12,6 +12,11 @@ export const TitleSmall = styled.h2`
     line-height: 2;
     font-weight: 700;
     white-space: nowrap;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
 `;
 export const TitleMedium = styled(TitleSmall)`
     font-size: 30px;
@@ -19,13 +24,11 @@ export const TitleMedium = styled(TitleSmall)`
 
 export const TitleLarge = styled(TitleSmall)`
     font-size: 36px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     color: ${VEREM_GOLD};
     margin: 0 12px;
 
     .description {
+        flex-basis: 100%;
         font-size: 14px;
         font-weight: 600;
         color: ${CHOCO};
