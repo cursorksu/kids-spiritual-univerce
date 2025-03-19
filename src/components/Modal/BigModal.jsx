@@ -16,7 +16,7 @@ export const BigModal = ({
     modalTitle,
     onCancel,
     icon,
-    size = 'big',
+    size = 'large',
     children,
     footer = null,
 }) => {

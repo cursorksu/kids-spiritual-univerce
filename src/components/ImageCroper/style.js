@@ -6,6 +6,7 @@ export const DropzoneStyled = styled.div`
     width: 100%;
     height: 100px;
     border: 2px dashed #ccc;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,7 +81,6 @@ export const ImageListStyled = styled.div`
         height: 100px !important;
         display: flex;
         justify-content: center;
-        align-items: center;
         
         &.empty {
           background-image: url(${PHOTO_PLACEHOLDER});
@@ -112,11 +112,15 @@ export const ImageListStyled = styled.div`
 
 export const DropArea = styled.div`
     border: 2px  dashed ${VEREM_BORDER};
+    border-radius: 20px;
     padding: 20px;
     text-align: center;
     margin-bottom: 16px;
-    color: ${CHOCO};
+    color: ${VEREM_GOLD};
     font-weight: 600;
+    p {
+        text-align: center;
+    }
     
     &.hide {
       position: absolute;

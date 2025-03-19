@@ -9,6 +9,12 @@ export const InfoBlockStyled = styled.div`
 	width: 100%;
 	padding-bottom: 20px;
 	background: ${VEREM_CREAM_BG};
+    
+    .aside-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 	
 	.btn-block {
 		display: flex;
@@ -54,7 +60,6 @@ export const InfoBlockStyled = styled.div`
 		box-shadow: ${ CARD_SHADOW };
 		position: relative;
 		overflow: hidden;
-		margin-bottom: 20px;
 		height: 280px;
 		
 		&.full-screen {

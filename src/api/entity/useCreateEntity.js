@@ -13,7 +13,7 @@ export const useCreateEntity = (entity, onCreationComplete) => {
       try {
         const entityCollection = collection(fireStore, entity);
         const authorRef = doc(fireStore, 'users', user?.uid);
-	      console.log({formData})
+
         const result = await addDoc(entityCollection, {
           ...formData,
           createdAt: Timestamp.now(),

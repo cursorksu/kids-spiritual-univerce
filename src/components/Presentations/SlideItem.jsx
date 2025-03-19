@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import { SlideStyled } from './styles.js';
 import { DeleteIcon } from '../../assets/DeleteIcon.jsx';
 import { ButtonIconMiniStyled } from '../ButtonStyled.js';
-import { TitleMedium } from '../TitleStyled.jsx';
 
 export const SlideItem = ({ id, text, title, index, moveCard, img, onDelete, className }) => {
     const ref = useRef(null);
@@ -62,15 +61,22 @@ export const SlideItem = ({ id, text, title, index, moveCard, img, onDelete, cla
     drag(drop(ref));
     return (
             <SlideStyled ref={ref} style={{ opacity }} className={className}>
-                <div className="img-wrapper">
-                    {text}
-                    {img && <img src={img} alt="slide"/>}
-                    {title && <TitleMedium>{title}</TitleMedium>}
-                    <ButtonIconMiniStyled onClick={() => onDelete(id)}>
-                        <DeleteIcon/>
-                    </ButtonIconMiniStyled>
+                <div className="slide-container">
+                    {(title || text) && (
+                        <div className="text-wrapper">
+                            {title && <h5>{title}</h5>}
+                            <p>{text}</p>
+                        </div>
+                    )}
+
+                    <div className="img-wrapper">
+                        {img && <img src={img} alt="slide"/>}
+                    </div>
                 </div>
                 <div className="drag-handle" data-handler-id={handlerId}/>
+                <ButtonIconMiniStyled onClick={() => onDelete(id)}>
+                    <DeleteIcon/>
+                </ButtonIconMiniStyled>
             </SlideStyled>
     );
 };

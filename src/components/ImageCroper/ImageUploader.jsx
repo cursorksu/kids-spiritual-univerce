@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
     getStorage,
     ref,
@@ -15,7 +15,10 @@ import { useImages } from '../../api/images/useImages';
 import { DeleteConfirmationModal } from '../Modal/DeleteConfirmationModal';
 import { getFileNameFromUrl } from '../../utils/getFileNameFromUrl';
 
-export const ImageUploader = ({ onUpload, onDelete, onDrop, size, src, multiple, storageFolderName = 'images' }) => {
+
+import PropTypes from 'prop-types';
+
+export const ImageUploader = ({ placeholder, onDelete, onDrop, onUpload, size, src, multiple, storageFolderName = 'images' }) => {
     const storage = getStorage();
     const { t } = useTranslation('tr');
     const [ image, setImage ] = useState(null);
@@ -29,8 +32,8 @@ export const ImageUploader = ({ onUpload, onDelete, onDrop, size, src, multiple,
     const { deleteImage } = useImages();
 
     useEffect(() => {
-        !!src && setImage(src);
-        !!src && setStorageRef(src);
+        setImage(src);
+        setStorageRef(src);
     }, [ src ]);
 
     const handleDrop = (acceptedFiles) => {
@@ -109,10 +112,12 @@ export const ImageUploader = ({ onUpload, onDelete, onDrop, size, src, multiple,
     return (
         <>
             {!image ? (
-                <DropArea {...getRootProps()} className={clsx({ hide: multiple })}>
-                    <input {...getInputProps()} />
-                    <p>Перетащите изображение сюда или нажмите для выбора</p>
-                </DropArea>
+                <div>
+                    <DropArea {...getRootProps()} className={clsx({ hide: multiple })} placeHolder={placeholder}>
+                        <input {...getInputProps()} />
+                        <p>{placeholder}</p>
+                    </DropArea>
+                </div>
             ) : (
                  <Content>
                      <DeleteConfirmationModal
@@ -134,6 +139,7 @@ export const ImageUploader = ({ onUpload, onDelete, onDrop, size, src, multiple,
                                      setCroppedAreaPixels(croppedAreaPixels)
                                  }
                              />
+                             <p>{placeholder}</p>
                          </DropzoneStyled>
                          {!imageWasUpload && (
                              <div className={'image-holder'}>
@@ -157,4 +163,15 @@ export const ImageUploader = ({ onUpload, onDelete, onDrop, size, src, multiple,
              )}
         </>
     );
+};
+
+ImageUploader.propTypes = {
+    placeholder: PropTypes.string.isRequired,
+    onDelete: PropTypes.func,
+    onUpload: PropTypes.func,
+    onDrop: PropTypes.func,
+    size: PropTypes.number,
+    src: PropTypes.string,
+    multiple: PropTypes.bool,
+    storageFolderName: PropTypes.string,
 };

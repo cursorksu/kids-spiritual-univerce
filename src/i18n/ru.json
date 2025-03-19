@@ -120,6 +120,20 @@
     "createdDate": "Дата создания: ",
     "author": "Автор: "
   },
+  "slides": {
+    "labels": {
+      "title": "Название слайда",
+      "content":  "Введите текст",
+      "img": "Выберите или перетащите файл",
+      "template": "Выберите шаблон слайда"
+    },
+    "placeholders": {
+      "title": "Введите название",
+      "content":  "Введите содержимое слайда",
+      "img": "Select image",
+      "template": "Шаблон"
+    }
+  },
   "scenario": {
     "addScenario": "Добавить сценарий",
     "deleteScenario": "Удалиь сценарий",

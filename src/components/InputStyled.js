@@ -57,7 +57,7 @@ export const InputFieldStyled = styled.div`
 
 export const InputStyled = styled.input`
   width: 100%;
-  border-radius: 40px;
+  border-radius: 20px;
   padding: 5px 12px;
   border: 1px solid ${VEREM_GOLD};
   height: 40px;
@@ -86,7 +86,7 @@ export const TextareaAutosizeStyled = styled.textarea`
   color: ${CHOCO};
   box-sizing: border-box;
   background-color: #fff;
-  border-radius: 30px;
+  border-radius: 20px;
   padding: 20px;
   display: block;
   width: 100%;

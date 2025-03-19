@@ -13,7 +13,6 @@ export const useGetEntity = (entityName) => {
   const getEntityById = useCallback(
     async (entityId) => {
       try {
-	      console.log({entityId: entityId})
         const docRef = doc(fireStore, entityName, entityId);
         const snapshot = await getDoc(docRef);
 
