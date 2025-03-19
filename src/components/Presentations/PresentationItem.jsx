@@ -19,7 +19,7 @@ export const PresentationItem = ({ presentation }) => {
     return (
             <KsuCard
                     title={'Status: Published'}
-                    image={presentation?.slides[0]?.img || PHOTO_PLACEHOLDER}
+                    image={presentation?.slides?.[0]?.img || PHOTO_PLACEHOLDER}
                     onClick={() => navigate(`/presentations/${presentation?.id}`)}
             >
                 <TitleMedium>

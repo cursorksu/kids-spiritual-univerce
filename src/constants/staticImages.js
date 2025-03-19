@@ -1,3 +1,8 @@
 export const MODAL_BG_1 = 'https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2FShapoe.png?alt=media&token=52063a67-b545-40dc-ba3c-cdc2a479b8e9';
 export const MODAL_BG_2 = 'https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2FTexture.png?alt=media&token=f9a48c42-a930-4e19-9a8b-f9eb2193171a';
 export const BALLS_DECOR = 'https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2Fdecor.png?alt=media&token=06a23d22-1196-46d3-a109-b024eeb6db9f';
+export const TEXT_TOP_IMG = 'https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2Ftext-blocks%2Ftext-top.png?alt=media&token=4973ebf2-04dc-4cc7-8ef7-b452a13c9a6d';
+export const TEXT_BOTTOM_IMG = 'https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2Ftext-blocks%2Ftext-bottom.png?alt=media&token=0fa9642e-a054-4786-abac-f9819fcceab4';
+export const  TEXT_LEFT_IMG = 'https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2Ftext-blocks%2Ftext-left.png?alt=media&token=88c12e88-495d-4031-9759-cd5bfd93d674';
+export const TEXT_RIGHT_IMG = 'https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2Ftext-blocks%2Ftext-right.png?alt=media&token=c46df3fe-4cd0-44d5-ac62-699fc414ba5c';
+export const NO_TEXT_IMG = 'https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2Ftext-blocks%2Fno-text.png?alt=media&token=feda8a4d-70f4-4654-8d0a-bc6826e1da9f';

@@ -120,6 +120,20 @@
     "createdDate": "Created at: ",
     "author": "Created by: "
   },
+  "slides": {
+    "labels": {
+      "title": "Enter title",
+      "content":  "Enter slide text",
+      "img": "Brows or drag file",
+      "template": "Template"
+    },
+    "placeholders": {
+      "title": "Slide title",
+      "content":  "Slide content",
+      "img": "Select image",
+      "template": "Select slide template"
+    }
+  },
   "scenario": {
     "addScenario": "Add Scenario",
     "deleteScenario": "Delete scenario",

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import {
+	BG_SUCCESS,
 	BOX_SHADOW,
 	BOX_SHADOW_HOVER, CARD_SHADOW,
 	CHOCO,
@@ -7,7 +8,7 @@ import {
 	DARK_BG,
 	GOLD,
 	ITEM_BG,
-	PRIMARY_MAIN,
+	PRIMARY_MAIN, STATUS_DRAFT, STATUS_PUBLIC, VEREM_CREAM_BG,
 	VEREM_GOLD,
 } from '../constants/colors'
 
@@ -29,6 +30,7 @@ export const PresentationsStyled = styled('section')`
 
 export const PresentationPageStyled = styled('section')`
 	background: ${CHOCO};
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -37,10 +39,13 @@ export const PresentationPageStyled = styled('section')`
 	
 	.presentation-title {
 		flex-basis: 100%;
-		border-bottom: 4px double ${CREAM};
+		border-bottom: 6px double ${CHOCO};
 		display: flex;
+		min-height: 166px;
 		justify-content: space-between;
 		align-items: center;
+		background: ${VEREM_CREAM_BG};
+		color: ${CHOCO};
 	}
 	
 	.slide-list {

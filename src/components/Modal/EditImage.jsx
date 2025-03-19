@@ -6,7 +6,7 @@ import { ButtonStyled } from '../ButtonStyled';
 import { FormStyled, InputFieldStyled, LabelStyled } from '../InputStyled';
 import { Controller, useForm } from 'react-hook-form';
 import { useEditEntity } from '../../api/entity/useEditEntity';
-import { ImageUploader } from '../ImageCroper/ImageUploader';
+import { ImageUploader } from '../ImageCroper/ImageUploader.jsx';
 
 import PropTypes from 'prop-types';
 

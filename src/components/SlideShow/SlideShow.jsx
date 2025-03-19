@@ -93,7 +93,7 @@ export const SlideShow = ({
                                 className="img"
                                 style={{
                                     backgroundImage:
-                                        `url("${el.value}")`,
+                                        `url(${el.value})`,
                                 }}/>
                         ) : (
                              <>
@@ -133,7 +133,7 @@ SlideShow.propTypes = {
             description: PropTypes.string,
         })
     ).isRequired,
-    blur: PropTypes.bool.isRequired,
+    blur: PropTypes.bool,
     autoplay: PropTypes.bool,
     navigation: PropTypes.bool,
     entityName: PropTypes.string,
