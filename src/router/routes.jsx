@@ -16,6 +16,7 @@ import { Invite } from '../pages/Invite.jsx';
 import { VeremChurch } from '../components/VeremChurch/VeremChurch.jsx';
 import { Presentations } from '../pages/Presentations.jsx';
 import { Presentation } from '../pages/Presentation.jsx';
+import {Goal} from "../Games/Goal/Goal.jsx";
 
 export const publicRoutes = [
     {
@@ -107,6 +108,11 @@ export const publicRoutes = [
         path: routes.game,
         title: 'Game',
         component: <LessonEntityList entityName={'activeGame'}/>,
+    },
+    {
+        path: '/goal',
+        title: 'Goal',
+        component: <Goal/>,
     },
 ];
 export const authRouts = [

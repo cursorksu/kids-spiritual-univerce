@@ -45,5 +45,38 @@ export const useCreateEntity = (entity, onCreationComplete) => {
     [dispatch, entity, user, onCreationComplete]
   );
 
-  return { createEntity: createEntityDock };
+    const createNoAuthEntity = useCallback(
+        async (formData) => {
+            try {
+                const entityCollection = collection(fireStore, entity);
+                const result = await addDoc(entityCollection, {
+                    ...formData,
+                });
+                dispatch(
+                    setMessage({
+                        type: 'success',
+                        message: {
+                            title: `${entity}`,
+                            description: 'successfully created',
+                        },
+                    })
+                );
+                (await onCreationComplete) && onCreationComplete();
+                return result.id;
+            } catch (error) {
+                dispatch(
+                    setMessage({
+                        type: 'error',
+                        message: {
+                            title: `Error creating ${entity}:`,
+                            description: error.message,
+                        },
+                    })
+                );
+            }
+        },
+        [dispatch, entity, user, onCreationComplete]
+    );
+
+  return { createEntity: createEntityDock, createNoAuthEntity };
 };

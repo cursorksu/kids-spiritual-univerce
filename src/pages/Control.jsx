@@ -15,7 +15,7 @@ import { ShowIcon } from '../assets/ShowIcon.jsx';
 import { HeartIcon } from '../assets/HeartIcon.jsx';
 import { PalletIcon } from '../assets/PalletIcon.jsx';
 import { TopicIcon } from '../assets/TopicIcon.jsx';
-import { GameIcon as NormalGameIcon } from '../assets/GameIcon.jsx';
+import {GameIcon, GameIcon as NormalGameIcon} from '../assets/GameIcon.jsx';
 import { FoodIcon } from '../assets/FoodIcon.jsx';
 import { MemoryIcon } from '../assets/MemoryIcon.jsx';
 import { BookmarkIcon } from '../assets/BookmarkIcon.jsx';
@@ -165,6 +165,15 @@ export const Control = ({ loginWithGoogle, signOut }) => {
                                         Sign in
                                     </MenuItem>
                             )}
+                                <MenuItem
+                                    hidden={!auth?.user?.uid}
+                                    icon={<GameIcon />}
+                                    component={
+                                        <Link to={`/goal`}/>
+                                    }
+                                    className="big">
+                                    Мета
+                                </MenuItem>
                             {auth?.token && (
                                     <MenuItem icon={<GoogleIcon/>} onClick={signOut} className="big">
                                         Sign out
