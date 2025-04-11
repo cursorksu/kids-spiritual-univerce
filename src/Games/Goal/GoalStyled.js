@@ -73,20 +73,58 @@ export const GoalStyled = styled.div`
         text-align: center;
         font-weight: bold;
     }
+    
+    .mobile-buttons {
+        button {
+            flex-basis: 40px;
+            margin: auto 20px;
+            width: 40px;
+            height: 40px;
+        }
+    }
+    
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 460px) {
+        width: 100%;
+        max-width: 100%;
+        padding: 40px 20px;
+        
+        .ant-row {
+            display: block;
+           .ant-col-4,
+           .ant-col-8 {
+               max-width: 100% !important;
+           }
+            .block-slider {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                margin: 20px auto;
+                
+                button {
+                    margin: 20px auto;
+                }
+                
+                
+            }
+        }
+        
         p {
-            font-size: 3rem;
+            font-size: 1.3rem;
             margin: 0 auto 20px !important;
+            white-space: pre-wrap;
+            max-width: 80%;
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 2rem;
             margin: 30px auto 60px !important;
         }
 
         .ant-slider {
-            min-width: 300px !important;
+            min-width: 300px!important;
         }
     }
 `;
