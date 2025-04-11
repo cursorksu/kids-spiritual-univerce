@@ -112,19 +112,24 @@ export const GoalStyled = styled.div`
         }
         
         p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin: 0 auto 20px !important;
             white-space: pre-wrap;
-            max-width: 80%;
+            max-width: 100%;
+            
+            &.start-message {
+                font-size: 1rem;
+            }
         }
 
         h1 {
-            font-size: 2rem;
-            margin: 30px auto 60px !important;
+            font-size: 1.4rem;
+            margin: 18px auto 60px !important;
         }
 
         .ant-slider {
             min-width: 300px!important;
+            margin: 40px 0;
         }
     }
 `;

@@ -91,7 +91,7 @@ export const Goal = () => {
                 step={currentStep}
                 onSave={(val) => createNoAuthEntity({ value: val, step: currentStep })}
             />
-            {user?.uid === "T01wddIaCYa8Wx018PdffLhZTv43" && (
+            {user?.uid && (
                 <>
                     {!votingResults?.length && (
                         <Button onClick={checkResult} style={{ marginBottom: 40 }}>
