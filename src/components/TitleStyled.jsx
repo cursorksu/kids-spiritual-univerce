@@ -13,7 +13,7 @@ export const TitleSmall = styled.h2`
     font-weight: 700;
     white-space: nowrap;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
     column-gap: 20px;
@@ -25,7 +25,15 @@ export const TitleMedium = styled(TitleSmall)`
 export const TitleLarge = styled(TitleSmall)`
     font-size: 36px;
     color: ${VEREM_GOLD};
-    margin: 0 12px;
+    margin: 0 12px 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px dotted ${VEREM_GOLD};
+    
+    .action {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
 
     .description {
         flex-basis: 100%;

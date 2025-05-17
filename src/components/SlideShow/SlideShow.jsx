@@ -75,6 +75,7 @@ export const SlideShow = ({
                             forceUpdate={forceUpdate}
                             entityName={entityName}
                             entity={entity}
+                            size={2.2 / 1}
                         />
                     </BigModal>
                 )}

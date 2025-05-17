@@ -98,8 +98,8 @@ export const InfoBlockStyled = styled.div`
 
 	.lesson-content-wrapper {
 		padding: 0 12px 20px 0;
-		font-size: 16px;
-		height: calc(100vh - 110px);
+		font-size: 18px;
+     
 		overflow: auto;
 		
 		a {
@@ -113,6 +113,7 @@ export const InfoBlockStyled = styled.div`
 		p {
 			content: '';
 			float: none;
+            line-height: 1.6;
 			&:after {
 				content: '';
 				float: none;

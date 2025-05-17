@@ -16,7 +16,7 @@ import { setMessage } from '../../store/notificationReducer';
 import { getFileNameFromUrl } from '../../utils/getFileNameFromUrl';
 import { DeleteConfirmationModal } from '../Modal/DeleteConfirmationModal';
 
-export const MultiImageUploader = ({ forceUpdate, entityName, entity, closeForm }) => {
+export const MultiImageUploader = ({ forceUpdate, entityName, entity, closeForm, size }) => {
     const [ images, setImages ] = useState([]);
     const { editEntity } = useEditEntity(entityName);
     const storage = getStorage();
@@ -210,7 +210,7 @@ export const MultiImageUploader = ({ forceUpdate, entityName, entity, closeForm 
                                     image={image}
                                     crop={crop}
                                     zoom={zoom}
-                                    aspect={2.5 / 1}
+                                    aspect={size}
                                     onCropChange={setCrop}
                                     onZoomChange={setZoom}
                                     onCropComplete={(croppedArea, croppedAreaPixels) =>
@@ -223,7 +223,7 @@ export const MultiImageUploader = ({ forceUpdate, entityName, entity, closeForm 
                             <div className={clsx({ hide: !fileInfo?.name })}>
                                 <h3>{t('fileInfo')}:</h3>
                                 <p>{t('fileName')}: {fileInfo?.name}</p>
-                                <p>Р{t('fileSize')}: {fileInfo?.size}</p>
+                                <p>{t('fileSize')}: {fileInfo?.size}</p>
                             </div>
                             <div className="button-wrapper">
                                 <ButtonStyled onClick={uploadToFirebase}>
@@ -274,4 +274,5 @@ MultiImageUploader.propTypes = {
     entityName: PropTypes.string.isRequired,
     entity: PropTypes.object.isRequired,
     closeForm: PropTypes.func.isRequired,
+    size: PropTypes.number,
 };

@@ -6,5 +6,6 @@
   "changeLesson" : "Change Lesson data",
   "lessonPlan" : "Lesson Plan",
   "lessonGoal" : "Lesson Goal",
-  "lessonMaterials" : "What do you need?"
+  "lessonMaterials" : "What do you need?",
+  "noImageInGallery" : "You have not upload images yet. Do you want to upload them now?"
 }
