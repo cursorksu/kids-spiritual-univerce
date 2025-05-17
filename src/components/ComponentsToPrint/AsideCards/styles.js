@@ -1,11 +1,77 @@
 import styled from '@emotion/styled'
 import {
+	BG_GOLD, CHOCO,
 	CREAM,
 	STATUS_DRAFT,
 	STATUS_PUBLIC,
 	VEREM_GOLD
 } from '../../../constants/colors'
 import { Progress } from 'antd'
+
+export const LessonGalleryStyled = styled.div`
+	&.lesson-gallery-container {
+		position: relative;
+		
+		.no-image {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			margin: 0;
+			color: ${ VEREM_GOLD };
+		}
+		.admin-board {
+			background: ${CHOCO};
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 10px;
+			z-index: 10;
+			border-bottom-left-radius: 20px;
+		}
+		.swiper {
+			height: 290px;
+			background: ${BG_GOLD};
+			border-bottom: 1px solid ${VEREM_GOLD};
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		}
+		.button-prev {
+			margin-right: 10px !important;
+		}
+		.button-next,
+		.button-prev {
+			width: 40px !important;
+			height: 40px !important;
+			svg {
+				width: 22px;
+				height: 22px;
+			}
+		}
+		.swiper-slide,
+		.swiper-slide-active {
+			height: 250px;
+			padding: 20px 15px;
+			
+			.img-wrapper {
+				width: 100%;
+				height: auto;
+				background: ${BG_GOLD};
+				border-radius: 20px;
+				overflow: hidden;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			}
+
+			img {
+				width: 100% !important;
+				max-width: 100% !important;
+				height: 250px;
+				object-fit: cover;
+				
+			}
+		}
+	}
+`;
 
 export const ProgressStyled = styled(Progress)`
 	.ant-progress-text {

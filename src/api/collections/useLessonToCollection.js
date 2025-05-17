@@ -52,6 +52,7 @@ export const useLessonToCollection = () => {
 
   const unbindLessonFromCollection = useCallback(
     async (collectionId, lessonId) => {
+        console.log({collectionId, lessonId})
       if (!collectionId) {
         throw new Error('The collection or the collection ID is not defined.');
       }

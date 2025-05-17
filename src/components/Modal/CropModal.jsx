@@ -12,7 +12,6 @@ export const CropModal = ({
                              modalTitle,
                              onCancel,
                              onConfirm,
-                             icon,
                              children
                          }) => {
     const { t } = useTranslation('tr');
@@ -33,7 +32,7 @@ export const CropModal = ({
                 </Tooltip>
                 <Modal
                         open={isOpen}
-                        title="Title"
+                        title={modalTitle}
                         onOk={onConfirm}
                         onCancel={onCancel}
                         footer={(_, { OkBtn, CancelBtn }) => (
@@ -55,7 +54,6 @@ export const CropModal = ({
                         )}
                 >
                     <div className="modal-header title">
-                        <h2>{modalTitle}</h2>
                         <ButtonIconStyled onClick={handleClose}>
                             <CloseIcon/>
                         </ButtonIconStyled>
@@ -74,6 +72,5 @@ CropModal.propTypes = {
     modalTitle: PropTypes.string.isRequired,
     onCancel: PropTypes.func,
     onConfirm: PropTypes.func,
-    icon: PropTypes.node,
     children: PropTypes.node,
 };

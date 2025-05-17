@@ -16,7 +16,6 @@ export const KsuEditor = ({placeholder, value, onChange}) => {
     }, [value]);
 
     const handleEditorChange = (e) => {
-        console.log({e});
         setEditorContent(e);
         onChange?.(e);
     };

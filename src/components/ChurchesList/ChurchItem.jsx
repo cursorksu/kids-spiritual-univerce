@@ -1,8 +1,9 @@
-import React from 'react';
 import { DeleteConfirmationModal } from '../Modal/DeleteConfirmationModal';
 import { useTranslation } from 'react-i18next';
 import { ChurchItemStyled, ContentStyled } from './styles';
 import { PHOTO_PLACEHOLDER } from '../../constants/main';
+
+import PropTypes from 'prop-types';
 
 export const ChurchItem = ({
     church,
@@ -31,4 +32,18 @@ export const ChurchItem = ({
             />
         </div>)}
     </ChurchItemStyled>);
+};
+
+ChurchItem.propTypes = {
+    church: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string,
+        about: PropTypes.string,
+        logo: PropTypes.string,
+        gallery: PropTypes.arrayOf(PropTypes.string),
+        city: PropTypes.string,
+    }),
+    onClick: PropTypes.func,
+    onDelete: PropTypes.func,
+    isAuthor: PropTypes.bool,
 };

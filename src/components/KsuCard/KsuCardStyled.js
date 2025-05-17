@@ -17,6 +17,11 @@ export const KsuCardStyled = styled('div')`
 		list-style-type: none;
 		padding: 0;
 		margin: 0;
+        
+        p {
+            margin: 5px;
+            padding: 0;
+        }
 	}
 	
 	label {
