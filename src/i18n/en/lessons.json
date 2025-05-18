@@ -1,11 +1,15 @@
 {
-  "status" : "Status",
-  "copyLesson" : "Copy Lesson to change it.",
-  "printLesson" : "Print lesson",
-  "assignToGroup" : "Select Group to assign this lesson",
-  "changeLesson" : "Change Lesson data",
-  "lessonPlan" : "Lesson Plan",
-  "lessonGoal" : "Lesson Goal",
-  "lessonMaterials" : "What do you need?",
-  "noImageInGallery" : "You have not upload images yet. Do you want to upload them now?"
+  "status": "Status",
+  "copyLesson": "Copy Lesson to change it.",
+  "printLesson": "Print lesson",
+  "assignToGroup": "Select Group to assign this lesson",
+  "changeLesson": "Change Lesson data",
+  "lessonPlan": "Lesson Plan",
+  "lessonGoal": "Lesson Goal",
+  "lessonMaterials": "What do you need?",
+  "noImageInGallery": "You have not upload images yet. Do you want to upload them now?",
+  "buttons": {
+    "addTest": "Add test",
+    "addScript": "Check Bible text"
+  }
 }

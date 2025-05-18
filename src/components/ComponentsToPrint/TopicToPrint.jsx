@@ -35,6 +35,7 @@ import PropTypes from 'prop-types';
 import {Popover} from "antd";
 import {useTranslation} from "react-i18next";
 import {LessonGallery} from "./components/LessonGallery.jsx";
+import {LessonMemory} from "../LessonEntity/LessonMemory.jsx";
 
 export const TopicToPrint = ({
                                  onChangeConfirm,
@@ -44,6 +45,7 @@ export const TopicToPrint = ({
     const [isTopicEdit, setIsTopicEdit] = useState(false);
     const [isFullScreen, setIsFullScreen] = useState(false);
     const {t} = useTranslation('tr');
+    const {t: tLesson} = useTranslation('lessons');
     const {
         lessonData: {lesson},
     } = useSelector((state) => state);
@@ -137,7 +139,8 @@ export const TopicToPrint = ({
                                         </ButtonIconStyled>
                                     )}
                             </div>
-                            <img src={lesson?.gallery?.length ? lesson?.gallery[0] : lesson?.imageUrl} alt={lesson?.title}/>
+                            <img src={lesson?.gallery?.length ? lesson?.gallery[0] : lesson?.imageUrl}
+                                 alt={lesson?.title}/>
                         </div>
                         <MediaCard
                             lesson={lesson}
@@ -215,19 +218,7 @@ export const TopicToPrint = ({
                         {activeTab === 3 && <LessonEntity entityName={'subject'} lesson={lesson}/>}
                         {activeTab === 4 && <LessonEntity entityName={'creative'} lesson={lesson}/>}
                         {activeTab === 5 && <LessonEntity entityName={'game'} lesson={lesson}/>}
-                        {activeTab === 6 && <div>
-                            {lesson?.memory?.length > 0 && lesson.memory.map((el) => (
-                                <div key={el.id}>{el.settings.map((el2) => (
-                                    <div key={el2.question}>
-                                        <h3>{el2.question}</h3>
-                                        {el2.answer.map((ans, idx) => (
-                                            <p key={ans.id}><b>{idx}. {' '}</b>{ans.text}</p>
-                                        ))}
-                                        <br/>
-                                    </div>
-                                ))}</div>
-                            ))}
-                        </div>}
+                        {activeTab === 6 && <LessonMemory entityName={'memory'} lesson={lesson}/>}
                         {activeTab === 7 && <LessonEntity entityName={'food'} lesson={lesson}/>}
                         {activeTab === 8 && <LessonEntity entityName={'print'} lesson={lesson}/>}
                     </div>
