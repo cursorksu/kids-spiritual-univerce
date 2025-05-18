@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { CHOCO, ERROR_MAIN, PRIMARY_MAIN, VEREM_GOLD } from '../constants/colors'
+import {BORDER_GRAY, CHOCO, ERROR_MAIN, PRIMARY_MAIN, VEREM_GOLD} from '../constants/colors'
 
 export const FormStyled = styled.div`
   margin: 10px 0;
@@ -72,6 +72,12 @@ export const InputStyled = styled.input`
     outline: 2px solid ${VEREM_GOLD};
     outline-offset: 4px; 
   }
+	
+	&::placeholder {
+		font-size: 16px;
+		font-weight: 300;
+		color: ${BORDER_GRAY};
+	}
 `;
 
 export const TextareaAutosizeStyled = styled.textarea`

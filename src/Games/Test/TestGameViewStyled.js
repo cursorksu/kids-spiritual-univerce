@@ -13,7 +13,6 @@ export const SelectedGamesStyled = styled('div')`
   margin-bottom: 20px;
   border-radius: 20px;
   background: ${ITEM_BG};
-  width: 102%;
   display: flex;
   text-align: left;
   border: none;
@@ -79,8 +78,9 @@ export const TestGameViewStyled = styled('div')`
   }
   .score {
     position: absolute;
-    top: 40px;
+    top: 26px;
     left: 200px;
+    font-size: 40px;
   }
 
   .hints {
@@ -171,7 +171,12 @@ export const TestGameViewStyled = styled('div')`
         font-weight: 700;
         padding-bottom: 60px;
         text-shadow: ${NEON};
-      }
+        cursor: pointer;
+        transition: opacity 0.3s ease-in-out;
+        
+        &:hover {
+          opacity: 0.7;
+        }
       }
       
       img {
@@ -247,7 +252,7 @@ export const TestGameViewStyled = styled('div')`
     font-family: "Comfortaa, sans-serif;
     color: #fff;
     font-size: 38px;
-    margin: 40px 0 100px;
+    margin: 20px 0 40px;
     
     .answer {
       height: auto;
@@ -304,8 +309,8 @@ export const TestGameViewStyled = styled('div')`
   .answer-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 130px 130px 130px 130px;
     grid-gap: 40px;
+    grid-row-gap: 40px;
     padding: 0;
     margin: 0;
     overflow: visible;
@@ -331,7 +336,9 @@ export const TestGameViewStyled = styled('div')`
           background: ${SUCCESS};
         }
       }
-      
+      &::before {
+        content: none !important;
+      }
       &.fact {
         overflow: visible;
         .answer {
@@ -342,22 +349,6 @@ export const TestGameViewStyled = styled('div')`
                   -5px 5px 50px rgba(130, 60, 166, 0.5),
                     5px -5px 50px rgba(0, 255, 255, 0.5),
                   -5px 5px 50px rgba(130, 66, 166, 0.5);
-        }
-        &::before {
-          content: "";
-          position: absolute;
-          top: 110%;
-          left: 50%;
-          width: 91%;
-          height: 1px;
-          transform: translate(-50%, -50%);
-          border-radius: 50px;
-          z-index: -1;
-          box-shadow:
-                    5px -5px 50px 5px rgba(0, 255, 255, 0.5),
-                  -5px 5px 50px 5px rgba(130, 60, 166, 0.5),
-                    5px -5px 50px 5px rgba(0, 255, 255, 0.5),
-                  -5px 5px 50px 5px rgba(130, 66, 166, 0.5);
         }
       }
     }

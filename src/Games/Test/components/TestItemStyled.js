@@ -9,7 +9,7 @@ import {
 
 export const TestWrapperStyled = styled('div')`
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 30% calc(70% - 30px);
   grid-gap: 20px;
 
   .aside-wrapper {
