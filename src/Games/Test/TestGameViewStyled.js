@@ -53,36 +53,6 @@ export const GameSlideStyled = styled('div')`
         font-family: "Comfortaa", sans-serif;
       }
     }
-    
-    .start-slide {
-      display: flex;
-      width: 100%;
-      height: calc(100vh - 200px);
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      
-      h1 {
-        font-family: "Comfortaa", sans-serif;
-        font-size: 8rem;
-        font-weight: 700;
-        padding-bottom: 60px;
-        text-shadow: ${NEON};
-        cursor: pointer;
-        transition: opacity 0.3s ease-in-out;
-        
-        &:hover {
-          opacity: 0.7;
-        }
-      }
-      
-      img {
-        width: 600px !important;
-        height: 60vh !important;
-        object-fit: contain !important;
-      }
-    }
-  
   .question {
     font-family: "Comfortaa, sans-serif;
     color: #fff;
@@ -102,7 +72,6 @@ export const GameSlideStyled = styled('div')`
       }
     }
   }
-  
   .answer  {
     font-family: "Comfortaa", sans-serif;
     background-color: #053b69;
@@ -231,6 +200,35 @@ export const TestGameViewStyled = styled('div')`
     top: 26px;
     left: 200px;
     font-size: 40px;
+  }
+
+  .start-slide {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 200px);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+      font-family: "Comfortaa", sans-serif;
+      font-size: 8rem;
+      font-weight: 700;
+      padding-bottom: 60px;
+      text-shadow: ${NEON};
+      cursor: pointer;
+      transition: opacity 0.3s ease-in-out;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    img {
+      width: 600px !important;
+      height: 60vh !important;
+      object-fit: contain !important;
+    }
   }
 
   .hints {
