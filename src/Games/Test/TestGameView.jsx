@@ -1,4 +1,4 @@
-import {TestGameViewStyled} from './TestGameViewStyled';
+import {GameSlideStyled, TestGameViewStyled} from './TestGameViewStyled';
 import {HighlightButton} from '../../components/HighlightButton';
 import {SwiperSlider} from '../../components/SlideShow/SwiperSlider';
 import clsx from 'clsx';
@@ -84,7 +84,7 @@ export const TestGameView = () => {
             );
         },
     };
-    console.log('render')
+
     const handleStop = async () => {
         await setTimerSound(false);
         await setTimer(45);
@@ -183,7 +183,7 @@ export const TestGameView = () => {
                             modules={[Keyboard, Pagination, Navigation]}>
                             {test?.map((el, idx) => (
                                 <SwiperSlide key={el?.id}>
-                                    <div className="ksu-slide">
+                                    <GameSlideStyled className="ksu-slide">
                                         <HighlightButton content={timer} onClick={handleStop}/>
                                         <div className="question">
                                             <div className="answer">{el.question}</div>
@@ -212,7 +212,7 @@ export const TestGameView = () => {
                                                 </li>
                                             ))}
                                         </ul>
-                                    </div>
+                                    </GameSlideStyled>
                                 </SwiperSlide>
                             ))}
                             <div className="button-next">

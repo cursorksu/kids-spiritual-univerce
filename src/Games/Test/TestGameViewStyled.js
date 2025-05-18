@@ -39,110 +39,7 @@ export const MillionerLink = styled('button')`
     opacity: 0.4;
   }
 `;
-export const TestGameViewStyled = styled('div')`
-  padding: 100px;
-  min-width: calc(100% - 200px);
-  height: 100vh;
-  overflow: hidden;
-  color: ${CREAM};
-  font-family: "Comfortaa", sans-serif;
-  font-size: 3.3rem;
-  font-weight: 600;
-  background-image: url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2F4884837.jpg?alt=media&token=8791a5e4-4444-4b0c-a23e-49a2b05c00dc");
-  background-size: 33%;
-  background-repeat: repeat;
-  
-  &::before,
-  &::after {
-    content: '';
-    width: 80px;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2F4884837.jpg?alt=media&token=8791a5e4-4444-4b0c-a23e-49a2b05c00dc");
-    background-size: 800%;
-    background-repeat: repeat;
-    box-shadow: 0 0 25px 25px #000407;
-    z-index: 100;
-  }
-  
-  &::after {
-    right: 0;
-    background-position: top left;
-  }
-
-  &::before {
-    left: 0;
-    background-position: top right;
-  }
-  .score {
-    position: absolute;
-    top: 26px;
-    left: 200px;
-    font-size: 40px;
-  }
-
-  .hints {
-    position: absolute;
-    top: 10px;
-    right: 220px;
-    height: 80px;
-    overflow: hidden;
-    background-position: center center;
-    background-size: 300px;
-    background-repeat: no-repeat;
-    width: 320px;
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2FLIFELINEs.png?alt=media&token=82eaaf69-d1f1-41b9-8c21-20da50ed15da");
-
-    & > div {
-        width: 94px;
-        height: 58px;
-        border-radius: 50%;
-        position: absolute;
-        top: 12px;
-        z-index: 10;
-      
-      &:hover {
-        box-shadow:
-                  5px -5px 5px  rgba(0, 255, 255, 0.5),
-                -5px 5px 5px rgba(130, 60, 166, 0.5),
-                  5px -5px 5px  rgba(0, 255, 255, 0.5),
-                -5px 5px 5px rgba(130, 66, 166, 0.5);
-      }
-      
-      &.used {
-        &:after,
-        &:before {
-          content: '';
-          width: 8px;
-          height: 80px;
-          border-radius: 4px;
-          background: ${ERROR_MAIN};
-          position: absolute;
-          top: -10px;
-          left: 50%;
-          transform: rotate(60deg);
-        }
-        
-        &:before {
-          transform: rotate(-60deg);
-        }
-      }
-    }
-    
-    & > div:nth-of-type(1) {
-      left: 8px;
-    }
-    & > div:nth-of-type(2) {
-      left: 108px;
-    }
-    & > div:nth-of-type(3) {
-      right: 8px;
-    }
-  }
-  
-  .ksu-slide {
+export const GameSlideStyled = styled('div')`
     padding: 60px;
     & > .mic {
       position: absolute;
@@ -185,68 +82,6 @@ export const TestGameViewStyled = styled('div')`
         object-fit: contain !important;
       }
     }
-    
-  }
-  
-  .swiper {
-    overflow: visible !important;
-    
-    .swiper-button-next,
-    .swiper-button-prev {
-      border-radius: 50%;
-      box-shadow:
-              inset 5px -5px 10px rgba(0, 255, 255, 0.5),
-                inset -5px 5px 10px rgba(130, 60, 166, 0.5),
-              inset 5px -5px 10px rgba(0, 255, 255, 0.5),
-                inset -5px 5px 10px rgba(130, 66, 166, 0.5);
-    }
-    .swiper-button-next,
-    .swiper-button-prev,
-    .button-prev,
-    .button-next {
-      top: -50px !important;
-      text-shadow: ${NEON};
-    }
-    .swiper-button-prev {
-      left: 20px !important;
-    }
-    .button-prev {
-      right: 20px !important;
-    }
-    .swiper-button-next {
-      right: 20px !important;
-    }
-    .button-next {
-      left: 20px !important;
-    }
-    
-    .swiper-pagination.swiper-pagination-clickable {
-      top: -70px;
-      z-index: 800 !important;
-      max-height: 70px;
-    }
-
-    .swiper-pagination-bullet {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 2rem;
-      width: 40px !important;
-      font-weight: 700;
-      height: 40px !important;
-      color:  #1a084e;
-      background: #1a084e;
-      box-shadow:
-              inset 5px -5px 10px rgba(0, 255, 255, 0.5),
-                inset -5px 5px 10px rgba(130, 60, 166, 0.5),
-              inset 5px -5px 10px rgba(0, 255, 255, 0.5),
-                inset -5px 5px 10px rgba(130, 66, 166, 0.5);
-
-      &.swiper-pagination-bullet-active {
-        background: #1a084e;
-      }
-    }
-  }
   
   .question {
     font-family: "Comfortaa, sans-serif;
@@ -350,6 +185,169 @@ export const TestGameViewStyled = styled('div')`
                     5px -5px 50px rgba(0, 255, 255, 0.5),
                   -5px 5px 50px rgba(130, 66, 166, 0.5);
         }
+      }
+    }
+  }
+  `;
+export const TestGameViewStyled = styled('div')`
+  padding: 100px;
+  min-width: calc(100% - 200px);
+  height: 100vh;
+  overflow: hidden;
+  color: ${CREAM};
+  font-family: "Comfortaa", sans-serif;
+  font-size: 3.3rem;
+  font-weight: 600;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2F4884837.jpg?alt=media&token=8791a5e4-4444-4b0c-a23e-49a2b05c00dc");
+  background-size: 33%;
+  background-repeat: repeat;
+  
+  &::before,
+  &::after {
+    content: '';
+    width: 80px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2F4884837.jpg?alt=media&token=8791a5e4-4444-4b0c-a23e-49a2b05c00dc");
+    background-size: 800%;
+    background-repeat: repeat;
+    box-shadow: 0 0 25px 25px #000407;
+    z-index: 100;
+  }
+  
+  &::after {
+    right: 0;
+    background-position: top left;
+  }
+
+  &::before {
+    left: 0;
+    background-position: top right;
+  }
+  .score {
+    position: absolute;
+    top: 26px;
+    left: 200px;
+    font-size: 40px;
+  }
+
+  .hints {
+    position: absolute;
+    top: 10px;
+    right: 220px;
+    height: 80px;
+    overflow: hidden;
+    background-position: center center;
+    background-size: 300px;
+    background-repeat: no-repeat;
+    width: 320px;
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2FLIFELINEs.png?alt=media&token=82eaaf69-d1f1-41b9-8c21-20da50ed15da");
+
+    & > div {
+        width: 94px;
+        height: 58px;
+        border-radius: 50%;
+        position: absolute;
+        top: 12px;
+        z-index: 10;
+      
+      &:hover {
+        box-shadow:
+                  5px -5px 5px  rgba(0, 255, 255, 0.5),
+                -5px 5px 5px rgba(130, 60, 166, 0.5),
+                  5px -5px 5px  rgba(0, 255, 255, 0.5),
+                -5px 5px 5px rgba(130, 66, 166, 0.5);
+      }
+      
+      &.used {
+        &:after,
+        &:before {
+          content: '';
+          width: 8px;
+          height: 80px;
+          border-radius: 4px;
+          background: ${ERROR_MAIN};
+          position: absolute;
+          top: -10px;
+          left: 50%;
+          transform: rotate(60deg);
+        }
+        
+        &:before {
+          transform: rotate(-60deg);
+        }
+      }
+    }
+    
+    & > div:nth-of-type(1) {
+      left: 8px;
+    }
+    & > div:nth-of-type(2) {
+      left: 108px;
+    }
+    & > div:nth-of-type(3) {
+      right: 8px;
+    }
+  }
+  
+  .swiper {
+    overflow: visible !important;
+    
+    .swiper-button-next,
+    .swiper-button-prev {
+      border-radius: 50%;
+      box-shadow:
+              inset 5px -5px 10px rgba(0, 255, 255, 0.5),
+                inset -5px 5px 10px rgba(130, 60, 166, 0.5),
+              inset 5px -5px 10px rgba(0, 255, 255, 0.5),
+                inset -5px 5px 10px rgba(130, 66, 166, 0.5);
+    }
+    .swiper-button-next,
+    .swiper-button-prev,
+    .button-prev,
+    .button-next {
+      top: -50px !important;
+      text-shadow: ${NEON};
+    }
+    .swiper-button-prev {
+      left: 20px !important;
+    }
+    .button-prev {
+      right: 20px !important;
+    }
+    .swiper-button-next {
+      right: 20px !important;
+    }
+    .button-next {
+      left: 20px !important;
+    }
+    
+    .swiper-pagination.swiper-pagination-clickable {
+      top: -70px;
+      z-index: 800 !important;
+      max-height: 70px;
+    }
+
+    .swiper-pagination-bullet {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      width: 40px !important;
+      font-weight: 700;
+      height: 40px !important;
+      color:  #1a084e;
+      background: #1a084e;
+      box-shadow:
+              inset 5px -5px 10px rgba(0, 255, 255, 0.5),
+                inset -5px 5px 10px rgba(130, 60, 166, 0.5),
+              inset 5px -5px 10px rgba(0, 255, 255, 0.5),
+                inset -5px 5px 10px rgba(130, 66, 166, 0.5);
+
+      &.swiper-pagination-bullet-active {
+        background: #1a084e;
       }
     }
   }
