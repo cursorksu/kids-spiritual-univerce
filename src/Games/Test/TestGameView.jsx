@@ -10,6 +10,7 @@ import {useEffect, useRef, useState} from 'react';
 import {GameScoreStyled} from '../BibleText/BibleTextStyled';
 import {useSelector} from 'react-redux';
 import {VeremLayout} from '../../pages/VeremLayout.jsx';
+import {ButtonIconMiniStyled} from "../../components/ButtonStyled.js";
 
 export const TestGameView = () => {
     const isMenuCollapsed = useSelector((store) => store.mainMenuCollapsed);
@@ -41,34 +42,34 @@ export const TestGameView = () => {
     const musicRef = useRef(null);
 
     useEffect(() => {
-      setStartSound(true);
+        setStartSound(true);
     }, [isStarted]);
 
     useEffect(() => {
-      if (timerSound) {
-        intervalRef.current = setInterval(() => {
-          setTimer((prevTimer) => prevTimer - 1);
-        }, 1000);
-      } else {
-        clearInterval(intervalRef.current);
-      }
+        if (timerSound) {
+            intervalRef.current = setInterval(() => {
+                setTimer((prevTimer) => prevTimer - 1);
+            }, 1000);
+        } else {
+            clearInterval(intervalRef.current);
+        }
 
-      return () => {
-        clearInterval(intervalRef.current);
-      };
+        return () => {
+            clearInterval(intervalRef.current);
+        };
     }, [timerSound]);
 
     useEffect(() => {
-      if (timerSound) {
-        timeoutRef.current = setTimeout(() => {
-          setTimerSound(false);
-        }, 45000);
-      }
+        if (timerSound) {
+            timeoutRef.current = setTimeout(() => {
+                setTimerSound(false);
+            }, 45000);
+        }
 
-      return () => {
-        clearTimeout(timeoutRef.current);
-        clearTimeout(musicRef.current);
-      };
+        return () => {
+            clearTimeout(timeoutRef.current);
+            clearTimeout(musicRef.current);
+        };
     }, [timerSound]);
 
     const pagination = {
@@ -94,7 +95,7 @@ export const TestGameView = () => {
         clearInterval(intervalRef.current);
         clearTimeout(timeoutRef.current);
     };
-    const handleSlideChange = ({activeIndex}) => {
+    const handleSlideChange = (activeIndex) => {
         setActiveSlide(activeIndex);
         handleStop().then(() => {
             setTimerSound(true);
@@ -132,6 +133,17 @@ export const TestGameView = () => {
             <TestGameViewStyled>
                 <GameScoreStyled isMenuCollapsed={isMenuCollapsed}>
                     <div className="score">Баллів: {score}</div>
+                    <div className={'pagination'}>
+                        {Array.isArray(test) && test.map((_, idx) => (
+                            <ButtonIconMiniStyled
+                                className={clsx('swiper-pagination-bullet', {focused: activeSlide === idx})}
+                                onClick={() => handleSlideChange(idx)}
+                                key={idx}
+                            >
+                                {idx + 1}
+                            </ButtonIconMiniStyled>
+                        ))}
+                    </div>
                     <div className="hints">
                         <div
                             className={clsx({
@@ -170,96 +182,81 @@ export const TestGameView = () => {
                         </div>
                     )
                     : (
-                        <SwiperSlider
-                            slidesPerView={1}
-                            keyboard={{
-                                enabled: true,
-                            }}
-                            navigation
-                            centeredSlides={true}
-                            grabCursor={true}
-                            onSlideChange={handleSlideChange}
-                            pagination={pagination}
-                            modules={[Keyboard, Pagination, Navigation]}>
+                        <>
                             {test?.map((el, idx) => (
-                                <SwiperSlide key={el?.id}>
-                                    <GameSlideStyled className="ksu-slide">
-                                        <HighlightButton content={timer} onClick={handleStop}/>
-                                        <div className="question">
-                                            <div className="answer">{el.question}</div>
-                                        </div>
-                                        <ul className="answer-group">
-                                            {el.answer?.map((item) => (
-                                                <li
-                                                    key={item.id}
-                                                    onClick={() => handleSelect(item.id, item.isTrue)}
-                                                    role="button"
+                                <GameSlideStyled key={el?.id} className={
+                                    clsx('ksu-slide', {visible: activeSlide === idx})
+                                }>
+                                    <HighlightButton content={timer} onClick={handleStop}/>
+                                    <div className="question">
+                                        <div className="answer">{el.question}</div>
+                                    </div>
+                                    <ul className="answer-group">
+                                        {el.answer?.map((item) => (
+                                            <li
+                                                key={item.id}
+                                                onClick={() => handleSelect(item.id, item.isTrue)}
+                                                role="button"
+                                                className={clsx({
+                                                    fact: isRespond && item.isTrue,
+                                                    selected: isRespond && item.id === selected,
+                                                })}>
+                                                <div
                                                     className={clsx({
-                                                        fact: isRespond && item.isTrue,
-                                                        selected: isRespond && item.id === selected,
+                                                        answer: true,
+                                                        'is-excluded':
+                                                            fiftyFiftySlide === idx &&
+                                                            !!hint.fiftyFifty &&
+                                                            item.isExcluded,
                                                     })}>
-                                                    <div
-                                                        className={clsx({
-                                                            answer: true,
-                                                            'is-excluded':
-                                                                fiftyFiftySlide === idx &&
-                                                                !!hint.fiftyFifty &&
-                                                                item.isExcluded,
-                                                        })}>
-                                                        <HighlightButton content={item.char}/>
-                                                        {item.text}
-                                                    </div>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </GameSlideStyled>
-                                </SwiperSlide>
+                                                    <HighlightButton content={item.char}/>
+                                                    {item.text}
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </GameSlideStyled>
                             ))}
-                            <div className="button-next">
-                                <ArrowLeft/>
-                            </div>
-                            <div className="button-prev">
-                                <ArrowRight/>
-                            </div>
-                        </SwiperSlider>
+                        </>
                     )}
                 {startSound && (
-                  <audio autoPlay={true}>
-                    <source
-                      src="https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/sounds%2FstartSound.mp3?alt=media&token=97c06d46-01c3-4d46-a515-68513c57cc40"
-                      type="audio/mpeg"
-                    />
-                    Your browser does not support the audio element.
-                  </audio>
-                )}
-                {correctSound && (
-                  <audio autoPlay={true}>
-                    <source
-                      src="https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/sounds%2FcorrectSound.mp3?alt=media&token=dd985855-cdb5-40cd-9f1b-18543f5072e2"
-                      type="audio/mpeg"
-                    />
-                    Your browser does not support the audio element.
-                  </audio>
-                )}
-                {errorSound && (
-                  <audio autoPlay={true}>
-                    <source
-                      src="https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/sounds%2FerrorSound.mp3?alt=media&token=31e41692-7cdb-4b12-a489-60ea471f0828"
-                      type="audio/mpeg"
-                    />
-                    Your browser does not support the audio element.
-                  </audio>
-                )}
-                {timerSound && (
-                  <audio autoPlay={true}>
-                    <source
-                      src="https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/sounds%2FtimerSound.mp3?alt=media&token=54973a9f-02c7-4603-9bc7-3e2ab9916d11"
-                      type="audio/mpeg"
-                    />
-                    Your browser does not support the audio element.
-                  </audio>
-                )}
-            </TestGameViewStyled>
-        </VeremLayout>
-    );
+                    <audio autoPlay={true}>
+                <source
+                    src="https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/sounds%2FstartSound.mp3?alt=media&token=97c06d46-01c3-4d46-a515-68513c57cc40"
+                    type="audio/mpeg"
+                />
+                Your browser does not support the audio element.
+            </audio>
+            )}
+            {correctSound && (
+            <audio autoPlay={true}>
+                <source
+                    src="https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/sounds%2FcorrectSound.mp3?alt=media&token=dd985855-cdb5-40cd-9f1b-18543f5072e2"
+                    type="audio/mpeg"
+                />
+                Your browser does not support the audio element.
+            </audio>
+            )}
+            {errorSound && (
+            <audio autoPlay={true}>
+                <source
+                    src="https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/sounds%2FerrorSound.mp3?alt=media&token=31e41692-7cdb-4b12-a489-60ea471f0828"
+                    type="audio/mpeg"
+                />
+                Your browser does not support the audio element.
+            </audio>
+            )}
+            {timerSound && (
+            <audio autoPlay={true}>
+                <source
+                    src="https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/sounds%2FtimerSound.mp3?alt=media&token=54973a9f-02c7-4603-9bc7-3e2ab9916d11"
+                    type="audio/mpeg"
+                />
+                Your browser does not support the audio element.
+            </audio>
+            )}
+        </TestGameViewStyled>
+</VeremLayout>
+)
+    ;
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from "prop-types";
 
 export const HighlightButton = ({ content, onClick }) => (
   <div className="mic" onClick={onClick} role="button">
@@ -7,3 +7,8 @@ export const HighlightButton = ({ content, onClick }) => (
     <div className="mic-shadow"></div>
   </div>
 );
+
+HighlightButton.propTypes = {
+  content: PropTypes.node.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
