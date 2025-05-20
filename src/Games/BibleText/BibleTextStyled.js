@@ -15,23 +15,19 @@ export const BibleTextLink = styled('button')`
 
 export const GameScoreStyled = styled('section')`
   background-color: #053b69;
-  width: ${({ isMenuCollapsed }) =>
-    `calc(100% - ${isMenuCollapsed ? 80 : 250}px)`};
+  width: 100%;
   box-shadow: 0 0 25px 25px #000407;
-  position: absolute;
-  top: 0;
-  left: ${({ isMenuCollapsed }) => (isMenuCollapsed ? 80 : 250 + 'px')};
-  right: 0;
   height: 100px;
-  margin-bottom: 100px;
   color: #fff;
   transition:
     width 0.3s linear,
     left 0.3s linear;
 
   .score {
+      top: 24px;
+      left: 60px;
     text-align: center;
-    font-size: 60px;
+    font-size: 40px;
     font-family: 'Comfortaa', sans-serif;
   }
 

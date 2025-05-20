@@ -40,47 +40,62 @@ export const MillionerLink = styled('button')`
   }
 `;
 export const GameSlideStyled = styled('div')`
-    padding: 60px;
-    & > .mic {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1;
-      font-style: normal;
-      
-      .mic-content {
-        font-family: "Comfortaa", sans-serif;
-      }
-    }
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 140px;
+  margin-left: -100%;
+  padding: 60px;
+  transition: margin-left 0.3s ease-in-out;
+  width: 90%;
+  
+
+  &.visible {
+    margin-left: 0;
+  }
+
+  .mic-content {
+    font-size: 36px;
+  }
+  & > .mic {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    font-style: normal;
+   
+  }
+
   .question {
-    font-family: "Comfortaa, sans-serif;
+    font-family: "Comfortaa", sans-serif;
     color: #fff;
-    font-size: 38px;
+    font-weight: 700;
     margin: 20px 0 40px;
-    
+
     .answer {
       height: auto;
       padding: 80px 30px 30px;
       margin: auto;
+      font-size: 36px;
       position: relative;
       max-width: 90%;
-      
+
       &::after,
       &::before {
         content: none;
       }
     }
   }
-  .answer  {
+
+  .answer {
     font-family: "Comfortaa", sans-serif;
     background-color: #053b69;
     border: 2px solid rgba(0, 255, 255, 0.5);
-    box-shadow:
-            inset 5px -5px 10px rgba(0, 255, 255, 0.5),
-              inset -5px 5px 10px rgba(130, 60, 166, 0.5), 
-            inset 5px -5px 10px rgba(0, 255, 255, 0.5),
-              inset -5px 5px 10px rgba(130, 66, 166, 0.5);
+    box-shadow: inset 5px -5px 10px rgba(0, 255, 255, 0.5),
+    inset -5px 5px 10px rgba(130, 60, 166, 0.5),
+    inset 5px -5px 10px rgba(0, 255, 255, 0.5),
+    inset -5px 5px 10px rgba(130, 66, 166, 0.5);
     width: 90%;
     display: block;
     display: -webkit-box;
@@ -89,7 +104,7 @@ export const GameSlideStyled = styled('div')`
     text-overflow: ellipsis;
     height: auto;
     min-height: 100px;
-    font-size: 36px;
+    font-size: 28px;
     display: flex;
     padding: 10px 20px 10px 100px;
     justify-content: center;
@@ -98,11 +113,11 @@ export const GameSlideStyled = styled('div')`
     text-align: center;
     line-height: 1.5 !important;
     overflow: visible;
-    
+
     &.is-excluded {
-      opacity: 0.3;
+      opacity: 0;
     }
-    
+
     .mic {
       position: absolute;
       top: 50%;
@@ -110,6 +125,7 @@ export const GameSlideStyled = styled('div')`
       transform: translateY(-50%);
     }
   }
+
   .answer-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -118,7 +134,7 @@ export const GameSlideStyled = styled('div')`
     padding: 0;
     margin: 0;
     overflow: visible;
-    
+
     li {
       margin: 0;
       list-style-type: none;
@@ -127,7 +143,7 @@ export const GameSlideStyled = styled('div')`
       display: flex;
       justify-content: center;
       align-items: center;
-      
+
       &.selected:not(.fact) {
         .answer {
           background: ${ERROR_MAIN};
@@ -140,213 +156,168 @@ export const GameSlideStyled = styled('div')`
           background: ${SUCCESS};
         }
       }
+
       &::before {
         content: none !important;
       }
+
       &.fact {
         overflow: visible;
+
         .answer {
           background-color: #fff;
           color: #1a084e;
-          text-shadow:
-                    5px -5px 50px rgba(0, 255, 255, 0.5),
-                  -5px 5px 50px rgba(130, 60, 166, 0.5),
-                    5px -5px 50px rgba(0, 255, 255, 0.5),
-                  -5px 5px 50px rgba(130, 66, 166, 0.5);
+          text-shadow: 5px -5px 50px rgba(0, 255, 255, 0.5),
+          -5px 5px 50px rgba(130, 60, 166, 0.5),
+          5px -5px 50px rgba(0, 255, 255, 0.5),
+          -5px 5px 50px rgba(130, 66, 166, 0.5);
         }
       }
     }
   }
-  `;
+`;
 export const TestGameViewStyled = styled('div')`
-  padding: 100px;
-  min-width: calc(100% - 200px);
-  height: 100vh;
-  overflow: hidden;
-  color: ${CREAM};
-  font-family: "Comfortaa", sans-serif;
-  font-size: 3.3rem;
-  font-weight: 600;
-  background-image: url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2F4884837.jpg?alt=media&token=8791a5e4-4444-4b0c-a23e-49a2b05c00dc");
-  background-size: 33%;
-  background-repeat: repeat;
-  
-  &::before,
-  &::after {
-    content: '';
-    width: 80px;
     height: 100vh;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2F4884837.jpg?alt=media&token=8791a5e4-4444-4b0c-a23e-49a2b05c00dc");
-    background-size: 800%;
+    overflow: hidden;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 600;
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2FChatGPT%20Image%20May%2021%2C%202025%2C%2012_09_11%20AM.png?alt=media&token=7b7f3d59-68b0-4b05-a388-635b4536159d");
+    background-size: 100%;
+    color: ${CREAM};
     background-repeat: repeat;
-    box-shadow: 0 0 25px 25px #000407;
-    z-index: 100;
-  }
-  
-  &::after {
-    right: 0;
-    background-position: top left;
-  }
+    position: relative;
 
-  &::before {
-    left: 0;
-    background-position: top right;
-  }
-  .score {
+  .pagination {
+    top: 30px;
+    z-index: 800 !important;
+    max-height: 70px;
+    width: auto;
     position: absolute;
-    top: 26px;
-    left: 200px;
-    font-size: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    
+    button {
+      opacity: 0.8;
+    }
   }
 
-  .start-slide {
-    display: flex;
-    width: 100%;
-    height: calc(100vh - 200px);
+    .score {
+        position: absolute;
+    }
+
+    .start-slide {
+        display: flex;
+        width: 100%;
+        height: calc(100vh - 50px);
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        h1 {
+            font-family: "Comfortaa", sans-serif;
+            font-size: 60px;
+            font-weight: 700;
+            padding-bottom: 60px;
+            text-shadow: ${NEON};
+            cursor: pointer;
+            transition: opacity 0.3s ease-in-out;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+
+        img {
+            width: 600px !important;
+            height: 60vh !important;
+            object-fit: contain !important;
+        }
+    }
+
+    .hints {
+        position: absolute;
+        top: 10px;
+        right: 60px;
+        height: 80px;
+        overflow: hidden;
+        background-position: center center;
+        background-size: 300px;
+        background-repeat: no-repeat;
+        width: 320px;
+        background-image: url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2FLIFELINEs.png?alt=media&token=82eaaf69-d1f1-41b9-8c21-20da50ed15da");
+
+        & > div {
+            width: 94px;
+            height: 58px;
+            border-radius: 50%;
+            position: absolute;
+            top: 12px;
+            z-index: 10;
+
+            &:hover {
+                box-shadow: 5px -5px 5px rgba(0, 255, 255, 0.5),
+                -5px 5px 5px rgba(130, 60, 166, 0.5),
+                5px -5px 5px rgba(0, 255, 255, 0.5),
+                -5px 5px 5px rgba(130, 66, 166, 0.5);
+            }
+
+            &.used {
+                &:after,
+                &:before {
+                    content: '';
+                    width: 8px;
+                    height: 80px;
+                    border-radius: 4px;
+                    background: ${ERROR_MAIN};
+                    position: absolute;
+                    top: -10px;
+                    left: 50%;
+                    transform: rotate(60deg);
+                }
+
+                &:before {
+                    transform: rotate(-60deg);
+                }
+            }
+        }
+
+        & > div:nth-of-type(1) {
+            left: 8px;
+        }
+
+        & > div:nth-of-type(2) {
+            left: 108px;
+        }
+
+        & > div:nth-of-type(3) {
+            right: 8px;
+        }
+    }
+
+  .swiper-pagination-bullet {
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    font-size: 20px;
+    width: 40px !important;
+    font-weight: 700;
+    height: 40px !important;
+    color: ${CREAM};
+    background: #1a084e;
+    box-shadow: inset 5px -5px 10px rgba(0, 255, 255, 0.5),
+    inset -5px 5px 10px rgba(130, 60, 166, 0.5),
+    inset 5px -5px 10px rgba(0, 255, 255, 0.5),
+    inset -5px 5px 10px rgba(130, 66, 166, 0.5);
 
-    h1 {
-      font-family: "Comfortaa", sans-serif;
-      font-size: 8rem;
-      font-weight: 700;
-      padding-bottom: 60px;
-      text-shadow: ${NEON};
-      cursor: pointer;
-      transition: opacity 0.3s ease-in-out;
-
-      &:hover {
-        opacity: 0.7;
-      }
+    &.focused {
+      outline: 2px solid ${CREAM};
+      outline-offset: 4px;
     }
-
-    img {
-      width: 600px !important;
-      height: 60vh !important;
-      object-fit: contain !important;
-    }
-  }
-
-  .hints {
-    position: absolute;
-    top: 10px;
-    right: 220px;
-    height: 80px;
-    overflow: hidden;
-    background-position: center center;
-    background-size: 300px;
-    background-repeat: no-repeat;
-    width: 320px;
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/lessons-ksu.appspot.com/o/static%2FLIFELINEs.png?alt=media&token=82eaaf69-d1f1-41b9-8c21-20da50ed15da");
-
-    & > div {
-        width: 94px;
-        height: 58px;
-        border-radius: 50%;
-        position: absolute;
-        top: 12px;
-        z-index: 10;
-      
-      &:hover {
-        box-shadow:
-                  5px -5px 5px  rgba(0, 255, 255, 0.5),
-                -5px 5px 5px rgba(130, 60, 166, 0.5),
-                  5px -5px 5px  rgba(0, 255, 255, 0.5),
-                -5px 5px 5px rgba(130, 66, 166, 0.5);
-      }
-      
-      &.used {
-        &:after,
-        &:before {
-          content: '';
-          width: 8px;
-          height: 80px;
-          border-radius: 4px;
-          background: ${ERROR_MAIN};
-          position: absolute;
-          top: -10px;
-          left: 50%;
-          transform: rotate(60deg);
-        }
-        
-        &:before {
-          transform: rotate(-60deg);
-        }
-      }
-    }
-    
-    & > div:nth-of-type(1) {
-      left: 8px;
-    }
-    & > div:nth-of-type(2) {
-      left: 108px;
-    }
-    & > div:nth-of-type(3) {
-      right: 8px;
-    }
-  }
-  
-  .swiper {
-    overflow: visible !important;
-    
-    .swiper-button-next,
-    .swiper-button-prev {
-      border-radius: 50%;
-      box-shadow:
-              inset 5px -5px 10px rgba(0, 255, 255, 0.5),
-                inset -5px 5px 10px rgba(130, 60, 166, 0.5),
-              inset 5px -5px 10px rgba(0, 255, 255, 0.5),
-                inset -5px 5px 10px rgba(130, 66, 166, 0.5);
-    }
-    .swiper-button-next,
-    .swiper-button-prev,
-    .button-prev,
-    .button-next {
-      top: -50px !important;
-      text-shadow: ${NEON};
-    }
-    .swiper-button-prev {
-      left: 20px !important;
-    }
-    .button-prev {
-      right: 20px !important;
-    }
-    .swiper-button-next {
-      right: 20px !important;
-    }
-    .button-next {
-      left: 20px !important;
-    }
-    
-    .swiper-pagination.swiper-pagination-clickable {
-      top: -70px;
-      z-index: 800 !important;
-      max-height: 70px;
-    }
-
-    .swiper-pagination-bullet {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 2rem;
-      width: 40px !important;
-      font-weight: 700;
-      height: 40px !important;
-      color:  #1a084e;
-      background: #1a084e;
-      box-shadow:
-              inset 5px -5px 10px rgba(0, 255, 255, 0.5),
-                inset -5px 5px 10px rgba(130, 60, 166, 0.5),
-              inset 5px -5px 10px rgba(0, 255, 255, 0.5),
-                inset -5px 5px 10px rgba(130, 66, 166, 0.5);
-
-      &.swiper-pagination-bullet-active {
-        background: #1a084e;
-      }
+    &:focus,
+    &:active {
+      outline: 2px solid ${CREAM};
     }
   }
 `;
