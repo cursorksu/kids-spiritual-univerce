@@ -6,9 +6,9 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  build:
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
       # Step 1: Checkout code
       - name: Checkout code
@@ -30,12 +30,40 @@ jobs:
           CI: false
         run: npm run build
 
-      # Step 5: Install Firebase CLI
-      - name: Install Firebase CLI
-        run: npm install -g firebase-tools
+      # Step 5: Upload build artifact
+      - name: Upload Production Artifact
+        uses: actions/upload-artifact@v4  # Обновлено!
+        with:
+          name: dist
+          path: dist
 
-      # Step 6: Deploy to Firebase Hosting
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Укажите используемую версию Node.js
+
+      # Step 3: Install Firebase CLI
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools  # Устанавливаем Firebase CLI глобально
+
+      # Step 4: Download artifact
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist  # Указываем имя артефакта, который был загружен ранее (папка с билдом)
+
+      # Step 5: Deploy to Firebase Hosting
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting
+        run: firebase deploy --only hosting  # Выполняем команду деплоя
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}  # Используем секретный токен для авторизации
