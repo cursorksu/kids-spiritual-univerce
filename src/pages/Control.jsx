@@ -165,15 +165,6 @@ export const Control = ({ loginWithGoogle, signOut }) => {
                                         Sign in
                                     </MenuItem>
                             )}
-                                <MenuItem
-                                    hidden={!auth?.user?.uid}
-                                    icon={<GameIcon />}
-                                    component={
-                                        <Link to={`/goal`}/>
-                                    }
-                                    className="big">
-                                    Мета
-                                </MenuItem>
                             {auth?.token && (
                                     <MenuItem icon={<GoogleIcon/>} onClick={signOut} className="big">
                                         Sign out

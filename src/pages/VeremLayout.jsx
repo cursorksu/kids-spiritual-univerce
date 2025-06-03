@@ -17,9 +17,12 @@ import {
 } from 'firebase/auth';
 import { TestEnvMessage } from '../components/Messages/TestEnvMessage';
 import PropTypes from 'prop-types';
+import useIsMobile from "../hooks/useIsMobile.js";
+import {ControlMobile} from "./ControlMoblle.jsx";
 
 export const VeremLayout = ({ children }) => {
     const dispatch = useDispatch();
+    const isMobile = useIsMobile();
     const mainMenuCollapsed = useSelector(
             ({ mainMenuCollapsed }) => mainMenuCollapsed,
     );
@@ -52,8 +55,9 @@ export const VeremLayout = ({ children }) => {
     ]);
 
     return (
-            <VeremMainContentStyled collapsed={mainMenuCollapsed}>
-                <Control loginWithGoogle={loginWithGoogle} signOut={signOut}/>
+            <VeremMainContentStyled collapsed={mainMenuCollapsed} isMobile={isMobile}>
+                {isMobile && <ControlMobile loginWithGoogle={loginWithGoogle} signOut={signOut}/>}
+                {!isMobile && <Control loginWithGoogle={loginWithGoogle} signOut={signOut}/>}
                 <div className="main-content">
                     <TestEnvMessage/>
                     {children}
