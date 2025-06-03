@@ -50,6 +50,7 @@ export const InfoBlockStyled = styled.div`
 		padding: 0 12px 0 20px;
 		margin-bottom: 20px;
 		background: #fff;
+        height: 50px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;

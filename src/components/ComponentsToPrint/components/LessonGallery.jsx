@@ -42,7 +42,7 @@ export const LessonGallery = ({
                     <p className={'no-image'}>{tLesson('noImageInGallery')}</p>
                 )}
                 {lesson?.gallery?.map((el) => (
-                    <SwiperSlide key={el?.id}>
+                    <SwiperSlide key={el?.id || el}>
                         <div className="img-wrapper">
                             <img src={el} alt={el}/>
                         </div>

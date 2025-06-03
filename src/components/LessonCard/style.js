@@ -66,6 +66,13 @@ export const LessonCardStyled = styled(Card)`
         padding: 15px;
         background: dimgrey;
 
+        div {
+            flex-basis: calc(100% - 40px);
+        }
+        button {
+            flex-basis: 40px;
+        }
+
         p {
             font-size: 0.7em;
             color: #fff;
