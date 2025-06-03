@@ -2,6 +2,7 @@ import { TopicStyled } from './style';
 import { clsx } from 'clsx';
 
 import PropTypes from 'prop-types';
+import log from "eslint-plugin-react/lib/util/log.js";
 
 export const DisplayEntity = ({ entity }) => {
   const mappedData = Array.isArray(entity) ? entity : (entity?.list ?? []);
@@ -87,14 +88,17 @@ export const DisplayEntity = ({ entity }) => {
         }
 
         if (el.type === 'media') {
-          return (
+            const videoSrc = el.value.includes('/shorts/')
+                ? el.value.replace('/shorts/', '/embed/').split('?')[0] : el.value;
+
+            return (
             <div key={el?.id} className="sect sect-bg">
               <div className="sect-header sect-title">{el.text}</div>
               <div className="sect-content video-box">
                 <iframe
                   width="100%"
                   height="400"
-                  src={el.value}
+                  src={videoSrc}
                   title="YouTube video player"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen

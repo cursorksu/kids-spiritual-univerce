@@ -9,7 +9,7 @@ export const TitleSmall = styled.h2`
     padding: 0;
     font-family: Comfortaa, sans-serif;
     font-size: 22px;
-    line-height: 2;
+    line-height: 1.2;
     font-weight: 700;
     white-space: nowrap;
     display: flex;
@@ -28,6 +28,10 @@ export const TitleLarge = styled(TitleSmall)`
     margin: 0 12px 20px;
     padding-bottom: 20px;
     border-bottom: 2px dotted ${VEREM_GOLD};
+    
+    & * {
+        white-space: pre-wrap;
+    }
     
     .action {
         display: flex;
