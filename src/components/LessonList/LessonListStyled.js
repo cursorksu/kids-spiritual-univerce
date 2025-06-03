@@ -54,5 +54,11 @@ export const LessonListStyled = styled('div')`
     .quote {
         color: ${DARK_GRAY};
     }
+
+  @media screen and (max-width: 768px) {
+    .lessons-grid {
+      grid-template-columns: 1fr; /* 1 колонка на мобильных устройствах */
+    }
+  }
 }
 `;

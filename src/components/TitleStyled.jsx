@@ -11,7 +11,6 @@ export const TitleSmall = styled.h2`
     font-size: 22px;
     line-height: 1.2;
     font-weight: 700;
-    white-space: nowrap;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
@@ -49,5 +48,10 @@ export const TitleLarge = styled(TitleSmall)`
         max-width: 80%;
         line-height: 1.5;
         text-align: left;
+    }
+
+
+    @media screen and (max-width: 768px) {
+        font-size: 24px;
     }
 `;
