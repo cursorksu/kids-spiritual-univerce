@@ -31,7 +31,7 @@ export const KsuCardStyled = styled('div')`
 	}
 	&.admin-panel {
 		background: ${CHOCO};
-		padding: 10px 20px 10px !important;
+		padding: 16px 10px 10px !important;
 		color: white;
 		text-align: center;
 		overflow: visible;

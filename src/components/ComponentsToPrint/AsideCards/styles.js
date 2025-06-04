@@ -71,6 +71,33 @@ export const LessonGalleryStyled = styled.div`
 			}
 		}
 	}
+
+	@media screen and (max-width: 768px) {
+		&.lesson-gallery-container {
+			.swiper {
+				height: 270px;
+			}
+			.button-next,
+			.button-prev {
+				display: none !important;
+			}
+            .swiper-slide,
+            .swiper-slide-active {
+                height: 260px;
+                padding: 5px;
+
+                .img-wrapper {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 4px;
+                    box-shadow: none;
+                }
+                img {
+                    height: 260px;
+                }
+            }
+        }
+	}
 `;
 
 export const ProgressStyled = styled(Progress)`
@@ -84,9 +111,9 @@ export const ProgressStyled = styled(Progress)`
 export const MediaButtonWrapperStyled = styled.div`
 	display: grid !important;
 	width: 100%;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-gap: 20px;
-	padding-bottom: 40px;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 2px;
+	padding-top: 10px;
 `
 export const MediaButtonStyled = styled.button`
 	padding: 0;

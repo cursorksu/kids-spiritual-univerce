@@ -5,17 +5,11 @@ import {
 } from 'react';
 import {
     ButtonIconMiniStyled,
-    ButtonIconStyled, ButtonStyled,
 } from '../ButtonStyled';
 import {EditIcon} from '../../assets/EditIcon.jsx';
 import {SaveIcon} from '../../assets/SaveIcon.jsx';
-import {ScreenIcon} from '../../assets/ScreenIcon.jsx';
-import {FullScreenIcon} from '../../assets/FullScreenIcon.jsx';
 import {useSelector} from 'react-redux';
-import {
-    Controller,
-    useForm,
-} from 'react-hook-form';
+import {Controller, useForm} from 'react-hook-form';
 import KsuEditor from '../KsuEditor';
 import {useEditEntity} from '../../api/entity/useEditEntity';
 import {HTMLRenderer} from '../HTMLRender/HTMLRender';
@@ -30,7 +24,6 @@ import {MediaCard} from './AsideCards/MediaCard';
 import {LessonEntity} from '../LessonEntity/LessonEntity';
 import {LessonVideo} from '../LessonEntity/LessonVideo';
 import {CloseIcon} from '../../assets/CloseIcon.jsx';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {Popover} from "antd";
 import {useTranslation} from "react-i18next";
@@ -43,9 +36,7 @@ export const TopicToPrint = ({
     const {editEntity} = useEditEntity('lessons');
     const [activeTab, setActiveTab] = useState(0);
     const [isTopicEdit, setIsTopicEdit] = useState(false);
-    const [isFullScreen, setIsFullScreen] = useState(false);
     const {t} = useTranslation('tr');
-    const {t: tLesson} = useTranslation('lessons');
     const {
         lessonData: {lesson},
     } = useSelector((state) => state);
@@ -71,7 +62,7 @@ export const TopicToPrint = ({
             setValue('material', lesson?.material);
             setValue('topic', lesson?.topic);
         }
-    }, [lesson]);
+    }, [lesson, setValue]);
 
     const {user} = useSelector((state) => state.auth);
 
@@ -122,37 +113,17 @@ export const TopicToPrint = ({
                     className="print-block ksu-wrapper"
                     ref={componentRef}>
                     <aside className="aside-wrapper print-fluid">
-                        <div
-                            className={clsx('image-wrapper', {
-                                'full-screen': isFullScreen,
-                            })}>
-                            <div className="print-hide">
-                                {!isFullScreen
-                                    ? (
-                                        <ButtonIconStyled onClick={() => setIsFullScreen(true)}>
-                                            <FullScreenIcon/>
-                                        </ButtonIconStyled>
-                                    )
-                                    : (
-                                        <ButtonIconStyled onClick={() => setIsFullScreen(false)}>
-                                            <ScreenIcon/>
-                                        </ButtonIconStyled>
-                                    )}
-                            </div>
-                            <img src={lesson?.gallery?.length ? lesson?.gallery[0] : lesson?.imageUrl}
-                                 alt={lesson?.title}/>
-                        </div>
                         <MediaCard
                             lesson={lesson}
                             setActiveTab={setActiveTab}
                             activeTab={activeTab}
                         />
-                        <LessonGoal
+                        <StaffList
                             lesson={lesson}
-                            onEdit={editLessonHandler}
+                            onConfirm={onChangeConfirm}
                         />
                     </aside>
-                    <div>
+                    <div className="content-wrapper print-fluid">
                         <TitleLarge>
                             <div>
                                 {lesson?.title}
@@ -228,14 +199,15 @@ export const TopicToPrint = ({
                             lesson={lesson}
                             onPrint={handlePrint}
                         />
+                        <LessonGoal
+                            lesson={lesson}
+                            onEdit={editLessonHandler}
+                        />
                         <BibleText
                             lesson={lesson}
                             onConfirm={onChangeConfirm}
                         />
-                        <StaffList
-                            lesson={lesson}
-                            onConfirm={onChangeConfirm}
-                        />
+
                     </aside>
                 </section>
             </InfoBlockStyled>

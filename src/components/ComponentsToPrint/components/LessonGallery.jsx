@@ -13,19 +13,21 @@ import {ArrowRightIcon as ArrowRight} from "../../../assets/ArrowRightIcon.jsx";
 import {LessonGalleryStyled} from "../AsideCards/styles.js";
 import {Keyboard, Navigation, Pagination} from "swiper/modules";
 import {FullScreenIcon} from "../../../assets/FullScreenIcon.jsx";
+import useIsMobile from "../../../hooks/useIsMobile.js";
 
 export const LessonGallery = ({
                                   isAuthor,
                                   lesson,
                               }) => {
     const [isGalleryEditOpen, setIsGalleryEditOpen] = useState(false);
+    const isMobile = useIsMobile();
     const {t} = useTranslation('tr');
     const {t: tLesson} = useTranslation('lessons');
 
     return (
         <LessonGalleryStyled className="print-hide lesson-gallery-container">
             <SwiperSlider
-                slidesPerView={3}
+                slidesPerView={isMobile ? 1 : 3}
                 keyboard={{enabled: true}}
                 loop
                 navigation={true}

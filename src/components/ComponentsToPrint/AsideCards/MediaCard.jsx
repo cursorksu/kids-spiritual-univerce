@@ -16,7 +16,6 @@ import { useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { KsuProgress } from '../../KsuProgress/KsuProgress.jsx';
 
 export const MediaCard = ({ setActiveTab, activeTab, lesson }) => {
     const { user } = useSelector((state) => state.auth);
@@ -27,11 +26,8 @@ export const MediaCard = ({ setActiveTab, activeTab, lesson }) => {
         if (condition) return !!condition;
     };
     return (
-            <KsuCard className={'admin-panel print-hide'}>
-                <div>
-                    <TitleSmall>{t('lessonPlan')}:</TitleSmall>
-                </div>
-
+            <KsuCard className={'admin-panel print-hide'} title={''}>
+                <TitleSmall>{t('lessonPlan')}:</TitleSmall>
                 <MediaButtonWrapperStyled>
                     {btnShouldDisplay(lesson?.topic) && (
                             <MediaButton
@@ -83,7 +79,7 @@ export const MediaCard = ({ setActiveTab, activeTab, lesson }) => {
                     )}
                     {btnShouldDisplay(lesson?.memory?.length > 0) && (
                             <MediaButton
-                                    className={clsx({ active: activeTab === 6, exist: lesson?.memory?.memory })}
+                                    className={clsx({ active: activeTab === 6, exist: lesson?.memory?.length })}
                                     title={'lessonTabs.memory'}
                                     icon={<MemoryIcon/>}
                                     onClick={() => setActiveTab(6)}
@@ -97,13 +93,6 @@ export const MediaCard = ({ setActiveTab, activeTab, lesson }) => {
                                     onClick={() => setActiveTab(7)}
                             />
                     )}
-
-                    <MediaButton
-                            className={clsx('exist', { active: activeTab === 8 })}
-                            title={'lessonTabs.print'}
-                            icon={<PrintIcon/>}
-                            onClick={() => setActiveTab(8)}
-                    />
                 </MediaButtonWrapperStyled>
             </KsuCard>
     );

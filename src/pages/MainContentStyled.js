@@ -232,20 +232,12 @@ export const ControlMobileStyled = styled('div')`
 		.ant-menu .ant-menu-submenu-selected > .ant-menu-submenu-title
         .ant-menu-title-content,
         .ant-menu-item {
+			font-size: 18px;
             background: transparent !important;
             color: ${CHOCO} !important;
-            font-weight: 600;
             margin: 0;
             box-shadow: none;
             border-radius: 0;
-			
-			&.ant-menu-item-active {
-				color: ${VEREM_GOLD} !important;
-
-				.ant-menu-title-content {
-					color: ${VEREM_GOLD} !important;
-				}
-			}
         }
 
 		.ant-menu-submenu-title {
@@ -262,12 +254,19 @@ export const ControlMobileStyled = styled('div')`
 			background: ${BG_GOLD} !important;
 			outline: none;
 		}
-
+		.ant-menu-submenu-title {
+			.ant-menu-title-content {
+				color: ${VEREM_GOLD} !important;
+				font-size: 18px !important;
+			}
+		}
         .ant-menu-item-active {
             color: ${VEREM_GOLD} !important;
+			font-size: 18px !important;
 
             .ant-menu-title-content {
                 color: ${VEREM_GOLD} !important;
+				font-size: 18px !important;
             }
         }
 
@@ -331,7 +330,8 @@ export const VeremMainContentStyled = styled('div')`
 	}
 
 	.main-content {
-		width: 100%;
+		width: ${({collapsed, isMobile}) =>
+			(isMobile ? '100%' : (collapsed ? 'calc(100% - 80px)' : 'calc(100% - 250px)'))};
 		margin-left: ${({collapsed, isMobile}) =>
 			(isMobile ? 0 : (collapsed ? '80px' : '250px'))};
 		transition: margin-left 0.2s ease-in-out;

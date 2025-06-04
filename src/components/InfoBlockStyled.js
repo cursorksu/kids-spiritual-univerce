@@ -98,7 +98,7 @@ export const InfoBlockStyled = styled.div`
 	}
 
 	.lesson-content-wrapper {
-		padding: 0 12px 20px 0;
+		padding: 10px 12px 20px 0;
 		font-size: 18px;
      
 		overflow: auto;
@@ -147,4 +147,22 @@ export const InfoBlockStyled = styled.div`
 			gap: 10px;
 		}
 	}
+
+
+    @media screen and (max-width: 768px) {
+        .ksu-wrapper {
+            padding: 12px;
+            grid-gap: 12px;
+            grid-template-columns: 1fr;
+            .aside-wrapper:nth-last-of-type(2) {
+                order: 1;
+            }
+            .content-wrapper {
+                order: 3;
+            }
+            .aside-wrapper:nth-last-of-type(2) {
+                order: 2;
+            }
+        }
+    }
 `;
