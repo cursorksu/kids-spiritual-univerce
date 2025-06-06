@@ -80,6 +80,21 @@ export const KsuCardStyled = styled('div')`
 			overflow: hidden;
 			width: 100%;
 		}
+
+        &.mobile{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 10px 5px !important;
+            border-radius: 0;
+            min-height: initial;
+            
+            h2 {
+                display: none;
+            }
+        }
 	}
 	
 	.action-buttons {

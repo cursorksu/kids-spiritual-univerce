@@ -30,12 +30,12 @@ const resources = {
 };
 
 const userLanguage = navigator.language || navigator.userLanguage || 'ua';
-
+console.log({userLanguage});
 i18n
 .use(initReactI18next)
 .init({
 	resources,
-	lng: userLanguage.split('-')[0],
+	lng: userLanguage.split('-')[0] || 'ua',
 	fallbackLng: ['ru', 'en', 'ua'],
 	interpolation: {
 		escapeValue: false,

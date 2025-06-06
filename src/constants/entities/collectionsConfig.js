@@ -18,7 +18,7 @@ export const collectionConfig = [
     inputType: 'textInput',
     name: 'description',
     label: 'Collection description',
-    placeholder: `Enter description of Collection}`,
+    placeholder: `Enter description of Collection`,
   },
   {
     inputType: 'textInput',

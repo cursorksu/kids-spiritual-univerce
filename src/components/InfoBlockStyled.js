@@ -121,8 +121,6 @@ export const InfoBlockStyled = styled.div`
 			}
 		}
 		img {
-			width: 120px;
-			height: 120px;
 			object-fit: contain;
 			float: left;
 			padding-right: 20px;
@@ -147,13 +145,16 @@ export const InfoBlockStyled = styled.div`
 			gap: 10px;
 		}
 	}
-
+    .title-wrapper {
+        margin-top: 12px !important;
+    }
 
     @media screen and (max-width: 768px) {
         .ksu-wrapper {
-            padding: 12px;
+            padding: 12px 12px 160px 12px;
             grid-gap: 12px;
             grid-template-columns: 1fr;
+            
             .aside-wrapper:nth-last-of-type(2) {
                 order: 1;
             }
