@@ -29,6 +29,7 @@ import {Popover} from "antd";
 import {useTranslation} from "react-i18next";
 import {LessonGallery} from "./components/LessonGallery.jsx";
 import {LessonMemory} from "../LessonEntity/LessonMemory.jsx";
+import useIsMobile from "../../hooks/useIsMobile.js";
 
 export const TopicToPrint = ({
                                  onChangeConfirm,
@@ -37,6 +38,7 @@ export const TopicToPrint = ({
     const [activeTab, setActiveTab] = useState(0);
     const [isTopicEdit, setIsTopicEdit] = useState(false);
     const {t} = useTranslation('tr');
+    const isMobile = useIsMobile();
     const {
         lessonData: {lesson},
     } = useSelector((state) => state);
@@ -194,11 +196,14 @@ export const TopicToPrint = ({
                         {activeTab === 8 && <LessonEntity entityName={'print'} lesson={lesson}/>}
                     </div>
                     <aside className="aside-wrapper print-fluid">
-                        <AdminPanel
-                            onEdit={onChangeConfirm}
-                            lesson={lesson}
-                            onPrint={handlePrint}
-                        />
+                        {isAuthor && !isMobile && (
+                            <AdminPanel
+                                onEdit={onChangeConfirm}
+                                lesson={lesson}
+                                onPrint={handlePrint}
+                            />
+                        )}
+
                         <LessonGoal
                             lesson={lesson}
                             onEdit={editLessonHandler}

@@ -19,12 +19,13 @@ import { EmailIcon } from '../../assets/EmailIcon.jsx';
 import { Tooltip } from 'antd';
 import { TelegramIcon } from '../../assets/TelegramIcon.jsx';
 import { CommentIcon as WatsUpIcon } from '../../assets/CommentIcon.jsx';
+import useIsMobile from "../../hooks/useIsMobile.js";
 
 export const Footer = () => {
     const [amount, setAmount] = useState(500);
     const [isDonation, setIsDonation] = useState(true);
-
-    return (
+    const isMobile = useIsMobile();
+    return (!isMobile &&
             <FooterStyles className="print-hide">
                 <div />
                 <div />

@@ -110,10 +110,16 @@ export const ProgressStyled = styled(Progress)`
 
 export const MediaButtonWrapperStyled = styled.div`
 	display: grid !important;
+	place-items: center;
 	width: 100%;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-gap: 2px;
 	padding-top: 10px;
+
+	@media screen and (max-width: 768px) {
+		padding-top: 0;
+		grid-template-columns: repeat(6, 1fr);
+	}
 `
 export const MediaButtonStyled = styled.button`
 	padding: 0;
@@ -121,7 +127,7 @@ export const MediaButtonStyled = styled.button`
 	width: 60px;
 	height: 60px;
 	background: linear-gradient(to bottom, ${ CREAM }, ${ STATUS_DRAFT });
-	border-radius: 20px !important;
+	border-radius: 16px !important;
 	border: none !important;
 	color: white;
 	font-size: 16px;
@@ -161,5 +167,15 @@ export const MediaButtonStyled = styled.button`
 		box-shadow: rgba(0, 0, 0, 0.6) 2px 2px 4px, inset rgba(0, 0, 0, .3) -3px -3px 3px 3px,
 		inset rgba(255, 255, 255, .5) 3px 3px 3px 3px,
 		1px 1px 1px rgba(255, 255, 255, .1);
+	}
+
+	@media screen and (max-width: 768px) {
+		width: 54px;
+		height: 54px;
+
+		svg {
+			width: 30px;
+			height: 30px;
+		}
 	}
 `

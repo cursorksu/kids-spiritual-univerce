@@ -1,21 +1,32 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { fireStore } from '../index';
 import { doc, getDoc, Timestamp, updateDoc } from 'firebase/firestore';
 import { setEntity } from '../../store/entitiesReducer';
 import { useDispatch } from 'react-redux';
 import { setMessage } from '../../store/notificationReducer';
-import { getDateToDatePicker } from '../../utils/getDateLocalString'
+import { getDateToDatePicker } from '../../utils/getDateLocalString';
 
 export const useEditEntity = (entityName) => {
-  const dispatch = useDispatch();
-  const editEntity = useCallback(
-    async (data) => {
-      try {
-        const docRef = doc(fireStore, `/${entityName}/${data.id}`);
-        const profileSnap = await getDoc(docRef);
-        const entity = profileSnap.data();
-	      
-	      if (!entity) throw  new Error(`${entityName} was not found`);
+    const dispatch = useDispatch();
+
+    const removeUndefinedFields = (obj) => {
+        return Object.keys(obj).reduce((acc, key) => {
+            if (obj[key] !== undefined) {
+                acc[key] = obj[key];
+            }
+            return acc;
+        }, {});
+    };
+
+    const editEntity = useCallback(
+        async (data) => {
+            console.log({ entityName, data });
+            try {
+                const docRef = doc(fireStore, `/${entityName}/${data.id}`);
+                const profileSnap = await getDoc(docRef);
+                const entity = profileSnap.data();
+
+                if (!entity) throw new Error(`${entityName} was not found`);
 
         const newData = {
           ...data,
@@ -36,9 +47,11 @@ export const useEditEntity = (entityName) => {
 					}
 				}
         if (entity) {
-          await updateDoc(docRef, newData);
+            const preparedData = removeUndefinedFields(newData);
+
+            await updateDoc(docRef, preparedData);
           if (entityName === 'students') {
-            dispatch(setEntity({ students: newData }));
+            dispatch(setEntity({ students: preparedData }));
           }
 
           return 200;
@@ -59,5 +72,5 @@ export const useEditEntity = (entityName) => {
     [dispatch, entityName]
   );
 
-  return { editEntity };
+    return { editEntity };
 };

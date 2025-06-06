@@ -29,21 +29,15 @@ export const KsuEditor = ({placeholder, value, onChange}) => {
                 placeholder={placeholder}
                 init={{
                     plugins: [
-                        'anchor',
-                        'autolink',
-                        'charmap',
-                        'codesample',
-                        'emoticons',
-                        'image',
-                        'link',
-                        'lists',
-                        'media',
-                        'searchreplace',
-                        'table',
-                        'visualblocks',
-                        'wordcount',
+                        'anchor', 'autolink', 'charmap', 'codesample',
+                        'emoticons', 'image', 'link', 'lists',
+                        'media', 'searchreplace', 'table',
+                        'visualblocks', 'wordcount',
                     ],
+                    toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | link image | bullist numlist outdent indent | removeformat',
+                    link_context_toolbar: true,
                 }}
+
             />
         </>
     );
