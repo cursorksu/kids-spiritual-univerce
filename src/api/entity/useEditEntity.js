@@ -20,7 +20,6 @@ export const useEditEntity = (entityName) => {
 
     const editEntity = useCallback(
         async (data) => {
-            console.log({ entityName, data });
             try {
                 const docRef = doc(fireStore, `/${entityName}/${data.id}`);
                 const profileSnap = await getDoc(docRef);
@@ -34,7 +33,7 @@ export const useEditEntity = (entityName) => {
           createdAt: entity.createdAt,
           modification_timestamp: Timestamp.now(),
         };
-				
+
 				if (newData.birthday) {
 					if (getDateToDatePicker(newData.birthday)) {
 						newData.birthday = (getDateToDatePicker(newData.birthday));

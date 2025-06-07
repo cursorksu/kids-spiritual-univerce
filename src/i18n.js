@@ -30,7 +30,7 @@ const resources = {
 };
 
 const userLanguage = navigator.language || navigator.userLanguage || 'ua';
-console.log({userLanguage});
+
 i18n
 .use(initReactI18next)
 .init({

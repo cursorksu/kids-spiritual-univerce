@@ -39,9 +39,7 @@ export const TopicToPrint = ({
     const [isTopicEdit, setIsTopicEdit] = useState(false);
     const {t} = useTranslation('tr');
     const isMobile = useIsMobile();
-    const {
-        lessonData: {lesson},
-    } = useSelector((state) => state);
+    const {lesson}= useSelector((state) => state.lessonData);
 
     const {
         control,

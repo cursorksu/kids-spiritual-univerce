@@ -4,7 +4,7 @@ import { CHOCO, CREAM } from '../../constants/colors'
 export const ChurchesListStyled = styled('div')`
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   padding: 20px;
 `;
 

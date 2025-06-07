@@ -196,101 +196,107 @@ export const HomeContentStyled = styled('div')`
     }
 `;
 export const ControlMobileStyled = styled('div')`
-	position: sticky;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: ${({collapsed}) => (collapsed ? '60px' : '100%')};
-	padding-top: 60px;
-	background: ${VEREM_CREAM_BG};
-	z-index: 100;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: ${({ collapsed }) => (collapsed
+      ? '60px'
+      : '100%')};
+  padding-top: 60px;
+  background: ${VEREM_CREAM_BG};
+  z-index: 100;
 
-    & > button {
-        position: absolute;
-        top: 12px;
-        left: 4px;
+  & > button {
+    position: absolute;
+    top: 12px;
+    left: 4px;
+  }
+
+  .fixed-mobile-menu {
+    font-size: 1.1rem;
+    padding-bottom: 100px;
+    overflow-y: auto;
+    height: 100vh;
+
+    .ant-menu {
+      background: transparent !important;
+      border-radius: 0;
+      box-shadow: none;
+      border: none;
     }
 
-    .fixed-mobile-menu {
-        font-size: 1.1rem;
-		padding-bottom: 100px;
-		overflow-y: auto;
-		height: 100vh;
-
-		.ant-menu {
-			background: transparent !important;
-			border-radius: 0;
-			box-shadow: none;
-			border: none;
-		}
-
-        .ant-menu-submenu,
-		.ant-menu-submenu-title {
-			color: ${CHOCO} !important;
-		}
-        .ant-menu-submenu-selected > .ant-menu-submenu-title, 
-		.ant-menu .ant-menu-submenu-selected > .ant-menu-submenu-title
-        .ant-menu-title-content,
-        .ant-menu-item {
-			font-size: 18px;
-            background: transparent !important;
-            color: ${CHOCO} !important;
-            margin: 0;
-            box-shadow: none;
-            border-radius: 0;
-        }
-
-		.ant-menu-submenu-title {
-			outline: none;
-			margin: 0;
-			padding: 4px;
-			border-radius: 0;
-		}
-		.ant-menu-item:target .ant-menu-submenu-title, 
-		.ant-menu-item:visited .ant-menu-submenu-title, 
-		.ant-menu-item:hover .ant-menu-submenu-title, 
-		.ant-menu-item:focus-visible .ant-menu-submenu-title,
-		.ant-menu-item:active .ant-menu-submenu-title {
-			background: ${BG_GOLD} !important;
-			outline: none;
-		}
-		.ant-menu-submenu-title {
-			.ant-menu-title-content {
-				color: ${VEREM_GOLD} !important;
-				font-size: 18px !important;
-			}
-		}
-        .ant-menu-item-active {
-            color: ${VEREM_GOLD} !important;
-			font-size: 18px !important;
-
-            .ant-menu-title-content {
-                color: ${VEREM_GOLD} !important;
-				font-size: 18px !important;
-            }
-        }
-
-        svg {
-            width: 24px;
-            height: 24px;
-            display: inline-block;
-            margin-right: 12px;
-        }
-
-        .middle {
-            svg {
-                width: 25px;
-                height: 25px;
-            }
-        }
-
-        .big {
-            svg {
-                width: 30px;
-                height: 30px;
-            }
-        }
+    .ant-menu-submenu,
+    .ant-menu-submenu-title {
+      color: ${CHOCO} !important;
     }
+
+    .ant-menu-submenu-selected > .ant-menu-submenu-title,
+    .ant-menu .ant-menu-submenu-selected > .ant-menu-submenu-title
+    .ant-menu-title-content,
+    .ant-menu-item {
+      font-size: 20px;
+      background: transparent !important;
+      color: ${CHOCO} !important;
+      margin: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .ant-menu-submenu-title {
+      outline: none;
+      margin: 0;
+      padding: 4px;
+      border-radius: 0;
+    }
+
+    .ant-menu-item:target .ant-menu-submenu-title,
+    .ant-menu-item:visited .ant-menu-submenu-title,
+    .ant-menu-item:hover .ant-menu-submenu-title,
+    .ant-menu-item:focus-visible .ant-menu-submenu-title,
+    .ant-menu-item:active .ant-menu-submenu-title {
+      background: ${BG_GOLD} !important;
+			transition: ease-in-out 0.3s color;
+      outline: none;
+    }
+
+    .ant-menu-submenu-title {
+      .ant-menu-title-content {
+        color: ${VEREM_GOLD} !important;
+        font-size: 20px !important;
+      }
+    }
+    .ant-menu-item-active {
+      color: ${VEREM_GOLD} !important;
+      font-size: 20px !important;
+
+      .ant-menu-title-content {
+        color: ${VEREM_GOLD} !important;
+        font-size: 20px !important;
+      }
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      margin-right: 12px;
+    }
+
+    .middle {
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    .big {
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
 `;
 export const VeremMainContentStyled = styled('div')`
 	position: relative;
@@ -305,8 +311,7 @@ export const VeremMainContentStyled = styled('div')`
 		padding: 20px;
 		display: grid;
 		gap: 20px;
-		grid-template-columns: repeat(3, 1fr);
-		
+		grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 	}
 	
 	.entity-title-wrapper {

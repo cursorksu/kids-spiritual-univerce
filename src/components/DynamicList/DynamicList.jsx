@@ -20,11 +20,6 @@ export const DynamicList = ({ list, onChangeList }) => {
         value: '',
     }), []);
 
-    useEffect(() => {
-        console.log({list,onChangeList});
-        // onChangeField && onChangeField({ ...field, value: list });
-    }, [list, onChangeList]);
-
     const handleAdd = () => {
         const newItem = { id: generateId(), value: '' };
         onChangeList([...list, newItem]);

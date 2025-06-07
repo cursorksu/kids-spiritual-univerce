@@ -6,59 +6,53 @@ import {
 } from '../../constants/colors';
 
 export const LessonListStyled = styled('div')`
-    & > .grid {
-        margin: 0;
-        padding: 20px;
-    }
+  & > .grid {
+    margin: 0;
+    padding: 20px;
+  }
 
-    .lessons-grid {
-        display: grid;
-        grid-template-columns: 23% 23% 23% 23%;
-        grid-gap: 20px;
-        padding: 20px;
-        align-items: stretch;
-    }
+  .lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    align-items: stretch;
+    padding: 20px;
+  }
 
-    .card-title {
-        display: -webkit-box;
-        overflow: hidden;
-        -webkit-box-orient: vertical;
-        line-clamp: 2;
-        -webkit-line-clamp: 2;
-        position: relative;
-        height: 66px;
-        padding-bottom: 10px;
-    }
+  .card-title {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    position: relative;
+    height: 66px;
+    padding-bottom: 10px;
+  }
 
-    .ant-card-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: stretch;
-        align-items: center;
-    }
+  .ant-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+  }
 
-    .content {
-        padding-bottom: 0;
-    }
+  .content {
+    padding-bottom: 0;
+  }
 
-    .description {
-        text-align: center;
+  .description {
+    text-align: center;
 
-        img {
-            display: none;
-        }
+    img {
+      display: none;
     }
+  }
 
-    .description,
-    .title.card-title,
-    .quote {
-        color: ${DARK_GRAY};
-    }
-
-  @media screen and (max-width: 768px) {
-    .lessons-grid {
-      grid-template-columns: 1fr; /* 1 колонка на мобильных устройствах */
-    }
+  .description,
+  .title.card-title,
+  .quote {
+    color: ${DARK_GRAY};
   }
 }
 `;

@@ -12,6 +12,7 @@ import {useTranslation} from 'react-i18next';
 import {useAssignEntityToLesson} from '../../../api/refs/useAssignEntityToLesson';
 import {useEditEntity} from '../../../api/entity/useEditEntity';
 import PropTypes from 'prop-types';
+import { PHOTO_PLACEHOLDER } from '../../../constants/main.js';
 
 export const EntityItemExpanded = ({
                                        entityName,
@@ -78,10 +79,10 @@ export const EntityItemExpanded = ({
                 <div className="image">
                     {item?.imageUrl
                         ? (
-                            <img src={item?.imageUrl} alt="item.title"/>
+                            <img src={item?.imageUrl} alt={item.title}/>
                         )
                         : (
-                            <HTMLRenderer htmlContent={findFirstImage(item?.text)}/>
+                           <img src={PHOTO_PLACEHOLDER} alt={item.title}/>
                         )}
                 </div>
                 <div className="item-title">
@@ -91,7 +92,7 @@ export const EntityItemExpanded = ({
                                 <EditIcon/>
                             </ButtonIconMiniStyled>
                         ) : null}
-                        {user?.uid === item?.createdBy.uid && (
+                        {user?.uid === item?.createdBy?.uid && (
                             <DeleteConfirmationModal
                                 modalTitle={t(`delete.${entityName}.title`)}
                                 modalContent={t(`delete.${entityName}.content`)}
