@@ -7,7 +7,7 @@ import {
 	GOLD,
 	ITEM_BG,
 	VEREM_CREAM_BG,
-	VEREM_GOLD,
+	VEREM_GOLD, YELLOW_LIGHT,
 } from '../constants/colors'
 
 export const PresentationsStyled = styled('section')`
@@ -308,6 +308,10 @@ export const VeremMainContentStyled = styled('div')`
 		grid-template-columns: repeat(3, 1fr);
 		
 	}
+	
+	.entity-title-wrapper {
+		padding: 20px 0 0;
+	}
 
 	.content-wrapper {
 		margin: 0;
@@ -326,6 +330,11 @@ export const VeremMainContentStyled = styled('div')`
 			padding: 0;
 			font-family: Comfortaa, sans-serif;
 			font-weight: 700;
+		}
+
+		h1 {
+			white-space: pre-wrap !important;
+			font-size: 20px !important;
 		}
 	}
 
