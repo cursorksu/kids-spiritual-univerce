@@ -440,8 +440,12 @@ export const VeremMainContentStyled = styled('div')`
 		border-color: transparent;
 	}
 
-	.ps-menu-root .ps-submenu-content ul {
-		min-height: initial;
+	.ps-menu-root .ps-submenu-content {
+		min-width: 300px;
+		
+		ul {
+			min-height: initial;
+		}
 	}
 
 	[data-popper-escaped] .ps-menu-button {
