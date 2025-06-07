@@ -7,6 +7,7 @@ export const PRIMARY_MAIN_RGBA = 'rgba(255, 99, 71, 0.5)';
 export const SUCCESS = '#9ACD32';
 export const BG_SUCCESS = 'rgba(154, 205,50, 0.5)';
 export const YELLOW_MAIN = '#f7a106';
+export const YELLOW_LIGHT = '#f5deb3';
 export const BLUE_MAIN = '#3366FF';
 export const PERPLE_MAIN = '#8E44AD';
 export const PRIMARY_MAIN = '#a39367';
